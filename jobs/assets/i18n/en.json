@@ -1,0 +1,83 @@
+{
+  "brand": "Brand",
+  "hero": {
+    "title": "Create Job Application",
+    "lead": "Three clear steps. Your information is not saved on the server — everything stays in your browser until you decide to download the file.",
+    "step1": "Job Details",
+    "step2": "Tell About Yourself",
+    "step3": "Draft and Export"
+  },
+  "step1": {
+    "title": "Step 1 — Job Details",
+    "muted": "Fill in at least one field. The more you fill in, the better results in the draft."
+  },
+  "step2": {
+    "title": "Step 2 — Tell About Yourself",
+    "muted": "Tip: 2-3 sentences per box is often a good length. You can see the character count and screen readers are notified of changes."
+  },
+  "step3": {
+    "title": "Step 3 — Draft and Export"
+  },
+  "label": {
+    "jobTitle": "Job Title",
+    "jobUrl": "Company Website",
+    "adUrl": "Job Posting URL",
+    "role": "Position",
+    "about": "Brief Introduction",
+    "why": "Why Are You Applying?",
+    "proof": "Best Proof of Your Skills",
+    "targetLang": "Target Language",
+    "draftNative": "Application Draft in Your Language",
+    "draftTarget": "Application Draft in Target Language"
+  },
+  "placeholder": {
+    "jobTitle": "Add the name of the job you are looking for",
+    "jobUrl": "Website of the company you are applying to",
+    "adUrl": "Add job posting URL (if available)",
+    "role": "Position you are applying for",
+    "about": "Briefly describe your background and strengths",
+    "why": "Explain your suitability and motivation",
+    "proof": "Tell about a concrete achievement and its impact"
+  },
+  "btn": {
+    "toStep2": "Continue to Step 2",
+    "toStep3": "Create Draft",
+    "exportDocx": "Download .docx",
+    "sendEmail": "Send"
+  },
+  "help": {
+    "send": "\"Send\" opens your email client with a pre-filled message. Nothing is sent to the server."
+  },
+  "toast": {
+    "successTitle": "Good start!",
+    "successBody": "This information helps in creating the draft."
+  },
+  "guide": {
+    "title": "Instructions",
+    "step1": {
+      "tips": [
+        "Fill in at least one field (name, URL or position).",
+        "You can add the job posting URL for more context.",
+        "Tab/Shift+Tab moves between fields. Enter in buttons."
+      ],
+      "legal": "No information is sent to the server."
+    },
+    "step2": {
+      "tips": [
+        "Keep answers to 2-3 sentences. Character counter shows length.",
+        "Explain suitability and add concrete proof (achievement + impact).",
+        "Select target language before \"Create Draft\"."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Edit the draft. Your language on left, target language on right (50/50).",
+        "\"Download .docx\" (now .txt) saves a local copy.",
+        "\"Send\" opens email — nothing is sent to server."
+      ]
+    }
+  },
+  "status": {
+    "title": "Status"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "brand": "Brand",
+  "hero": {
+    "title": "Työhakemuksen luonti",
+    "lead": "Kolme selkeää vaihetta. Tietojasi ei tallenneta palvelimelle — kaikki pysyy selaimessasi, kunnes päätät ladata tiedoston.",
+    "step1": "Työpaikan tiedot",
+    "step2": "Kerro itsestäsi",
+    "step3": "Luonnos ja vienti"
+  },
+  "step1": {
+    "title": "Vaihe 1 — Työpaikan tiedot",
+    "muted": "Täytä vähintään yksi kenttä. Mitä enemmän täytät, sitä paremmat tulokset luonnoksessa."
+  },
+  "step2": {
+    "title": "Vaihe 2 — Kerro itsestäsi",
+    "muted": "Vinkki: 2–3 virkettä per laatikko on usein sopiva pituus. Näet merkkimäärän ja ruudunlukijalle ilmoitetaan muutoksista."
+  },
+  "step3": {
+    "title": "Vaihe 3 — Luonnos ja vienti"
+  },
+  "label": {
+    "jobTitle": "Työpaikan nimi",
+    "jobUrl": "Työpaikan www-osoite",
+    "adUrl": "Työpaikkailmoituksen www-osoite",
+    "role": "Ammattinimike",
+    "about": "Lyhyt esittely",
+    "why": "Miksi haet tähän tehtävään?",
+    "proof": "Paras näyttö osaamisestasi",
+    "targetLang": "Kohdekieli",
+    "draftNative": "Hakemusluonnos omalla kielellä",
+    "draftTarget": "Hakemusluonnos kohdekielellä"
+  },
+  "placeholder": {
+    "jobTitle": "Lisää työpaikan nimi josta etsit työpaikkaa",
+    "jobUrl": "Hakemasi työpaikan www-osoite",
+    "adUrl": "Lisää ilmoituksen www-osoite (jos on)",
+    "role": "Työtehtävä jota haet",
+    "about": "Kuvaa lyhyesti taustasi ja vahvuudet",
+    "why": "Perustele lyhyesti sopivuutesi ja motivaatiosi",
+    "proof": "Kerro konkreettinen saavutus ja sen tuoma arvo"
+  },
+  "btn": {
+    "toStep2": "Jatka vaiheeseen 2",
+    "toStep3": "Luo luonnos",
+    "exportDocx": "Lataa .docx",
+    "sendEmail": "Lähetä"
+  },
+  "help": {
+    "send": "\"Lähetä\" avaa sähköpostiohjelmasi esitäytetyllä viestillä. Mitään ei lähetetä palvelimelle."
+  },
+  "toast": {
+    "successTitle": "Hyvä alku!",
+    "successBody": "Tämä tieto auttaa luonnoksen teossa."
+  },
+  "guide": {
+    "title": "Ohjeet",
+    "step1": {
+      "tips": [
+        "Täytä vähintään yksi kenttä (nimi, URL tai ammattinimike).",
+        "Voit liittää ilmoituksen www-osoitteen tarkempaa kontekstia varten.",
+        "Tab/Shift+Tab liikkuu kenttien välillä. Enter painikkeissa."
+      ],
+      "legal": "Tietoja ei lähetetä palvelimelle."
+    },
+    "step2": {
+      "tips": [
+        "Pidä vastaukset 2–3 virkkeessä. Merkkilaskuri näyttää pituuden.",
+        "Perustele sopivuus ja lisää konkreettinen näyttö (saavutus + vaikutus).",
+        "Valitse kohdekieli ennen \"Luo luonnos\"."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Muokkaa luonnosta. Vasemmalla oma kieli, oikealla kohdekieli (50/50).",
+        "\"Lataa .docx\" (nyt .txt) tallentaa paikallisen kopion.",
+        "\"Lähetä\" avaa sähköpostin — mitään ei lähetetä palvelimelle."
+      ]
+    }
+  },
+  "status": {
+    "title": "Status"
+  }
+  
+}
