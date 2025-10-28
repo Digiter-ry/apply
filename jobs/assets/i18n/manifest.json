@@ -15,7 +15,11 @@
     { "code": "es", "name": "Spanish",   "nativeName": "español",      "dir": "ltr" },
     { "code": "it", "name": "Italian",   "nativeName": "italiano",     "dir": "ltr" },
 
-    { "code": "ar", "name": "Arabic",    "nativeName": "العربية",      "dir": "rtl" },
-    { "code": "fa", "name": "Persian",   "nativeName": "فارسی",        "dir": "rtl" }
+  { "code": "sk", "name": "Slovak",    "nativeName": "slovenčina",   "dir": "ltr" },
+  { "code": "pt", "name": "Portuguese","nativeName": "Português",    "dir": "ltr" },
+  { "code": "cs", "name": "Czech",     "nativeName": "čeština",      "dir": "ltr" },
+
+  { "code": "ar", "name": "Arabic",    "nativeName": "العربية",      "dir": "rtl" },
+  { "code": "fa", "name": "Persian",   "nativeName": "فارسی",        "dir": "rtl" }
   ]
 }
