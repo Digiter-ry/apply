@@ -1,0 +1,128 @@
+{
+  "brand": "Brand",
+  "hero": {
+    "title": "Crea candidatura",
+    "lead": "Questo strumento ti aiuta a scrivere una candidatura nella tua lingua e a tradurla nella lingua del Paese di destinazione. Tutto resta nel tuo browser — nulla viene salvato o condiviso. Scrivi con fiducia, evitando però dati personali come codice identificativo o indirizzo.",
+    "step1": "Dettagli dell’offerta",
+    "step2": "Parla di te",
+    "step3": "Bozza ed esportazione"
+  },
+  "step1": {
+    "title": "Fase 1 — Dettagli dell’offerta",
+    "muted": "Compila almeno un campo. Più informazioni inserisci, migliore sarà la bozza."
+  },
+  "step2": {
+    "title": "Fase 2 — Parla di te",
+    "muted": "Suggerimento: 2–3 frasi per riquadro sono spesso sufficienti. Il contatore mostra i caratteri e i lettori di schermo sono avvisati delle modifiche."
+  },
+  "step3": {
+    "title": "Fase 3 — Bozza ed esportazione"
+  },
+  "label": {
+    "jobTitle": "Titolo di lavoro",
+    "jobUrl": "Sito dell’azienda",
+    "adUrl": "URL dell’annuncio",
+    "role": "Posizione",
+    "about": "Breve presentazione",
+    "why": "Perché ti candidi?",
+    "proof": "Miglior prova delle tue competenze",
+    "targetLang": "Lingua di destinazione",
+    "draftNative": "Bozza nella tua lingua",
+    "draftTarget": "Bozza nella lingua di destinazione"
+  },
+  "placeholder": {
+    "jobTitle": "Aggiungi il nome del lavoro per cui ti candidi",
+    "jobUrl": "Sito dell’azienda a cui ti candidi",
+    "adUrl": "Aggiungi l’URL dell’annuncio (se disponibile)",
+    "role": "Posizione per cui ti candidi",
+    "about": "Descrivi brevemente il tuo background e i tuoi punti di forza",
+    "why": "Spiega idoneità e motivazione",
+    "proof": "Racconta un risultato concreto e il suo impatto",
+    "draftNative": "La bozza apparirà qui",
+    "draftTarget": "La bozza tradotta apparirà qui"
+  },
+  "btn": {
+    "toStep2": "Continua alla fase 2",
+    "toStep3": "Crea bozza",
+    "exportDocx": "Scarica .docx",
+    "sendEmail": "Invia",
+    "clearAll": "Pulisci modulo"
+  },
+  "help": {
+    "send": "\"Invia\" apre il tuo client e‑mail con un messaggio precompilato. Nulla viene inviato al server."
+  },
+  "toast": {
+    "successTitle": "Ottimo inizio!",
+    "successBody": "Queste informazioni aiutano a creare la bozza."
+  },
+  "guide": {
+    "title": "Istruzioni",
+    "more": "Mostra di più",
+    "close": "Chiudi",
+    "step1": {
+      "tips": [
+        "Compila almeno un campo (nome, URL o posizione).",
+        "Puoi aggiungere l’URL dell’annuncio per più contesto.",
+        "Tab/Shift+Tab si sposta tra i campi. Invio sui pulsanti."
+      ],
+      "legal": "Nessuna informazione viene inviata al server."
+    },
+    "step2": {
+      "tips": [
+        "Mantieni le risposte in 2–3 frasi. Il contatore mostra la lunghezza.",
+        "Spiega l’idoneità e aggiungi una prova concreta (risultato + impatto).",
+        "Seleziona la lingua di destinazione prima di \"Crea bozza\"."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Modifica la bozza. La tua lingua a sinistra, la destinazione a destra (50/50).",
+        "\"Scarica .docx\" (ora .txt) salva una copia locale.",
+        "\"Invia\" apre l’e‑mail — nulla viene inviato al server."
+      ]
+    },
+    "loadError": "Caricamento delle istruzioni non riuscito."
+  },
+  "status": {
+    "title": "Azioni",
+    "ready": "Pronto.",
+    "restored": "La tua ultima sessione è stata ripristinata.",
+    "langSet": "Lingua dell’interfaccia: {name}",
+    "fillOne": "Compila almeno un campo nella fase 1.",
+    "movedTo2": "Passato alla fase 2.",
+    "draftCreated": "Bozza creata.",
+    "draftDownloaded": "Bozza scaricata come .txt.",
+    "cleared": "Modulo e cache locale puliti."
+  },
+  "confirm": {
+    "clearAll": "Pulire il modulo e la cache locale?"
+  },
+  "export": {
+    "title": "Titolo di lavoro:",
+    "website": "Sito dell’azienda:",
+    "adUrl": "URL annuncio:",
+    "role": "Posizione:",
+    "nativeHeader": "--- Bozza (lingua di origine) ---",
+    "targetHeader": "--- Bozza (lingua di destinazione) ---",
+    "filename": "bozza-candidatura.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Candidatura:",
+    "subjectFallback": "Candidatura",
+    "footer": "- Creato con Digiter Apply"
+  },
+  "privacy": {
+    "label": "Modalità privacy",
+    "on": "Modalità privacy attiva",
+    "off": "Modalità privacy disattiva",
+    "help": "In modalità privacy non viene salvato nulla in modo persistente nel browser. Tutti i dati vengono eliminati quando lasci la pagina."
+  },
+  "assist": {
+    "chars": "caratteri",
+    "short": "Breve",
+    "ok": "Ottimale",
+    "long": "Lungo",
+    "tip": "Aggiungi un esempio concreto: \"Come si è visto nei risultati?\"",
+    "tipButton": "Mostra suggerimento"
+  }
+}

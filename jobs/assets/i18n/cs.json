@@ -1,3 +1,128 @@
 {
-  "": {}
+  "brand": "Značka",
+  "hero": {
+    "title": "Vytvořit žádost o práci",
+    "lead": "Tento nástroj vám pomůže napsat žádost ve vašem jazyce a přeložit ji do jazyka cílové země. Vše zůstává ve vašem prohlížeči — nic se neukládá ani nesdílí. Pište s jistotou, ale vyhněte se osobním údajům, jako je rodné číslo nebo adresa.",
+    "step1": "Podrobnosti o práci",
+    "step2": "Řekněte něco o sobě",
+    "step3": "Návrh a export"
+  },
+  "step1": {
+    "title": "Krok 1 — Podrobnosti o práci",
+    "muted": "Vyplňte alespoň jedno pole. Čím více vyplníte, tím lepší bude návrh."
+  },
+  "step2": {
+    "title": "Krok 2 — Řekněte něco o sobě",
+    "muted": "Tip: 2–3 věty do každého pole většinou stačí. Počítadlo znaků ukazuje délku a čtečky obrazovky jsou o změnách informovány."
+  },
+  "step3": {
+    "title": "Krok 3 — Návrh a export"
+  },
+  "label": {
+    "jobTitle": "Název pozice",
+    "jobUrl": "Web společnosti",
+    "adUrl": "URL inzerátu",
+    "role": "Pozice",
+    "about": "Stručné představení",
+    "why": "Proč se hlásíte?",
+    "proof": "Nejlepší důkaz vašich dovedností",
+    "targetLang": "Cílový jazyk",
+    "draftNative": "Návrh ve vašem jazyce",
+    "draftTarget": "Návrh v cílovém jazyce"
+  },
+  "placeholder": {
+    "jobTitle": "Přidejte název práce, o kterou se ucházíte",
+    "jobUrl": "Web společnosti, do které se hlásíte",
+    "adUrl": "Přidejte URL inzerátu (pokud je k dispozici)",
+    "role": "Pozice, o kterou se ucházíte",
+    "about": "Stručně popište své zázemí a silné stránky",
+    "why": "Vysvětlete svou motivaci a vhodnost",
+    "proof": "Uveďte konkrétní úspěch a jeho dopad",
+    "draftNative": "Návrh se zobrazí zde",
+    "draftTarget": "Přeložený návrh se zobrazí zde"
+  },
+  "btn": {
+    "toStep2": "Pokračovat ke kroku 2",
+    "toStep3": "Vytvořit návrh",
+    "exportDocx": "Stáhnout .docx",
+    "sendEmail": "Odeslat",
+    "clearAll": "Vymazat formulář"
+  },
+  "help": {
+    "send": "\"Odeslat\" otevře e‑mailového klienta s předvyplněnou zprávou. Na server se nic neodesílá."
+  },
+  "toast": {
+    "successTitle": "Dobrý začátek!",
+    "successBody": "Tyto informace pomohou vytvořit návrh."
+  },
+  "guide": {
+    "title": "Pokyny",
+    "more": "Zobrazit více",
+    "close": "Zavřít",
+    "step1": {
+      "tips": [
+        "Vyplňte alespoň jedno pole (název, URL nebo pozici).",
+        "Pro více kontextu můžete přidat URL inzerátu.",
+        "Tab/Shift+Tab přesouvá mezi poli. Enter na tlačítkách."
+      ],
+      "legal": "Na server se neodesílají žádné informace."
+    },
+    "step2": {
+      "tips": [
+        "Držte odpovědi na 2–3 větách. Počítadlo ukazuje délku.",
+        "Vysvětlete vhodnost a přidejte konkrétní důkaz (úspěch + dopad).",
+        "Před „Vytvořit návrh“ vyberte cílový jazyk."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Upravte návrh. Váš jazyk vlevo, cílový vpravo (50/50).",
+        "\"Stáhnout .docx\" (nyní .txt) uloží místní kopii.",
+        "\"Odeslat\" otevře e‑mail — nic se na server neodesílá."
+      ]
+    },
+    "loadError": "Nepodařilo se načíst pokyny."
+  },
+  "status": {
+    "title": "Akce",
+    "ready": "Připraveno.",
+    "restored": "Vaše poslední relace byla obnovena.",
+    "langSet": "Jazyk rozhraní: {name}",
+    "fillOne": "Vyplňte alespoň jedno pole v kroku 1.",
+    "movedTo2": "Přesunuto ke kroku 2.",
+    "draftCreated": "Návrh vytvořen.",
+    "draftDownloaded": "Návrh stažen jako .txt.",
+    "cleared": "Formulář a místní cache vymazány."
+  },
+  "confirm": {
+    "clearAll": "Vymazat formulář a místní cache?"
+  },
+  "export": {
+    "title": "Název pozice:",
+    "website": "Web společnosti:",
+    "adUrl": "URL inzerátu:",
+    "role": "Pozice:",
+    "nativeHeader": "--- Návrh (výchozí jazyk) ---",
+    "targetHeader": "--- Návrh (cílový jazyk) ---",
+    "filename": "navrh-zadosti-o-praci.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Žádost o práci:",
+    "subjectFallback": "Žádost",
+    "footer": "- Vytvořeno pomocí Digiter Apply"
+  },
+  "privacy": {
+    "label": "Režim soukromí",
+    "on": "Režim soukromí zapnut",
+    "off": "Režim soukromí vypnut",
+    "help": "V režimu soukromí se v prohlížeči nic trvale neukládá. Všechna data se při odchodu ze stránky smažou."
+  },
+  "assist": {
+    "chars": "znaků",
+    "short": "Krátké",
+    "ok": "Optimální",
+    "long": "Dlouhé",
+    "tip": "Přidejte konkrétní příklad: „Jak se to projevilo ve výsledcích?“",
+    "tipButton": "Zobrazit tip"
+  }
 }

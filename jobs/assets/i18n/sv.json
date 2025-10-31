@@ -1,0 +1,128 @@
+{
+  "brand": "Varumärke",
+  "hero": {
+    "title": "Skapa jobbansökan",
+    "lead": "Detta verktyg hjälper dig att skriva en jobbansökan på ditt eget språk och översätta den till mållandets språk. Allt stannar i din webbläsare — ingenting sparas eller delas. Skriv tryggt, men undvik personuppgifter som personnummer eller adress.",
+    "step1": "Jobbuppgifter",
+    "step2": "Berätta om dig själv",
+    "step3": "Utkast och export"
+  },
+  "step1": {
+    "title": "Steg 1 — Jobbuppgifter",
+    "muted": "Fyll i minst ett fält. Ju mer du fyller i, desto bättre blir utkastet."
+  },
+  "step2": {
+    "title": "Steg 2 — Berätta om dig själv",
+    "muted": "Tips: 2–3 meningar per ruta är ofta lagom. Teckenräknaren visar längden och skärmläsare meddelas om ändringar."
+  },
+  "step3": {
+    "title": "Steg 3 — Utkast och export"
+  },
+  "label": {
+    "jobTitle": "Befattning",
+    "jobUrl": "Företagets webbplats",
+    "adUrl": "Länk till platsannons",
+    "role": "Tjänst",
+    "about": "Kort presentation",
+    "why": "Varför söker du?",
+    "proof": "Bästa bevis på din kompetens",
+    "targetLang": "Målspråk",
+    "draftNative": "Utkast på ditt språk",
+    "draftTarget": "Utkast på målspråket"
+  },
+  "placeholder": {
+    "jobTitle": "Lägg till namnet på jobbet du söker",
+    "jobUrl": "Webbplats för företaget du söker till",
+    "adUrl": "Lägg till länk till platsannons (om finns)",
+    "role": "Tjänsten du söker",
+    "about": "Beskriv kort din bakgrund och dina styrkor",
+    "why": "Förklara din lämplighet och motivation",
+    "proof": "Berätta om en konkret prestation och dess effekt",
+    "draftNative": "Utkastet visas här",
+    "draftTarget": "Översatt utkast visas här"
+  },
+  "btn": {
+    "toStep2": "Fortsätt till steg 2",
+    "toStep3": "Skapa utkast",
+    "exportDocx": "Ladda ner .docx",
+    "sendEmail": "Skicka",
+    "clearAll": "Rensa formulär"
+  },
+  "help": {
+    "send": "\"Skicka\" öppnar ditt e‑postprogram med ett förifyllt meddelande. Ingenting skickas till servern."
+  },
+  "toast": {
+    "successTitle": "Bra början!",
+    "successBody": "Denna information hjälper till att skapa utkastet."
+  },
+  "guide": {
+    "title": "Instruktioner",
+    "more": "Visa mer",
+    "close": "Stäng",
+    "step1": {
+      "tips": [
+        "Fyll i minst ett fält (namn, URL eller tjänst).",
+        "Du kan lägga till länk till platsannons för mer sammanhang.",
+        "Tab/Shift+Tab flyttar mellan fälten. Enter på knappar."
+      ],
+      "legal": "Ingen information skickas till servern."
+    },
+    "step2": {
+      "tips": [
+        "Håll svaren till 2–3 meningar. Teckenräknaren visar längden.",
+        "Förklara lämplighet och lägg till konkret bevis (prestation + effekt).",
+        "Välj målspråk innan du klickar på \"Skapa utkast\"."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Redigera utkastet. Ditt språk till vänster, målspråk till höger (50/50).",
+        "\"Ladda ner .docx\" (nu .txt) sparar en lokal kopia.",
+        "\"Skicka\" öppnar e‑post — inget skickas till servern."
+      ]
+    },
+    "loadError": "Det gick inte att läsa in instruktionerna."
+  },
+  "status": {
+    "title": "Åtgärder",
+    "ready": "Klar.",
+    "restored": "Din senaste session har återställts.",
+    "langSet": "Gränssnittsspråk: {name}",
+    "fillOne": "Fyll i minst ett fält i steg 1.",
+    "movedTo2": "Gick vidare till steg 2.",
+    "draftCreated": "Utkast skapat.",
+    "draftDownloaded": "Utkast nedladdat som .txt.",
+    "cleared": "Formulär och lokal cache rensade."
+  },
+  "confirm": {
+    "clearAll": "Rensa formuläret och lokal cache?"
+  },
+  "export": {
+    "title": "Jobbtitel:",
+    "website": "Företagets webbplats:",
+    "adUrl": "Annonslänk:",
+    "role": "Tjänst:",
+    "nativeHeader": "--- Utkast (källspråk) ---",
+    "targetHeader": "--- Utkast (målspråk) ---",
+    "filename": "jobbansokan-utkast.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Jobbansökan:",
+    "subjectFallback": "Ansökan",
+    "footer": "- Skapad med Digiter Apply"
+  },
+  "privacy": {
+    "label": "Integritetsläge",
+    "on": "Integritetsläge på",
+    "off": "Integritetsläge av",
+    "help": "I integritetsläge lagras inget beständigt i webbläsaren. All data rensas när du lämnar sidan."
+  },
+  "assist": {
+    "chars": "tecken",
+    "short": "Kort",
+    "ok": "Optimal",
+    "long": "Lång",
+    "tip": "Lägg till ett konkret exempel: \"Hur syntes detta i resultaten?\"",
+    "tipButton": "Visa tips"
+  }
+}

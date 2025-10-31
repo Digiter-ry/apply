@@ -1,0 +1,128 @@
+{
+  "brand": "Marke",
+  "hero": {
+    "title": "Bewerbung erstellen",
+    "lead": "Dieses Tool hilft dir, eine Bewerbung in deiner eigenen Sprache zu verfassen und in die Sprache des Ziellandes zu übersetzen. Alles bleibt in deinem Browser — nichts wird gespeichert oder geteilt. Schreibe selbstbewusst, vermeide aber persönliche Daten wie Personalausweisnummer oder Adresse.",
+    "step1": "Stelldaten",
+    "step2": "Erzähle von dir",
+    "step3": "Entwurf & Export"
+  },
+  "step1": {
+    "title": "Schritt 1 — Stelldaten",
+    "muted": "Fülle mindestens ein Feld aus. Je mehr du ausfüllst, desto besser wird der Entwurf."
+  },
+  "step2": {
+    "title": "Schritt 2 — Erzähle von dir",
+    "muted": "Tipp: 2–3 Sätze pro Feld sind oft ideal. Der Zeichenzähler zeigt die Länge, Screenreader werden über Änderungen informiert."
+  },
+  "step3": {
+    "title": "Schritt 3 — Entwurf & Export"
+  },
+  "label": {
+    "jobTitle": "Stellenbezeichnung",
+    "jobUrl": "Unternehmenswebsite",
+    "adUrl": "URL der Stellenausschreibung",
+    "role": "Position",
+    "about": "Kurze Vorstellung",
+    "why": "Warum bewirbst du dich?",
+    "proof": "Bester Nachweis deiner Fähigkeiten",
+    "targetLang": "Zielsprache",
+    "draftNative": "Entwurf in deiner Sprache",
+    "draftTarget": "Entwurf in der Zielsprache"
+  },
+  "placeholder": {
+    "jobTitle": "Name der Stelle, auf die du dich bewirbst",
+    "jobUrl": "Website des Unternehmens, bei dem du dich bewirbst",
+    "adUrl": "URL der Stellenausschreibung hinzufügen (falls vorhanden)",
+    "role": "Position, auf die du dich bewirbst",
+    "about": "Beschreibe kurz deinen Hintergrund und deine Stärken",
+    "why": "Erläutere Eignung und Motivation",
+    "proof": "Beschreibe eine konkrete Leistung und deren Wirkung",
+    "draftNative": "Der Entwurf erscheint hier",
+    "draftTarget": "Der übersetzte Entwurf erscheint hier"
+  },
+  "btn": {
+    "toStep2": "Weiter zu Schritt 2",
+    "toStep3": "Entwurf erstellen",
+    "exportDocx": "Als .docx herunterladen",
+    "sendEmail": "Senden",
+    "clearAll": "Formular leeren"
+  },
+  "help": {
+    "send": "\"Senden\" öffnet dein E‑Mail‑Programm mit einer vorausgefüllten Nachricht. Es wird nichts an den Server gesendet."
+  },
+  "toast": {
+    "successTitle": "Guter Start!",
+    "successBody": "Diese Angaben helfen beim Erstellen des Entwurfs."
+  },
+  "guide": {
+    "title": "Anleitung",
+    "more": "Mehr anzeigen",
+    "close": "Schließen",
+    "step1": {
+      "tips": [
+        "Fülle mindestens ein Feld aus (Name, URL oder Position).",
+        "Du kannst die URL der Ausschreibung für mehr Kontext hinzufügen.",
+        "Tab/Shift+Tab wechselt zwischen den Feldern. Enter bei Schaltflächen."
+      ],
+      "legal": "Es werden keine Informationen an den Server gesendet."
+    },
+    "step2": {
+      "tips": [
+        "Halte Antworten bei 2–3 Sätzen. Der Zeichenzähler zeigt die Länge.",
+        "Erläutere Eignung und füge einen konkreten Nachweis hinzu (Leistung + Wirkung).",
+        "Wähle die Zielsprache, bevor du „Entwurf erstellen“ klickst."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Bearbeite den Entwurf. Deine Sprache links, Zielsprache rechts (50/50).",
+        "\"Als .docx herunterladen\" (jetzt .txt) speichert eine lokale Kopie.",
+        "\"Senden\" öffnet die E‑Mail — es wird nichts an den Server gesendet."
+      ]
+    },
+    "loadError": "Anleitung konnte nicht geladen werden."
+  },
+  "status": {
+    "title": "Aktionen",
+    "ready": "Bereit.",
+    "restored": "Deine letzte Sitzung wurde wiederhergestellt.",
+    "langSet": "Oberflächensprache: {name}",
+    "fillOne": "Fülle mindestens ein Feld in Schritt 1 aus.",
+    "movedTo2": "Zu Schritt 2 gewechselt.",
+    "draftCreated": "Entwurf erstellt.",
+    "draftDownloaded": "Entwurf als .txt heruntergeladen.",
+    "cleared": "Formular und lokaler Cache geleert."
+  },
+  "confirm": {
+    "clearAll": "Formular und lokalen Cache leeren?"
+  },
+  "export": {
+    "title": "Stellenbezeichnung:",
+    "website": "Unternehmenswebsite:",
+    "adUrl": "Ausschreibungs‑URL:",
+    "role": "Position:",
+    "nativeHeader": "--- Entwurf (Ausgangssprache) ---",
+    "targetHeader": "--- Entwurf (Zielsprache) ---",
+    "filename": "bewerbung-entwurf.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Bewerbung:",
+    "subjectFallback": "Bewerbung",
+    "footer": "- Erstellt mit Digiter Apply"
+  },
+  "privacy": {
+    "label": "Datenschutzmodus",
+    "on": "Datenschutzmodus an",
+    "off": "Datenschutzmodus aus",
+    "help": "Im Datenschutzmodus wird nichts dauerhaft im Browser gespeichert. Alle Daten werden beim Verlassen der Seite gelöscht."
+  },
+  "assist": {
+    "chars": "Zeichen",
+    "short": "Kurz",
+    "ok": "Optimal",
+    "long": "Lang",
+    "tip": "Füge ein konkretes Beispiel hinzu: „Wie zeigte sich das in den Ergebnissen?“",
+    "tipButton": "Tipp anzeigen"
+  }
+}

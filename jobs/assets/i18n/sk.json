@@ -1,3 +1,128 @@
 {
-  "": {}
+  "brand": "Značka",
+  "hero": {
+    "title": "Vytvoriť žiadosť o zamestnanie",
+    "lead": "Tento nástroj pomáha napísať žiadosť vo vašom jazyku a preložiť ju do jazyka cieľovej krajiny. Všetko zostáva vo vašom prehliadači — nič sa neukladá ani nezdieľa. Píšte s istotou, no vyhnite sa osobným údajom, ako rodné číslo či adresa.",
+    "step1": "Podrobnosti o práci",
+    "step2": "Povedzte o sebe",
+    "step3": "Návrh a export"
+  },
+  "step1": {
+    "title": "Krok 1 — Podrobnosti o práci",
+    "muted": "Vyplňte aspoň jedno pole. Čím viac vyplníte, tým lepší bude návrh."
+  },
+  "step2": {
+    "title": "Krok 2 — Povedzte o sebe",
+    "muted": "Tip: 2–3 vety na políčko sú zvyčajne akurát. Počítadlo znakov zobrazuje dĺžku a čítačky obrazovky sú informované o zmenách."
+  },
+  "step3": {
+    "title": "Krok 3 — Návrh a export"
+  },
+  "label": {
+    "jobTitle": "Názov pracovnej pozície",
+    "jobUrl": "Webstránka spoločnosti",
+    "adUrl": "URL pracovnej ponuky",
+    "role": "Pozícia",
+    "about": "Stručné predstavenie",
+    "why": "Prečo sa hlásite?",
+    "proof": "Najlepší dôkaz vašich zručností",
+    "targetLang": "Cieľový jazyk",
+    "draftNative": "Návrh vo vašom jazyku",
+    "draftTarget": "Návrh v cieľovom jazyku"
+  },
+  "placeholder": {
+    "jobTitle": "Pridajte názov práce, o ktorú sa uchádzate",
+    "jobUrl": "Webstránka spoločnosti, do ktorej sa hlásite",
+    "adUrl": "Pridajte URL pracovnej ponuky (ak je k dispozícii)",
+    "role": "Pozícia, o ktorú sa uchádzate",
+    "about": "Stručne popíšte svoj profil a silné stránky",
+    "why": "Vysvetlite svoju motiváciu a vhodnosť",
+    "proof": "Uveďte konkrétny úspech a jeho dopad",
+    "draftNative": "Návrh sa zobrazí tu",
+    "draftTarget": "Preložený návrh sa zobrazí tu"
+  },
+  "btn": {
+    "toStep2": "Pokračovať na krok 2",
+    "toStep3": "Vytvoriť návrh",
+    "exportDocx": "Stiahnuť .docx",
+    "sendEmail": "Odoslať",
+    "clearAll": "Vyčistiť formulár"
+  },
+  "help": {
+    "send": "\"Odoslať\" otvorí váš e‑mailový klient s predvyplnenou správou. Na server sa nič neposiela."
+  },
+  "toast": {
+    "successTitle": "Dobrý začiatok!",
+    "successBody": "Tieto informácie pomáhajú pri tvorbe návrhu."
+  },
+  "guide": {
+    "title": "Pokyny",
+    "more": "Zobraziť viac",
+    "close": "Zavrieť",
+    "step1": {
+      "tips": [
+        "Vyplňte aspoň jedno pole (názov, URL alebo pozícia).",
+        "Pre viac kontextu môžete pridať odkaz na ponuku práce.",
+        "Tab/Shift+Tab presúva medzi poľami. Enter na tlačidlách."
+      ],
+      "legal": "Na server sa neodosielajú žiadne informácie."
+    },
+    "step2": {
+      "tips": [
+        "Držte odpovede v 2–3 vetách. Počítadlo zobrazuje dĺžku.",
+        "Vysvetlite vhodnosť a pridajte konkrétny dôkaz (úspech + dopad).",
+        "Pred „Vytvoriť návrh“ vyberte cieľový jazyk."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Upravte návrh. Váš jazyk vľavo, cieľový vpravo (50/50).",
+        "\"Stiahnuť .docx\" (teraz .txt) uloží lokálnu kópiu.",
+        "\"Odoslať\" otvorí e‑mail — nič sa neposiela na server."
+      ]
+    },
+    "loadError": "Nepodarilo sa načítať pokyny."
+  },
+  "status": {
+    "title": "Akcie",
+    "ready": "Pripravené.",
+    "restored": "Posledná relácia bola obnovená.",
+    "langSet": "Jazyk rozhrania: {name}",
+    "fillOne": "Vyplňte aspoň jedno pole v kroku 1.",
+    "movedTo2": "Prechod na krok 2.",
+    "draftCreated": "Návrh vytvorený.",
+    "draftDownloaded": "Návrh stiahnutý ako .txt.",
+    "cleared": "Formulár a lokálna vyrovnávacia pamäť vyčistené."
+  },
+  "confirm": {
+    "clearAll": "Vyčistiť formulár a lokálnu vyrovnávaciu pamäť?"
+  },
+  "export": {
+    "title": "Názov pozície:",
+    "website": "Webstránka spoločnosti:",
+    "adUrl": "URL ponuky:",
+    "role": "Pozícia:",
+    "nativeHeader": "--- Návrh (zdrojový jazyk) ---",
+    "targetHeader": "--- Návrh (cieľový jazyk) ---",
+    "filename": "navrh-ziadosti-o-zamestnanie.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Žiadosť o zamestnanie:",
+    "subjectFallback": "Žiadosť",
+    "footer": "- Vytvorené pomocou Digiter Apply"
+  },
+  "privacy": {
+    "label": "Režim ochrany súkromia",
+    "on": "Režim ochrany súkromia zapnutý",
+    "off": "Režim ochrany súkromia vypnutý",
+    "help": "V režime ochrany súkromia sa v prehliadači nič trvalo neukladá. Všetky údaje sa vymažú pri opustení stránky."
+  },
+  "assist": {
+    "chars": "znaky",
+    "short": "Krátke",
+    "ok": "Optimálne",
+    "long": "Dlhé",
+    "tip": "Pridajte konkrétny príklad: „Ako sa to prejavilo vo výsledkoch?“",
+    "tipButton": "Zobraziť tip"
+  }
 }
