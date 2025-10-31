@@ -263,20 +263,27 @@
   <footer class="footer" role="contentinfo">
     <p>&copy; <span id="year"></span> Kanavana/Digiter ry - Apply</p>
     <div class="legal-links" role="region" aria-label="Legal">
-      <details>
-        <summary data-i18n="legal.about.title">About this tool</summary>
-        <div class="legal-body" data-i18n="legal.about.body"></div>
-      </details>
-      <details>
-        <summary data-i18n="legal.ai.title">AI disclaimer</summary>
-        <div class="legal-body" data-i18n="legal.ai.body"></div>
-      </details>
-      <details>
-        <summary data-i18n="legal.privacy.title">Privacy</summary>
-        <div class="legal-body" data-i18n="legal.privacy.body"></div>
-      </details>
+      <nav class="legal-nav" aria-label="Legal links">
+        <a href="#" id="legalAboutLink" data-i18n="legal.about.title">Tietoa työkalusta</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalAiLink" data-i18n="legal.ai.title">Tekoälyä koskeva vastuuvapaus</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalPrivacyLink" data-i18n="legal.privacy.title">Tietosuoja</a>
+      </nav>
     </div>
   </footer>
+
+  <!-- Legal modal (opens from footer links) -->
+  <div id="legalModal" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle" hidden>
+    <div class="legal-modal-backdrop" tabindex="-1"></div>
+    <div class="legal-modal-sheet" role="document">
+      <div class="legal-modal-header">
+        <h3 id="legalModalTitle"></h3>
+        <button id="legalModalClose" class="legal-modal-close" aria-label="Close">x</button>
+      </div>
+      <div id="legalModalContent" class="legal-modal-content"></div>
+    </div>
+  </div>
 
   <script src="assets/js/i18n.js" defer></script>
   <!-- <script src="assets/js/jobs-content.js" defer></script> -->

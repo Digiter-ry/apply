@@ -528,4 +528,38 @@ window.addEventListener('jobsContentLoaded', (e) => {
     if (window.i18n?.t) updateCountLabels();
   }, 300);
 
+  /* ---------- Footer: Legal modal ---------- */
+  const legalModal = document.getElementById('legalModal');
+  const legalTitle = document.getElementById('legalModalTitle');
+  const legalContent = document.getElementById('legalModalContent');
+  const legalClose = document.getElementById('legalModalClose');
+  const legalBackdrop = document.querySelector('.legal-modal-backdrop');
+
+  function openLegal(kind){
+    if (!legalModal) return;
+    try {
+      const t = (k)=> (window.i18n?.t(k));
+      const title = t(`legal.${kind}.title`) || '';
+      const body = t(`legal.${kind}.body`);
+      legalTitle.textContent = title || '';
+      legalContent.innerHTML = '';
+      const esc = (s)=> String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      if (Array.isArray(body)) {
+        legalContent.innerHTML = body.map(p => `<p>${esc(p)}</p>`).join('');
+      } else if (typeof body === 'string') {
+        legalContent.textContent = body;
+      }
+    } catch {}
+    legalModal.hidden = false;
+    try { legalClose?.focus(); } catch {}
+  }
+  function closeLegal(){ if (!legalModal) return; legalModal.hidden = true; }
+
+  document.getElementById('legalAboutLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('about'); });
+  document.getElementById('legalAiLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('ai'); });
+  document.getElementById('legalPrivacyLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('privacy'); });
+  legalClose?.addEventListener('click', closeLegal);
+  legalBackdrop?.addEventListener('click', closeLegal);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !legalModal?.hidden) closeLegal(); });
+
 })();

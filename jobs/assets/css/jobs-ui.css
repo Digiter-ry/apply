@@ -173,11 +173,24 @@ label { font-weight: 600; }
 
 /* Footer */
 .footer { background: #0f1f23; color: #fff; padding: 28px 20px; text-align: center; }
-.footer .legal-links { max-width: 1140px; margin: 12px auto 0; text-align: left; }
-.footer details { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; margin: 10px 0; }
-.footer details > summary { cursor: pointer; padding: 10px 12px; font-weight: 700; }
-.footer .legal-body { padding: 0 12px 12px 12px; color: #e6e6e6; }
-.footer .legal-body p { margin: 8px 0; }
+.footer .legal-links { max-width: 1140px; margin: 12px auto 0; }
+.footer .legal-nav { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.footer .legal-nav a { color: #fff; text-decoration: underline; font-weight: 600; }
+.footer .legal-nav .sep { opacity: .65; }
+
+/* Legal modal */
+.legal-modal[hidden] { display: none; }
+.legal-modal { position: fixed; inset: 0; z-index: 1200; }
+.legal-modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+.legal-modal-sheet {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(680px, 92vw);
+  background: #fff; color: #111; border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,.35);
+}
+.legal-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #eee; }
+.legal-modal-close { appearance: none; border: 0; background: transparent; font-size: 1.25rem; cursor: pointer; }
+.legal-modal-content { padding: 12px 16px 18px 16px; }
+.legal-modal-content p { margin: 8px 0; }
 /* ============================================
    Sticky sivupalsta
    ============================================ */
