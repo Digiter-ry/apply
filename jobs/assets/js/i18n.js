@@ -214,7 +214,7 @@
     try {
       await ensureManifest();
 
-      // Jos #langSel on tyhjä, voit täyttää sen manifestista (EI pakollinen)
+      // Jos #langSel tai #targetLang on tyhjä, täytä ne manifestista
       const sel = document.getElementById("langSel");
       if (sel && !sel.options.length && Array.isArray(manifest.languages)) {
         manifest.languages.forEach(l => {
@@ -223,6 +223,17 @@
           opt.textContent = l.nativeName || l.name || l.code;
           if (l.dir === "rtl") opt.dir = "rtl";
           sel.appendChild(opt);
+        });
+      }
+
+      const tgt = document.getElementById("targetLang");
+      if (tgt && !tgt.options.length && Array.isArray(manifest.languages)) {
+        manifest.languages.forEach(l => {
+          const opt = document.createElement("option");
+          opt.value = l.code;
+          opt.textContent = l.nativeName || l.name || l.code;
+          if (l.dir === "rtl") opt.dir = "rtl";
+          tgt.appendChild(opt);
         });
       }
 

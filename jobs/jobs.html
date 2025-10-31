@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
+  <base href="/digiter/apps/apply/jobs/">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Työhakemus — Apply</title>
+
+  <!-- Security & privacy metas -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
 
   <!-- Ei ulkoisia fontteja/CDN:iä -->
   <link rel="stylesheet" href="assets/css/jobs-ui.css" />
@@ -22,6 +28,12 @@
         <label for="langSel" class="visually-hidden">Valitse käyttöliittymän kieli</label>
         <!-- manifest.json täyttää tämän selectin dynaamisesti -->
         <select id="langSel" class="select" aria-label="Käyttöliittymän kieli"></select>
+        <div class="privacy-group">
+          <label for="privacyMode" class="visually-hidden" data-i18n="privacy.label">Yksityisyystila</label>
+          <input id="privacyMode" type="checkbox" aria-label="Yksityisyystila" data-i18n-attr="aria-label:privacy.label" />
+          <span id="privacyModeText" class="muted" data-i18n="privacy.off">Yksityisyystila pois</span>
+          <button id="privacyInfoBtn" type="button" title="" data-i18n-attr="title:privacy.help" aria-label="?">?</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -105,7 +117,7 @@
             aria-describedby="intro-meter" data-i18n-attr="placeholder:placeholder.about"
             placeholder="Kuvaa lyhyesti taustasi ja vahvuudet"></textarea>
             <div class="assist" aria-live="polite">
-              <span class="count" data-for="about">0</span> merkkiä
+              <span class="count" data-for="about">0</span> <span class="count-label" data-i18n="assist.chars">merkkiä</span>
             </div>
           </div>
 
@@ -115,7 +127,7 @@
               aria-describedby="motivation-meter" data-i18n-attr="placeholder:placeholder.why"
               placeholder="Perustele lyhyesti sopivuutesi ja motivaatiosi"></textarea>
             <div class="assist" aria-live="polite">
-              <span class="count" data-for="why">0</span> merkkiä
+              <span class="count" data-for="why">0</span> <span class="count-label" data-i18n="assist.chars">merkkiä</span>
             </div>
           </div>
 
@@ -125,7 +137,7 @@
               aria-describedby="achievement-meter" data-i18n-attr="placeholder:placeholder.proof"
               placeholder="Kerro konkreettinen saavutus ja sen tuoma arvo"></textarea>
             <div class="assist" aria-live="polite">
-              <span class="count" data-for="proof">0</span> merkkiä
+              <span class="count" data-for="proof">0</span> <span class="count-label" data-i18n="assist.chars">merkkiä</span>
             </div>
           </div>
 
@@ -148,24 +160,19 @@
             <div class="field">
               <label for="draftNative" data-i18n="label.draftNative">Hakemusluonnos omalla kielellä</label>
               <textarea id="draftNative" class="textarea mono" rows="14"
+                        data-i18n-attr="placeholder:placeholder.draftNative"
                         placeholder="Luonnos ilmestyy tähän"></textarea>
             </div>
 
             <div class="field">
               <label for="draftTarget" data-i18n="label.draftTarget">Hakemusluonnos kohdekielellä</label>
               <textarea id="draftTarget" class="textarea mono" rows="14"
+                        data-i18n-attr="placeholder:placeholder.draftTarget"
                         placeholder="Luonnos käännöksenä ilmestyy tähän"></textarea>
             </div>
           </div>
 
-          <div class="actions">
-            <button id="exportDocx" class="btn btn-secondary" data-i18n="btn.exportDocx">Lataa .docx</button>
-            <button id="sendEmail" class="btn" aria-describedby="sendHelp" data-i18n="btn.sendEmail">Lähetä</button>
-          </div>
-          <p id="sendHelp" class="muted" data-i18n="help.send">
-            ”Lähetä” avaa sähköpostiohjelmasi esitäytetyllä viestillä. Mitään ei
-            lähetetä palvelimelle.
-          </p>
+          
         </section>
       </article>
 
@@ -178,14 +185,9 @@
             </div>
           </section>
 
-          <section class="card">
-            <h2 data-i18n="status.title">Status</h2>
-            <div id="status" class="status" role="status" aria-live="polite">Valmis.</div>
-          </section>
-
-          <!-- Dynaamisten ohjeiden template:t -->
+          <!-- Dynaamisten ohjeiden template:t (pidä erillään #guideContent:sta, ettei tyhjennys poista näitä) -->
           <template id="tpl-guide-1">
-            <ul class="list" data-i18n="guide.step1.tips"></ul>
+            <ul id="tips-list" class="list" data-i18n="guide.step1.tips"></ul>
             <p class="legal" data-i18n="guide.step1.legal"></p>
           </template>
 
@@ -197,6 +199,22 @@
             <ul class="list" data-i18n="guide.step3.tips"></ul>
           </template>
 
+          <section class="card">
+            <h2 data-i18n="status.title">Status</h2>
+            <div id="status" class="status" role="status" aria-live="polite" data-i18n="status.ready">Valmis.</div>
+            <div class="actions actions-grid">
+              <button id="exportDocx" class="btn" data-i18n="btn.exportDocx">Lataa .docx</button>
+              <button id="sendEmail" class="btn" aria-describedby="sendHelp" data-i18n="btn.sendEmail">Lähetä</button>
+              <button id="clearAll" class="btn btn-secondary span-2" data-i18n="btn.clearAll">Tyhjennä lomake</button>
+            </div>
+            <p id="sendHelp" class="muted" data-i18n="help.send">
+              "Lähetä" avaa sähköpostiohjelmasi esitäytetyllä viestillä. Mitään ei
+              lähetetä palvelimelle.
+            </p>
+          </section>
+
+
+
         </aside>
 
     </div>
@@ -207,6 +225,24 @@
       </div>
     </noscript>
   </main>
+  <!-- Mobiili: kiinteä ohjepalkki -->
+  <div id="guideBar" class="guide-bar" role="region" aria-live="polite" aria-label="Ohjeet">
+    <span class="visually-hidden" data-i18n="guide.title">Ohjeet</span>
+    <div id="guideBarContent" class="guide-bar-content"></div>
+    <button id="guideBarToggle" class="guide-bar-btn" aria-expanded="false" aria-controls="guidePanel" data-i18n="guide.more">Näytä lisää</button>
+  </div>
+
+  <!-- Mobiilin ohjepaneeli -->
+  <div id="guidePanel" class="guide-panel" role="dialog" aria-modal="true" aria-labelledby="guidePanelTitle" hidden>
+    <div class="guide-panel-backdrop" tabindex="-1"></div>
+    <div class="guide-panel-sheet" role="document">
+      <div class="guide-panel-header">
+        <h3 id="guidePanelTitle" data-i18n="guide.title">Ohjeet</h3>
+        <button id="guidePanelClose" class="guide-panel-close" aria-label="Sulje" data-i18n-attr="aria-label:guide.close">×</button>
+      </div>
+      <div id="guidePanelContent" class="guide-panel-content"><!-- täytetään JS:llä --></div>
+    </div>
+  </div>
 <!-- Ensimmäisen onnistumisen toast + pieni “spark”-animaatio -->
 <div id="firstSuccessToast" class="toast-success" role="status" aria-live="polite" aria-atomic="true" hidden>
   <div class="toast-check">
@@ -229,6 +265,7 @@
   </footer>
 
   <script src="assets/js/i18n.js" defer></script>
+  <!-- <script src="assets/js/jobs-content.js" defer></script> -->
   <script src="assets/js/jobs-ui.js" defer></script>
   <script src="assets/js/reward.js" defer></script>
   <script src="assets/js/length-meter.js" defer></script>

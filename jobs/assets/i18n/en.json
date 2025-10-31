@@ -37,13 +37,16 @@
     "role": "Position you are applying for",
     "about": "Briefly describe your background and strengths",
     "why": "Explain your suitability and motivation",
-    "proof": "Tell about a concrete achievement and its impact"
+    "proof": "Tell about a concrete achievement and its impact",
+    "draftNative": "Draft will appear here",
+    "draftTarget": "Translated draft will appear here"
   },
   "btn": {
     "toStep2": "Continue to Step 2",
     "toStep3": "Create Draft",
     "exportDocx": "Download .docx",
-    "sendEmail": "Send"
+    "sendEmail": "Send",
+    "clearAll": "Clear Form"
   },
   "help": {
     "send": "\"Send\" opens your email client with a pre-filled message. Nothing is sent to the server."
@@ -54,6 +57,8 @@
   },
   "guide": {
     "title": "Instructions",
+    "more": "Show more",
+    "close": "Close",
     "step1": {
       "tips": [
         "Fill in at least one field (name, URL or position).",
@@ -75,9 +80,50 @@
         "\"Download .docx\" (now .txt) saves a local copy.",
         "\"Send\" opens email — nothing is sent to server."
       ]
-    }
+    },
+    "loadError": "Failed to load instructions."
   },
   "status": {
-    "title": "Status"
+    "title": "Actions",
+    "ready": "Ready.",
+    "restored": "Restored your last session.",
+    "langSet": "Interface language: {name}",
+    "fillOne": "Fill at least one field in step 1.",
+    "movedTo2": "Moved to step 2.",
+    "draftCreated": "Draft created.",
+    "draftDownloaded": "Draft downloaded as .txt.",
+    "cleared": "Form and local cache cleared."
+  },
+  "confirm": {
+    "clearAll": "Clear the form and local cache?"
+  },
+  "export": {
+    "title": "Job Title:",
+    "website": "Company website:",
+    "adUrl": "Posting URL:",
+    "role": "Position:",
+    "nativeHeader": "--- Draft (source language) ---",
+    "targetHeader": "--- Draft (target language) ---",
+    "filename": "job-application-draft.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Job application:",
+    "subjectFallback": "Application",
+    "footer": "- Created with Digiter Apply"
+  },
+  
+  "privacy": {
+    "label": "Privacy mode",
+    "on": "Privacy mode on",
+    "off": "Privacy mode off",
+    "help": "In privacy mode, nothing is stored persistently in the browser. All data is cleared when you leave the page."
+  },
+  "assist": {
+    "chars": "characters",
+    "short": "Short",
+    "ok": "Optimal",
+    "long": "Long",
+    "tip": "Add one concrete example: \"How did this show in results?\"",
+    "tipButton": "Show tip"
   }
 }
