@@ -2,7 +2,7 @@
   "brand": "Brand",
   "hero": {
     "title": "Työhakemuksen luonti",
-    "lead": "Tämä työkalu auttaa sinua kirjoittamaan työhakemuksen omalla kielelläsi ja kääntämään sen kohdemaan kielelle. Kaikki pysyy selaimessasi – mitään ei tallenneta tai jaeta. Kirjoita rohkeasti, mutta vältä henkilökohtaisia tietoja kuten henkilötunnusta tai osoitetta.",
+    "lead": "Tämä työkalu auttaa sinua kirjoittamaan työhakemuksen omalla kielelläsi ja kääntämään sen kohdemaan kielelle. Kaikki pysyy selaimessasi — mitään ei tallenneta tai jaeta. Kirjoita rohkeasti, mutta vältä henkilökohtaisia tietoja kuten henkilötunnusta tai osoitetta.",
     "step1": "Työpaikan tiedot",
     "step2": "Kerro itsestäsi",
     "step3": "Luonnos ja vienti"
@@ -127,3 +127,4 @@
     "tipButton": "Lisää vinkki"
   }
 }
+
