@@ -126,5 +126,31 @@
     "tip": "Lisää yksi konkreettinen esimerkki: \"Miten tämä näkyi tuloksissa?\"",
     "tipButton": "Lisää vinkki"
   }
+  ,
+  "legal": {
+    "about": {
+      "title": "Tietoa työkalusta",
+      "body": [
+        "Tämä on tekoälyä hyödyntävä kirjoitustyökalu työhakemuksiin.",
+        "Voit kirjoittaa omalla kielelläsi ja kääntää kohdekielelle.",
+        "Olet itse vastuussa tekstin tarkistamisesta ja muokkaamisesta ennen käyttöä."
+      ]
+    },
+    "ai": {
+      "title": "Tekoälyä koskeva vastuuvapaus",
+      "body": [
+        "Generoitu sisältö voi sisältää virheitä, vanhentunutta tietoa tai tahatonta vinoumaa.",
+        "Tarkista, korjaa ja sovita teksti aina omaan tilanteeseesi.",
+        "Älä esitä AI‑tekstiä tosiasiana ilman varmistusta."
+      ]
+    },
+    "privacy": {
+      "title": "Tietosuoja",
+      "body": [
+        "Mitään ei lähetetä palvelimelle. Tiedot pysyvät selaimessasi, ellei tiedostoa ladata.",
+        "Vältä henkilö- tai arkaluonteisten tietojen lisäämistä (esim. henkilötunnus, koko osoite, terveystiedot, taloustiedot).",
+        "Voi tallentua väliaikainen paikallinen istunto (avain ‘jobs-ui’), ellei yksityisyystila ole päällä."
+      ]
+    }
+  }
 }
-

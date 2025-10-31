@@ -173,6 +173,11 @@ label { font-weight: 600; }
 
 /* Footer */
 .footer { background: #0f1f23; color: #fff; padding: 28px 20px; text-align: center; }
+.footer .legal-links { max-width: 1140px; margin: 12px auto 0; text-align: left; }
+.footer details { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; margin: 10px 0; }
+.footer details > summary { cursor: pointer; padding: 10px 12px; font-weight: 700; }
+.footer .legal-body { padding: 0 12px 12px 12px; color: #e6e6e6; }
+.footer .legal-body p { margin: 8px 0; }
 /* ============================================
    Sticky sivupalsta
    ============================================ */
