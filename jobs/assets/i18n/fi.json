@@ -2,21 +2,21 @@
   "brand": "Brand",
   "hero": {
     "title": "Työhakemuksen luonti",
-    "lead": "Kolme selkeää vaihetta. Tietojasi ei tallenneta palvelimelle — kaikki pysyy selaimessasi, kunnes päätät ladata tiedoston.",
+    "lead": "Tämä työkalu auttaa sinua kirjoittamaan työhakemuksen omalla kielelläsi ja kääntämään sen kohdemaan kielelle. Kaikki pysyy selaimessasi — mitään ei tallenneta tai jaeta. Kirjoita rohkeasti, mutta vältä henkilökohtaisia tietoja kuten henkilötunnusta tai osoitetta.",
     "step1": "Työpaikan tiedot",
     "step2": "Kerro itsestäsi",
     "step3": "Luonnos ja vienti"
   },
   "step1": {
-    "title": "Vaihe 1 — Työpaikan tiedot",
+    "title": "Vaihe 1 - Työpaikan tiedot",
     "muted": "Täytä vähintään yksi kenttä. Mitä enemmän täytät, sitä paremmat tulokset luonnoksessa."
   },
   "step2": {
-    "title": "Vaihe 2 — Kerro itsestäsi",
-    "muted": "Vinkki: 2–3 virkettä per laatikko on usein sopiva pituus. Näet merkkimäärän ja ruudunlukijalle ilmoitetaan muutoksista."
+    "title": "Vaihe 2 - Kerro itsestäsi",
+    "muted": "Vinkki: 2-3 virkettä per laatikko on usein sopiva pituus. Näet merkkimäärän ja ruudunlukijalle ilmoitetaan muutoksista."
   },
   "step3": {
-    "title": "Vaihe 3 — Luonnos ja vienti"
+    "title": "Vaihe 3 - Luonnos ja vienti"
   },
   "label": {
     "jobTitle": "Työpaikan nimi",
@@ -37,13 +37,16 @@
     "role": "Työtehtävä jota haet",
     "about": "Kuvaa lyhyesti taustasi ja vahvuudet",
     "why": "Perustele lyhyesti sopivuutesi ja motivaatiosi",
-    "proof": "Kerro konkreettinen saavutus ja sen tuoma arvo"
+    "proof": "Kerro konkreettinen saavutus ja sen tuoma arvo",
+    "draftNative": "Luonnos ilmestyy tähän",
+    "draftTarget": "Luonnos käännöksenä ilmestyy tähän"
   },
   "btn": {
     "toStep2": "Jatka vaiheeseen 2",
     "toStep3": "Luo luonnos",
     "exportDocx": "Lataa .docx",
-    "sendEmail": "Lähetä"
+    "sendEmail": "Lähetä",
+    "clearAll": "Tyhjennä lomake"
   },
   "help": {
     "send": "\"Lähetä\" avaa sähköpostiohjelmasi esitäytetyllä viestillä. Mitään ei lähetetä palvelimelle."
@@ -54,6 +57,9 @@
   },
   "guide": {
     "title": "Ohjeet",
+    "more": "Näytä lisää",
+    "close": "Sulje",
+    "loadError": "Ohjeiden lataus epäonnistui.",
     "step1": {
       "tips": [
         "Täytä vähintään yksi kenttä (nimi, URL tai ammattinimike).",
@@ -64,7 +70,7 @@
     },
     "step2": {
       "tips": [
-        "Pidä vastaukset 2–3 virkkeessä. Merkkilaskuri näyttää pituuden.",
+        "Pidä vastaukset 2-3 virkkeessä. Merkkilaskuri näyttää pituuden.",
         "Perustele sopivuus ja lisää konkreettinen näyttö (saavutus + vaikutus).",
         "Valitse kohdekieli ennen \"Luo luonnos\"."
       ]
@@ -73,12 +79,52 @@
       "tips": [
         "Muokkaa luonnosta. Vasemmalla oma kieli, oikealla kohdekieli (50/50).",
         "\"Lataa .docx\" (nyt .txt) tallentaa paikallisen kopion.",
-        "\"Lähetä\" avaa sähköpostin — mitään ei lähetetä palvelimelle."
+        "\"Lähetä\" avaa sähköpostin - mitään ei lähetetä palvelimelle."
       ]
     }
   },
   "status": {
-    "title": "Status"
-  }
+    "title": "Toiminnot",
+    "ready": "Valmis.",
+    "restored": "Palautettiin viimeisin istunto.",
+    "langSet": "Käyttöliittymän kieli: {name}",
+    "fillOne": "Täytä vähintään yksi kenttä vaiheessa 1.",
+    "movedTo2": "Siirryttiin vaiheeseen 2.",
+    "draftCreated": "Luonnos luotu.",
+    "draftDownloaded": "Luonnos ladattu .txt-muodossa.",
+    "cleared": "Lomake ja välimuisti tyhjennetty."
+  },
+  "confirm": {
+    "clearAll": "Tyhjennetäänkö lomake ja paikallinen välimuisti?"
+  },
+  "export": {
+    "title": "Työpaikan nimi:",
+    "website": "Työpaikan www:",
+    "adUrl": "Ilmoituksen www:",
+    "role": "Ammattinimike:",
+    "nativeHeader": "--- Luonnos (oma kieli) ---",
+    "targetHeader": "--- Luonnos (kohdekieli) ---",
+    "filename": "tyohakemus-luonnos.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Työhakemus:",
+    "subjectFallback": "Hakemus",
+    "footer": "- Luotu Digiter Apply -sovelluksessa"
+  },
   
+  "privacy": {
+    "label": "Yksityisyystila",
+    "on": "Yksityisyystila päällä",
+    "off": "Yksityisyystila pois",
+    "help": "Yksityisyystilassa tietoja ei tallenneta pysyvästi selaimen välimuistiin. Kaikki katoaa, kun poistut sivulta."
+  },
+  "assist": {
+    "chars": "merkkiä",
+    "short": "Lyhyt",
+    "ok": "Sopiva",
+    "long": "Pitkä",
+    "tip": "Lisää yksi konkreettinen esimerkki: \"Miten tämä näkyi tuloksissa?\"",
+    "tipButton": "Lisää vinkki"
+  }
 }
+

@@ -1,0 +1,128 @@
+{
+  "brand": "Bränd",
+  "hero": {
+    "title": "Loo tööavalduse kavand",
+    "lead": "See tööriist aitab kirjutada tööavalduse sinu emakeeles ja tõlkida selle sihtriigi keelde. Kõik jääb sinu brauserisse — midagi ei salvestata ega jagata. Kirjuta enesekindlalt, kuid väldi isikuandmeid, nagu isikukood või aadress.",
+    "step1": "Töö info",
+    "step2": "Räägi endast",
+    "step3": "Kavand ja eksport"
+  },
+  "step1": {
+    "title": "Samm 1 — Töö info",
+    "muted": "Täida vähemalt üks väli. Mida rohkem täidad, seda parem tuleb kavand."
+  },
+  "step2": {
+    "title": "Samm 2 — Räägi endast",
+    "muted": "Nipp: 2–3 lauset kasti kohta on sageli paras. Märgiloendur näitab pikkust ja ekraanilugejad saavad muudatustest teada."
+  },
+  "step3": {
+    "title": "Samm 3 — Kavand ja eksport"
+  },
+  "label": {
+    "jobTitle": "Ametikoht",
+    "jobUrl": "Ettevõtte veebileht",
+    "adUrl": "Töökuulutuse URL",
+    "role": "Positsioon",
+    "about": "Lühitutvustus",
+    "why": "Miks kandideerid?",
+    "proof": "Parim tõend sinu oskustest",
+    "targetLang": "Sihtkeel",
+    "draftNative": "Kavand sinu keeles",
+    "draftTarget": "Kavand sihtkeeles"
+  },
+  "placeholder": {
+    "jobTitle": "Lisa otsitava töö nimetus",
+    "jobUrl": "Ettevõtte veebileht, kuhu kandideerid",
+    "adUrl": "Lisa töökuulutuse URL (kui on)",
+    "role": "Ametikoht, kuhu kandideerid",
+    "about": "Kirjelda lühidalt tausta ja tugevusi",
+    "why": "Selgita sobivust ja motivatsiooni",
+    "proof": "Too konkreetne saavutus ja selle mõju",
+    "draftNative": "Kavand ilmub siia",
+    "draftTarget": "Tõlgitud kavand ilmub siia"
+  },
+  "btn": {
+    "toStep2": "Jätka sammule 2",
+    "toStep3": "Loo kavand",
+    "exportDocx": "Laadi alla .docx",
+    "sendEmail": "Saada",
+    "clearAll": "Tühjenda vorm"
+  },
+  "help": {
+    "send": "\"Saada\" avab sinu e‑posti kliendi eeltäidetud kirjaga. Midagi ei saadeta serverisse."
+  },
+  "toast": {
+    "successTitle": "Hea algus!",
+    "successBody": "See teave aitab kavandit luua."
+  },
+  "guide": {
+    "title": "Juhised",
+    "more": "Näita rohkem",
+    "close": "Sulge",
+    "step1": {
+      "tips": [
+        "Täida vähemalt üks väli (nimi, URL või ametikoht).",
+        "Lisainfo saamiseks võid lisada töökuulutuse URL-i.",
+        "Tab/Shift+Tab liiguvad väljade vahel. Enter nuppudel."
+      ],
+      "legal": "Serverisse teavet ei saadeta."
+    },
+    "step2": {
+      "tips": [
+        "Hoia vastused 2–3 lause pikkused. Märgiloendur näitab pikkust.",
+        "Selgita sobivust ja lisa konkreetne tõend (saavutus + mõju).",
+        "Vali sihtkeel enne nupule \"Loo kavand\" vajutamist."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Muuda kavandit. Sinu keel vasakul, sihtkeel paremal (50/50).",
+        "\"Laadi alla .docx\" (praegu .txt) salvestab kohaliku koopia.",
+        "\"Saada\" avab e‑posti — midagi ei saadeta serverisse."
+      ]
+    },
+    "loadError": "Juhiste laadimine ebaõnnestus."
+  },
+  "status": {
+    "title": "Toimingud",
+    "ready": "Valmis.",
+    "restored": "Eelmine seanss taastati.",
+    "langSet": "Kasutajaliidese keel: {name}",
+    "fillOne": "Täida vähemalt üks väli 1. sammus.",
+    "movedTo2": "Liigutud 2. sammu.",
+    "draftCreated": "Kavand loodud.",
+    "draftDownloaded": "Kavand alla laaditud kui .txt.",
+    "cleared": "Vorm ja kohalik vahemälu tühjendati."
+  },
+  "confirm": {
+    "clearAll": "Kas tühjendada vorm ja kohalik vahemälu?"
+  },
+  "export": {
+    "title": "Ametikoht:",
+    "website": "Ettevõtte veebileht:",
+    "adUrl": "Kuulutuse URL:",
+    "role": "Positsioon:",
+    "nativeHeader": "--- Kavand (lähtekeel) ---",
+    "targetHeader": "--- Kavand (sihtkeel) ---",
+    "filename": "tooavalduse-kavand.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Tööavaldus:",
+    "subjectFallback": "Avaldus",
+    "footer": "- Loodud Digiter Apply abil"
+  },
+  "privacy": {
+    "label": "Privaatsusrežiim",
+    "on": "Privaatsusrežiim sees",
+    "off": "Privaatsusrežiim väljas",
+    "help": "Privaatsusrežiimis ei salvestata brauserisse püsivalt midagi. Kõik andmed kustutatakse lehelt lahkudes."
+  },
+  "assist": {
+    "chars": "märkki",
+    "short": "Lühike",
+    "ok": "Optimaalne",
+    "long": "Pikk",
+    "tip": "Lisa üks konkreetne näide: \"Kuidas see tulemustes väljendus?\"",
+    "tipButton": "Kuva nipp"
+  }
+}

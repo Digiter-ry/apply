@@ -1,3 +1,128 @@
 {
-  "": {}
+  "brand": "Marca",
+  "hero": {
+    "title": "Criar candidatura de emprego",
+    "lead": "Esta ferramenta ajuda a escrever uma candidatura no seu idioma e a traduzi-la para o idioma do país de destino. Tudo fica no seu navegador — nada é guardado ou partilhado. Escreva com confiança, mas evite dados pessoais como número de identificação ou morada.",
+    "step1": "Detalhes da vaga",
+    "step2": "Fale sobre si",
+    "step3": "Rascunho e exportação"
+  },
+  "step1": {
+    "title": "Etapa 1 — Detalhes da vaga",
+    "muted": "Preencha pelo menos um campo. Quanto mais informação, melhor será o rascunho."
+  },
+  "step2": {
+    "title": "Etapa 2 — Fale sobre si",
+    "muted": "Dica: 2–3 frases por caixa costumam ser suficientes. O contador mostra os caracteres e os leitores de ecrã são notificados das alterações."
+  },
+  "step3": {
+    "title": "Etapa 3 — Rascunho e exportação"
+  },
+  "label": {
+    "jobTitle": "Título da vaga",
+    "jobUrl": "Website da empresa",
+    "adUrl": "URL do anúncio",
+    "role": "Posição",
+    "about": "Breve apresentação",
+    "why": "Por que se candidata?",
+    "proof": "Melhor prova das suas competências",
+    "targetLang": "Idioma de destino",
+    "draftNative": "Rascunho no seu idioma",
+    "draftTarget": "Rascunho no idioma de destino"
+  },
+  "placeholder": {
+    "jobTitle": "Adicione o nome da vaga a que se candidata",
+    "jobUrl": "Website da empresa a que se candidata",
+    "adUrl": "Adicione o URL do anúncio (se existir)",
+    "role": "Posição a que se candidata",
+    "about": "Descreva brevemente a sua experiência e pontos fortes",
+    "why": "Explique a sua motivação e adequação",
+    "proof": "Indique um resultado concreto e o seu impacto",
+    "draftNative": "O rascunho aparecerá aqui",
+    "draftTarget": "O rascunho traduzido aparecerá aqui"
+  },
+  "btn": {
+    "toStep2": "Continuar para a etapa 2",
+    "toStep3": "Criar rascunho",
+    "exportDocx": "Transferir .docx",
+    "sendEmail": "Enviar",
+    "clearAll": "Limpar formulário"
+  },
+  "help": {
+    "send": "\"Enviar\" abre o seu cliente de e‑mail com uma mensagem pré-preenchida. Nada é enviado para o servidor."
+  },
+  "toast": {
+    "successTitle": "Bom começo!",
+    "successBody": "Esta informação ajuda a criar o rascunho."
+  },
+  "guide": {
+    "title": "Instruções",
+    "more": "Mostrar mais",
+    "close": "Fechar",
+    "step1": {
+      "tips": [
+        "Preencha pelo menos um campo (nome, URL ou posição).",
+        "Pode adicionar o URL do anúncio para mais contexto.",
+        "Tab/Shift+Tab alterna entre campos. Enter nos botões."
+      ],
+      "legal": "Nenhuma informação é enviada para o servidor."
+    },
+    "step2": {
+      "tips": [
+        "Mantenha as respostas em 2–3 frases. O contador mostra o comprimento.",
+        "Explique a adequação e adicione uma prova concreta (resultado + impacto).",
+        "Selecione o idioma de destino antes de \"Criar rascunho\"."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Edite o rascunho. O seu idioma à esquerda e o de destino à direita (50/50).",
+        "\"Transferir .docx\" (agora .txt) guarda uma cópia local.",
+        "\"Enviar\" abre o e‑mail — nada é enviado para o servidor."
+      ]
+    },
+    "loadError": "Falha ao carregar as instruções."
+  },
+  "status": {
+    "title": "Ações",
+    "ready": "Pronto.",
+    "restored": "A sua última sessão foi restaurada.",
+    "langSet": "Idioma da interface: {name}",
+    "fillOne": "Preencha pelo menos um campo na etapa 1.",
+    "movedTo2": "Avançou para a etapa 2.",
+    "draftCreated": "Rascunho criado.",
+    "draftDownloaded": "Rascunho transferido como .txt.",
+    "cleared": "Formulário e cache local limpos."
+  },
+  "confirm": {
+    "clearAll": "Limpar o formulário e a cache local?"
+  },
+  "export": {
+    "title": "Título da vaga:",
+    "website": "Website da empresa:",
+    "adUrl": "URL do anúncio:",
+    "role": "Posição:",
+    "nativeHeader": "--- Rascunho (idioma de origem) ---",
+    "targetHeader": "--- Rascunho (idioma de destino) ---",
+    "filename": "rascunho-candidatura.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Candidatura:",
+    "subjectFallback": "Candidatura",
+    "footer": "- Criado com Digiter Apply"
+  },
+  "privacy": {
+    "label": "Modo de privacidade",
+    "on": "Modo de privacidade ativado",
+    "off": "Modo de privacidade desativado",
+    "help": "No modo de privacidade nada é guardado de forma persistente no navegador. Todos os dados são apagados ao sair da página."
+  },
+  "assist": {
+    "chars": "caracteres",
+    "short": "Curto",
+    "ok": "Ideal",
+    "long": "Longo",
+    "tip": "Adicione um exemplo concreto: \"Como isto apareceu nos resultados?\"",
+    "tipButton": "Mostrar dica"
+  }
 }

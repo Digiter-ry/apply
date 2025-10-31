@@ -1,0 +1,128 @@
+{
+  "brand": "Marque",
+  "hero": {
+    "title": "Créer une candidature",
+    "lead": "Cet outil vous aide à rédiger une candidature dans votre langue et à la traduire dans la langue du pays cible. Tout reste dans votre navigateur — rien n’est stocké ni partagé. Écrivez en toute confiance, mais évitez les informations personnelles, comme le numéro d’identification ou l’adresse.",
+    "step1": "Détails du poste",
+    "step2": "Parlez de vous",
+    "step3": "Brouillon et export"
+  },
+  "step1": {
+    "title": "Étape 1 — Détails du poste",
+    "muted": "Renseignez au moins un champ. Plus vous ajoutez d’informations, meilleur sera le brouillon."
+  },
+  "step2": {
+    "title": "Étape 2 — Parlez de vous",
+    "muted": "Astuce : 2–3 phrases par case suffisent en général. Le compteur indique le nombre de caractères et les lecteurs d’écran sont notifiés des changements."
+  },
+  "step3": {
+    "title": "Étape 3 — Brouillon et export"
+  },
+  "label": {
+    "jobTitle": "Intitulé du poste",
+    "jobUrl": "Site de l’entreprise",
+    "adUrl": "Lien de l’offre",
+    "role": "Poste",
+    "about": "Courte présentation",
+    "why": "Pourquoi postulez-vous ?",
+    "proof": "Meilleure preuve de vos compétences",
+    "targetLang": "Langue cible",
+    "draftNative": "Brouillon dans votre langue",
+    "draftTarget": "Brouillon en langue cible"
+  },
+  "placeholder": {
+    "jobTitle": "Ajoutez le nom du poste visé",
+    "jobUrl": "Site web de l’entreprise à laquelle vous postulez",
+    "adUrl": "Ajoutez le lien de l’offre (si disponible)",
+    "role": "Poste auquel vous postulez",
+    "about": "Décrivez brièvement votre parcours et vos atouts",
+    "why": "Expliquez votre motivation et votre adéquation",
+    "proof": "Présentez un exemple concret et son impact",
+    "draftNative": "Le brouillon apparaîtra ici",
+    "draftTarget": "Le brouillon traduit apparaîtra ici"
+  },
+  "btn": {
+    "toStep2": "Continuer vers l’étape 2",
+    "toStep3": "Créer le brouillon",
+    "exportDocx": "Télécharger .docx",
+    "sendEmail": "Envoyer",
+    "clearAll": "Effacer le formulaire"
+  },
+  "help": {
+    "send": "\"Envoyer\" ouvre votre client e‑mail avec un message prérempli. Rien n’est envoyé au serveur."
+  },
+  "toast": {
+    "successTitle": "Bon début !",
+    "successBody": "Ces informations aident à créer le brouillon."
+  },
+  "guide": {
+    "title": "Instructions",
+    "more": "Afficher plus",
+    "close": "Fermer",
+    "step1": {
+      "tips": [
+        "Renseignez au moins un champ (intitulé, URL ou poste).",
+        "Vous pouvez ajouter le lien de l’offre pour plus de contexte.",
+        "Tab/Shift+Tab permet de naviguer entre les champs. Entrée sur les boutons."
+      ],
+      "legal": "Aucune information n’est envoyée au serveur."
+    },
+    "step2": {
+      "tips": [
+        "Limitez vos réponses à 2–3 phrases. Le compteur indique la longueur.",
+        "Expliquez votre adéquation et ajoutez une preuve concrète (réalisation + impact).",
+        "Sélectionnez la langue cible avant « Créer le brouillon »."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Éditez le brouillon. Votre langue à gauche, la langue cible à droite (50/50).",
+        "\"Télécharger .docx\" (actuellement .txt) enregistre une copie locale.",
+        "\"Envoyer\" ouvre l’e‑mail — rien n’est envoyé au serveur."
+      ]
+    },
+    "loadError": "Échec du chargement des instructions."
+  },
+  "status": {
+    "title": "Actions",
+    "ready": "Prêt.",
+    "restored": "Votre dernière session a été restaurée.",
+    "langSet": "Langue de l’interface : {name}",
+    "fillOne": "Renseignez au moins un champ à l’étape 1.",
+    "movedTo2": "Passage à l’étape 2.",
+    "draftCreated": "Brouillon créé.",
+    "draftDownloaded": "Brouillon téléchargé en .txt.",
+    "cleared": "Formulaire et cache local effacés."
+  },
+  "confirm": {
+    "clearAll": "Effacer le formulaire et le cache local ?"
+  },
+  "export": {
+    "title": "Intitulé du poste :",
+    "website": "Site de l’entreprise :",
+    "adUrl": "Lien de l’offre :",
+    "role": "Poste :",
+    "nativeHeader": "--- Brouillon (langue source) ---",
+    "targetHeader": "--- Brouillon (langue cible) ---",
+    "filename": "brouillon-candidature.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Candidature :",
+    "subjectFallback": "Candidature",
+    "footer": "- Créé avec Digiter Apply"
+  },
+  "privacy": {
+    "label": "Mode confidentialité",
+    "on": "Mode confidentialité activé",
+    "off": "Mode confidentialité désactivé",
+    "help": "En mode confidentialité, rien n’est enregistré de façon persistante dans le navigateur. Toutes les données sont effacées en quittant la page."
+  },
+  "assist": {
+    "chars": "caractères",
+    "short": "Court",
+    "ok": "Optimal",
+    "long": "Long",
+    "tip": "Ajoutez un exemple concret : « Comment cela s’est‑il vu dans les résultats ? »",
+    "tipButton": "Afficher le conseil"
+  }
+}

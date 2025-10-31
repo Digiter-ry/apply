@@ -95,12 +95,18 @@ a:hover { color: #0052a3; }
 .hero-inner { max-width: 1140px; margin: 0 auto; }
 .hero-title { font-size: 2rem; margin-bottom: .25rem; }
 .hero-lead { margin-bottom: 1rem; color: #333; }
-.hero-steps { list-style: none; display: flex; gap: 20px; padding: 0; }
+.hero-steps { list-style: none; display: flex; gap: 20px; padding: 0; flex-wrap: wrap; }
 .hero-steps li { display: flex; align-items: center; gap: .5rem; }
-.hero-steps li span {
+/* Number bubble only */
+.hero-steps li > span[aria-hidden="true"] {
   display: inline-grid; place-items: center;
   width: 22px; height: 22px; border-radius: 999px;
   background: #0f1f23; color: #fff; font-size: .9rem; font-weight: 700;
+  flex: 0 0 22px;
+}
+/* Label text stays normal and can wrap by language */
+.hero-steps li > span[data-i18n] {
+  display: inline; color: #1a1a1a; font-weight: 600;
 }
 
 /* ============================================
@@ -128,7 +134,7 @@ label { font-weight: 600; }
 .L-text { font-size: 1.5rem; }
 .textarea { resize: vertical; min-height: 120px; }
 .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-.assist { font-size: .9rem; color: #666; display:none;}
+.assist { font-size: .9rem; color: #666; display: block;}
 
 .inline { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 
@@ -137,6 +143,9 @@ label { font-weight: 600; }
 @media (min-width: 1024px) { .two-col { grid-template-columns: 1fr 1fr; } }
 
 .actions { display: flex; gap: 12px; margin-top: 8px; }
+/* Grid layout for Status actions: two on first row, one full-width below */
+.actions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+.actions-grid .span-2 { grid-column: 1 / -1; }
 
 .btn {
   appearance: none;
@@ -149,9 +158,14 @@ label { font-weight: 600; }
 
 /* Status & helper blocks */
 .status {
-  background: #f1f8f2; border: 1px solid #cfe7d1; color: #245a2c;
-  padding: 12px; border-radius: 10px;
+    background: #0f1f23;
+    border: 1px solid #cfe7d1;
+    color: #fff;
+    padding: 0px 25px 0px 25px;
+    border-radius: 10px;
 }
+/* Hide the dynamic status message for now */
+#status { display: none; }
 .noscript {
   background: #fff3cd; border: 1px solid #ffeeba; color: #856404;
   padding: 12px; border-radius: 10px; margin-top: 16px;
@@ -175,3 +189,93 @@ label { font-weight: 600; }
 }
 .list { padding-left: 1.1rem; }
 .list li { margin-bottom: .5rem; }
+#guideContent { transition: opacity 0.2s ease-in-out; }
+
+/* Default: piilota mobiiliohje työpöydällä */
+#guideBar { display: none; }
+
+/* ============================================
+   Mobiilin kiinteä ohjepalkki
+   ============================================ */
+@media (max-width: 768px) {
+  .content-secondary.sticky { display: none; }
+
+  .main-wrapper { padding-bottom: 64px; }
+
+  #guideBar {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background: #111;
+    color: #fff;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+  }
+
+  #guideBar .guide-bar-content {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* näytä enintään 3 riviä */
+    -webkit-box-orient: vertical;
+  }
+
+  #guideBar .guide-bar-btn {
+    appearance: none;
+    border: 0;
+    background: #2b2b2b;
+    color: #fff;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 8px 16px 12px 16px;
+    float: right;
+  }
+
+  /* Bottom sheet panel */
+  .guide-panel[hidden] { display: none; }
+  .guide-panel { position: fixed; inset: 0; z-index: 1100; }
+  .guide-panel-backdrop {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.45);
+  }
+  .guide-panel-sheet {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    background: #fff; color: #111;
+    border-top-left-radius: 16px; border-top-right-radius: 16px;
+    box-shadow: 0 -8px 24px rgba(0,0,0,0.3);
+    max-height: 70vh; overflow: auto;
+    padding: 12px 16px 24px 16px;
+  }
+  .guide-panel-header { display: flex; align-items: center; justify-content: space-between; }
+  .guide-panel-close {
+    appearance: none; border: 0; background: transparent; color: #111;
+    font-size: 1.5rem; line-height: 1; padding: 4px 8px; cursor: pointer;
+  }
+  .guide-panel-content { padding-top: 8px; }
+}
+
+/* Navbar: privacy toggle näkyvyys ja kontrasti */
+.nav-inner .nav-actions {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+  color: #fff;
+}
+.nav-inner .privacy-group { display: flex; align-items: center; gap: 10px; }
+.nav-inner #privacyMode {
+  width: 22px; height: 22px;
+  accent-color: #fff; /* modern browsers */
+}
+.nav-inner #privacyModeText { color: #fff; font-weight: 600; }
+.nav-inner #privacyInfoBtn {
+  appearance: none; border: 0; background: transparent; color: #fff;
+  width: 24px; height: 24px; border-radius: 50%;
+  display: inline-grid; place-items: center; cursor: help;
+  font-weight: 800;
+}
+.nav-inner #privacyInfoBtn:hover { filter: brightness(0.9); }

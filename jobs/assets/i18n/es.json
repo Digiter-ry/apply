@@ -1,0 +1,128 @@
+{
+  "brand": "Marca",
+  "hero": {
+    "title": "Crear solicitud de empleo",
+    "lead": "Esta herramienta te ayuda a redactar una solicitud en tu idioma y a traducirla al idioma del país de destino. Todo permanece en tu navegador — no se almacena ni comparte nada. Escribe con confianza, pero evita datos personales como número de identificación o dirección.",
+    "step1": "Datos del puesto",
+    "step2": "Habla sobre ti",
+    "step3": "Borrador y exportación"
+  },
+  "step1": {
+    "title": "Paso 1 — Datos del puesto",
+    "muted": "Completa al menos un campo. Cuanta más información, mejor será el borrador."
+  },
+  "step2": {
+    "title": "Paso 2 — Habla sobre ti",
+    "muted": "Truco: 2–3 frases por casilla suelen ser suficientes. El contador muestra los caracteres y los lectores de pantalla son notificados de los cambios."
+  },
+  "step3": {
+    "title": "Paso 3 — Borrador y exportación"
+  },
+  "label": {
+    "jobTitle": "Título del puesto",
+    "jobUrl": "Sitio web de la empresa",
+    "adUrl": "URL de la oferta",
+    "role": "Puesto",
+    "about": "Breve presentación",
+    "why": "¿Por qué postulas?",
+    "proof": "Mejor prueba de tus habilidades",
+    "targetLang": "Idioma de destino",
+    "draftNative": "Borrador en tu idioma",
+    "draftTarget": "Borrador en el idioma de destino"
+  },
+  "placeholder": {
+    "jobTitle": "Añade el nombre del puesto al que postulas",
+    "jobUrl": "Sitio web de la empresa a la que postulas",
+    "adUrl": "Añade la URL de la oferta (si existe)",
+    "role": "Puesto al que postulas",
+    "about": "Describe brevemente tu experiencia y tus fortalezas",
+    "why": "Explica tu motivación y adecuación",
+    "proof": "Cuenta un logro concreto y su impacto",
+    "draftNative": "El borrador aparecerá aquí",
+    "draftTarget": "El borrador traducido aparecerá aquí"
+  },
+  "btn": {
+    "toStep2": "Continuar al paso 2",
+    "toStep3": "Crear borrador",
+    "exportDocx": "Descargar .docx",
+    "sendEmail": "Enviar",
+    "clearAll": "Limpiar formulario"
+  },
+  "help": {
+    "send": "\"Enviar\" abre tu cliente de correo con un mensaje prellenado. No se envía nada al servidor."
+  },
+  "toast": {
+    "successTitle": "¡Buen comienzo!",
+    "successBody": "Esta información ayuda a crear el borrador."
+  },
+  "guide": {
+    "title": "Instrucciones",
+    "more": "Mostrar más",
+    "close": "Cerrar",
+    "step1": {
+      "tips": [
+        "Completa al menos un campo (nombre, URL o puesto).",
+        "Puedes añadir la URL de la oferta para más contexto.",
+        "Tab/Shift+Tab se mueve entre campos. Enter en los botones."
+      ],
+      "legal": "No se envía ninguna información al servidor."
+    },
+    "step2": {
+      "tips": [
+        "Limita las respuestas a 2–3 frases. El contador muestra la longitud.",
+        "Explica tu adecuación y añade una prueba concreta (logro + impacto).",
+        "Selecciona el idioma de destino antes de «Crear borrador»."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Edita el borrador. Tu idioma a la izquierda, el idioma de destino a la derecha (50/50).",
+        "\"Descargar .docx\" (ahora .txt) guarda una copia local.",
+        "\"Enviar\" abre el correo — no se envía nada al servidor."
+      ]
+    },
+    "loadError": "No se pudieron cargar las instrucciones."
+  },
+  "status": {
+    "title": "Acciones",
+    "ready": "Listo.",
+    "restored": "Se restauró tu última sesión.",
+    "langSet": "Idioma de la interfaz: {name}",
+    "fillOne": "Completa al menos un campo en el paso 1.",
+    "movedTo2": "Se pasó al paso 2.",
+    "draftCreated": "Borrador creado.",
+    "draftDownloaded": "Borrador descargado como .txt.",
+    "cleared": "Formulario y caché local limpiados."
+  },
+  "confirm": {
+    "clearAll": "¿Limpiar el formulario y la caché local?"
+  },
+  "export": {
+    "title": "Título del puesto:",
+    "website": "Sitio web de la empresa:",
+    "adUrl": "URL de la oferta:",
+    "role": "Puesto:",
+    "nativeHeader": "--- Borrador (idioma de origen) ---",
+    "targetHeader": "--- Borrador (idioma de destino) ---",
+    "filename": "borrador-solicitud-empleo.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Solicitud de empleo:",
+    "subjectFallback": "Solicitud",
+    "footer": "- Creado con Digiter Apply"
+  },
+  "privacy": {
+    "label": "Modo de privacidad",
+    "on": "Modo de privacidad activado",
+    "off": "Modo de privacidad desactivado",
+    "help": "En modo de privacidad no se guarda nada de forma persistente en el navegador. Todos los datos se borran al salir de la página."
+  },
+  "assist": {
+    "chars": "caracteres",
+    "short": "Corto",
+    "ok": "Óptimo",
+    "long": "Largo",
+    "tip": "Añade un ejemplo concreto: «¿Cómo se reflejó en los resultados?»",
+    "tipButton": "Mostrar consejo"
+  }
+}

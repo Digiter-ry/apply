@@ -1,0 +1,128 @@
+{
+  "brand": "Astaan",
+  "hero": {
+    "title": "Abuur codsi shaqo",
+    "lead": "Qalabkani wuxuu kaa caawinayaa inaad ku qorto codsiga shaqo afkaaga hooyo oo aad u turjunto afka dalka aad beegsanayso. Dhammaan xogtu waxay ku sii joogtaa biraawsarkaaga — waxba lama kaydiyo ama lama wadaago. Ku qor kalsooni, balse ka fogow macluumaad shakhsi ah sida lambarka aqoonsiga ama cinwaanka.",
+    "step1": "Faahfaahinta shaqada",
+    "step2": "Ka warran naftaada",
+    "step3": "Qoraal-qaab iyo dhoofin"
+  },
+  "step1": {
+    "title": "Tallaabada 1 — Faahfaahinta shaqada",
+    "muted": "Buuxi ugu yaraan hal meel. Inta aad buuxiso ayaa natiijadu u fiicnaanaysaa."
+  },
+  "step2": {
+    "title": "Tallaabada 2 — Ka warran naftaada",
+    "muted": "Talo: 2–3 jumladood sanduuq kasta badanaa way ku filan yihiin. Tirinta xarafku waxay muujisaa dhererka, akhristayaasha shaashada ayaa lagu wargeliyaa isbeddellada."
+  },
+  "step3": {
+    "title": "Tallaabada 3 — Qoraal-qaab iyo dhoofin"
+  },
+  "label": {
+    "jobTitle": "Cinwaanka shaqada",
+    "jobUrl": "Bogga shirkadda",
+    "adUrl": "Xiriirka xayeysiiska shaqada",
+    "role": "Jagada",
+    "about": "Hordhac kooban",
+    "why": "Maxaad u codsanaysaa?",
+    "proof": "Caddeynta ugu fiican ee xirfadahaaga",
+    "targetLang": "Luqadda bartilmaameedka",
+    "draftNative": "Qoraal-qaab afkaaga hooyo",
+    "draftTarget": "Qoraal-qaab luqadda bartilmaameedka"
+  },
+  "placeholder": {
+    "jobTitle": "Ku dar magaca shaqada aad raadineyso",
+    "jobUrl": "Bogga shirkadda aad u codsanayso",
+    "adUrl": "Ku dar xiriirka xayeysiiska shaqada (haddii uu jiro)",
+    "role": "Jagada aad u codsanayso",
+    "about": "Si kooban uga warran asalkaaga iyo xooggaaga",
+    "why": "Sharax ku habboonaantaada iyo dhiirigelintaada",
+    "proof": "Sheeg guul muuqata iyo saamaynteeda",
+    "draftNative": "Qoraal-qaabka ayaa halkan ka soo muuqan doona",
+    "draftTarget": "Qoraal-qaabka la turjumay ayaa halkan ka soo muuqan doona"
+  },
+  "btn": {
+    "toStep2": "Ku sii wad Tallaabada 2",
+    "toStep3": "Abuur qoraal-qaab",
+    "exportDocx": "Soo dejiso .docx",
+    "sendEmail": "Dir",
+    "clearAll": "Nadiifi foomka"
+  },
+  "help": {
+    "send": "\"Dir\" waxay furaysaa barnaamijka iimaylkaaga oo farriin hore loo buuxiyay. Waxba looma diro server-ka."
+  },
+  "toast": {
+    "successTitle": "Bilow wanaagsan!",
+    "successBody": "Macluumaadkani wuxuu ka caawinayaa abuurista qoraal-qaabka."
+  },
+  "guide": {
+    "title": "Tilmaamo",
+    "more": "Muuji wax badan",
+    "close": "Xir",
+    "step1": {
+      "tips": [
+        "Buuxi ugu yaraan hal meel (magac, URL ama jago).",
+        "Waxaad ku dari kartaa xiriirka xayeysiiska shaqada si macne dheeraad ah loo helo.",
+        "Tab/Shift+Tab waxay u kala wareejiyaan meelaha. Enter badhamada."
+      ],
+      "legal": "Macluumaad lama diro server-ka."
+    },
+    "step2": {
+      "tips": [
+        "Ka dhig jawaabaha 2–3 jumladood. Tirinta xarafku waxay muujisaa dhererka.",
+        "Sharax ku habboonaantaada oo ku dar caddeyn muuqata (guul + saamayn).",
+        "Dooro luqadda bartilmaameedka ka hor \"Abuur qoraal-qaab\"."
+      ]
+    },
+    "step3": {
+      "tips": [
+        "Wax ka beddel qoraal-qaabka. Afkaaga bidix, luqadda bartilmaameedka midig (50/50).",
+        "\"Soo dejiso .docx\" (hadda .txt) wuxuu kaydiyaa nuqul maxalli ah.",
+        "\"Dir\" wuxuu furaa iimayl — waxba looma diro server-ka."
+      ]
+    },
+    "loadError": "Ku guuldareystay in la soo raro tilmaamaha."
+  },
+  "status": {
+    "title": "Falalka",
+    "ready": "Diyaar.",
+    "restored": "Fadhigaagii u dambeeyay waa la soo celiyay.",
+    "langSet": "Luqadda isdhexgalka: {name}",
+    "fillOne": "Buuxi ugu yaraan hal meel Tallaabada 1.",
+    "movedTo2": "Waxaa loo wareejiyay Tallaabada 2.",
+    "draftCreated": "Qoraal-qaab la abuurtay.",
+    "draftDownloaded": "Qoraal-qaab la soo dejiyay sida .txt.",
+    "cleared": "Foomka iyo kaydka maxalliga ah waa la nadiifiyay."
+  },
+  "confirm": {
+    "clearAll": "Ma nadiifiyaa foomka iyo kaydka maxalliga ah?"
+  },
+  "export": {
+    "title": "Cinwaanka shaqada:",
+    "website": "Bogga shirkadda:",
+    "adUrl": "Xiriirka xayeysiiska:",
+    "role": "Jago:",
+    "nativeHeader": "--- Qoraal-qaab (luqadda asalka) ---",
+    "targetHeader": "--- Qoraal-qaab (luqadda bartilmaameedka) ---",
+    "filename": "qoraal-qaab-codsi-shaqo.txt"
+  },
+  "mail": {
+    "subjectPrefix": "Codsi shaqo:",
+    "subjectFallback": "Codsi",
+    "footer": "- Waxaa lagu abuuray Digiter Apply"
+  },
+  "privacy": {
+    "label": "Habka qarsoodiga",
+    "on": "Habka qarsoodiga waa shaqeynayaa",
+    "off": "Habka qarsoodiga waa dansan yahay",
+    "help": "Habka qarsoodiga, waxba si joogto ah looma kaydiyo biraawsarka. Dhammaan xogta waa la tirtiraa marka aad ka baxdo bogga."
+  },
+  "assist": {
+    "chars": "far",
+    "short": "Gaaban",
+    "ok": "Kugu habboon",
+    "long": "Dheer",
+    "tip": "Ku dar tusaale muuqda: \"Sidee ayey tani natiijooyinka uga muuqatay?\"",
+    "tipButton": "Muuji talo"
+  }
+}
