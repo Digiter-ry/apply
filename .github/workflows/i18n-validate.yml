@@ -1,0 +1,29 @@
+name: Validate i18n
+
+on:
+  pull_request:
+    paths:
+      - 'apps/apply/jobs/assets/i18n/**'
+      - 'apps/apply/jobs/scripts/**'
+      - 'apps/apply/jobs/**.html'
+      - 'apps/apply/jobs/assets/js/**'
+  push:
+    branches: [ dev ]
+    paths:
+      - 'apps/apply/jobs/assets/i18n/**'
+      - 'apps/apply/jobs/scripts/**'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/apply/jobs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run i18n validator (strict)
+        run: node scripts/validate-i18n.js --strict
+

@@ -1,0 +1,9 @@
+{
+  "name": "digiter-apply-jobs",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Jobs module helper scripts and i18n validation",
+  "scripts": {
+    "validate:i18n": "node scripts/validate-i18n.js --strict"
+  }
+}
