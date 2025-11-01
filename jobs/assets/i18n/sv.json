@@ -92,7 +92,8 @@
     "movedTo2": "Gick vidare till steg 2.",
     "draftCreated": "Utkast skapat.",
     "draftDownloaded": "Utkast nedladdat som .txt.",
-    "cleared": "Formulär och lokal cache rensade."
+    "cleared": "Formulär och lokal cache rensade.",
+    "termsRequired": "Godkänn först användarvillkoren."
   },
   "confirm": {
     "clearAll": "Rensa formuläret och lokal cache?"

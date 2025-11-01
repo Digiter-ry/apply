@@ -92,7 +92,8 @@
     "movedTo2": "Liigutud 2. sammu.",
     "draftCreated": "Kavand loodud.",
     "draftDownloaded": "Kavand alla laaditud kui .txt.",
-    "cleared": "Vorm ja kohalik vahemälu tühjendati."
+    "cleared": "Vorm ja kohalik vahemälu tühjendati.",
+    "termsRequired": "Palun nõustu esmalt kasutustingimustega."
   },
   "confirm": {
     "clearAll": "Kas tühjendada vorm ja kohalik vahemälu?"
@@ -125,7 +126,7 @@
     "tip": "Lisa üks konkreetne näide: \"Kuidas see tulemustes väljendus?\"",
     "tipButton": "Kuva nipp"
   },
-    "legal": {
+  "legal": {
     "about": {
       "title": "Tööriista teave",
       "body": [

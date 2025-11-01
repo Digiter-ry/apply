@@ -92,7 +92,8 @@
     "movedTo2": "Passage à l’étape 2.",
     "draftCreated": "Brouillon créé.",
     "draftDownloaded": "Brouillon téléchargé en .txt.",
-    "cleared": "Formulaire et cache local effacés."
+    "cleared": "Formulaire et cache local effacés.",
+    "termsRequired": "Veuillez d'abord accepter les conditions d'utilisation."
   },
   "confirm": {
     "clearAll": "Effacer le formulaire et le cache local ?"

@@ -92,7 +92,8 @@
     "movedTo2": "Avançou para a etapa 2.",
     "draftCreated": "Rascunho criado.",
     "draftDownloaded": "Rascunho transferido como .txt.",
-    "cleared": "Formulário e cache local limpos."
+    "cleared": "Formulário e cache local limpos.",
+    "termsRequired": "Por favor, aceite primeiro os Termos de uso."
   },
   "confirm": {
     "clearAll": "Limpar o formulário e a cache local?"

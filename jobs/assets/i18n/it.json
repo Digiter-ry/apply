@@ -92,7 +92,8 @@
     "movedTo2": "Passato alla fase 2.",
     "draftCreated": "Bozza creata.",
     "draftDownloaded": "Bozza scaricata come .txt.",
-    "cleared": "Modulo e cache locale puliti."
+    "cleared": "Modulo e cache locale puliti.",
+    "termsRequired": "Accetta prima i Termini di utilizzo."
   },
   "confirm": {
     "clearAll": "Pulire il modulo e la cache locale?"
@@ -125,7 +126,7 @@
     "tip": "Aggiungi un esempio concreto: \"Come si è visto nei risultati?\"",
     "tipButton": "Mostra suggerimento"
   },
-    "legal": {
+  "legal": {
     "about": {
       "title": "Informazioni su questo strumento",
       "body": [

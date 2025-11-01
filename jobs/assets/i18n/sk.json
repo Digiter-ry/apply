@@ -92,7 +92,8 @@
     "movedTo2": "Prechod na krok 2.",
     "draftCreated": "Návrh vytvorený.",
     "draftDownloaded": "Návrh stiahnutý ako .txt.",
-    "cleared": "Formulár a lokálna vyrovnávacia pamäť vyčistené."
+    "cleared": "Formulár a lokálna vyrovnávacia pamäť vyčistené.",
+    "termsRequired": "Najprv prosím prijmite podmienky používania."
   },
   "confirm": {
     "clearAll": "Vyčistiť formulár a lokálnu vyrovnávaciu pamäť?"

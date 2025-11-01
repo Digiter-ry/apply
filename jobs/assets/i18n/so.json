@@ -92,7 +92,8 @@
     "movedTo2": "Waxaa loo wareejiyay Tallaabada 2.",
     "draftCreated": "Qoraal-qaab la abuurtay.",
     "draftDownloaded": "Qoraal-qaab la soo dejiyay sida .txt.",
-    "cleared": "Foomka iyo kaydka maxalliga ah waa la nadiifiyay."
+    "cleared": "Foomka iyo kaydka maxalliga ah waa la nadiifiyay.",
+    "termsRequired": "Fadlan marka hore aqbal Shuruudaha Isticmaalka."
   },
   "confirm": {
     "clearAll": "Ma nadiifiyaa foomka iyo kaydka maxalliga ah?"

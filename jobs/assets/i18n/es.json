@@ -92,7 +92,8 @@
     "movedTo2": "Se pasó al paso 2.",
     "draftCreated": "Borrador creado.",
     "draftDownloaded": "Borrador descargado como .txt.",
-    "cleared": "Formulario y caché local limpiados."
+    "cleared": "Formulario y caché local limpiados.",
+    "termsRequired": "Por favor, acepta primero los Términos de uso."
   },
   "confirm": {
     "clearAll": "¿Limpiar el formulario y la caché local?"
