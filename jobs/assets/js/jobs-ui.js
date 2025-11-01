@@ -558,6 +558,8 @@ window.addEventListener('jobsContentLoaded', (e) => {
   document.getElementById('legalAboutLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('about'); });
   document.getElementById('legalAiLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('ai'); });
   document.getElementById('legalPrivacyLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('privacy'); });
+  document.getElementById('legalTermsLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('terms'); });
+  document.getElementById('termsLinkSmall')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('terms'); });
   legalClose?.addEventListener('click', closeLegal);
   legalBackdrop?.addEventListener('click', closeLegal);
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !legalModal?.hidden) closeLegal(); });

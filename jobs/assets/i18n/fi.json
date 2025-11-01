@@ -151,6 +151,15 @@
         "Vältä henkilö- tai arkaluonteisten tietojen lisäämistä (esim. henkilötunnus, koko osoite, terveystiedot, taloustiedot).",
         "Voi tallentua väliaikainen paikallinen istunto (avain ‘jobs-ui’), ellei yksityisyystila ole päällä."
       ]
+    },
+    "terms": {
+      "title": "Käyttöehdot",
+      "body": [
+        "Käyttämällä tätä työkalua sitoudut käyttämään sitä vastuullisesti ja sovellettavan lain mukaisesti.",
+        "Olet itse vastuussa tuottamastasi sisällöstä ja sen lähettämisestä muihin palveluihin.",
+        "Palvelu tarjotaan \"sellaisenaan\" ilman takuita tarkkuudesta tai soveltuvuudesta tiettyyn tarkoitukseen."
+      ],
+      "accept": "Käyttämällä tätä työkalua hyväksyt"
     }
   }
 }

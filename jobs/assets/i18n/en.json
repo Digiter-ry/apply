@@ -150,6 +150,15 @@
         "Avoid entering personal or sensitive information (e.g., personal identity numbers, full address, health or financial details).",
         "A temporary local session (key ‘jobs-ui’) may be stored unless Privacy mode is on."
       ]
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "body": [
+        "By using this tool, you agree to use it responsibly and in accordance with applicable laws.",
+        "You retain full responsibility for the content you write and submit elsewhere.",
+        "We provide no warranty; the tool is offered \"as is\" without guarantees of accuracy or fitness for a particular purpose."
+      ],
+      "accept": "By using this tool you accept the"
     }
   }
 }
