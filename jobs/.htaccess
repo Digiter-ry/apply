@@ -1,0 +1,18 @@
+# Deny access to dotenv files anywhere under this webroot
+
+<IfModule mod_authz_core.c>
+  <FilesMatch "^\.env(\..*)?$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+
+<IfModule !mod_authz_core.c>
+  <FilesMatch "^\.env(\..*)?$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
+</IfModule>
+
+# Optional hardening: disable directory listings
+Options -Indexes
+
