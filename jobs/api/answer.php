@@ -29,6 +29,34 @@ function header_value(string $name): ?string {
     return $_SERVER[$key] ?? null;
 }
 
+// Load optional .env from ../env/.env (keeps keys out of web)
+function bootstrap_env(?string $dir = null): void {
+    static $booted = false;
+    if ($booted) return; $booted = true;
+    $dir = $dir ?? dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env';
+    $file = $dir . DIRECTORY_SEPARATOR . '.env';
+    if (!is_file($file) || !is_readable($file)) return;
+    $lines = @file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if ($line === '' || $line[0] === '#' || $line[0] === ';') continue;
+        $pos = strpos($line, '=');
+        if ($pos === false) continue;
+        $k = trim(substr($line, 0, $pos));
+        $v = trim(substr($line, $pos + 1));
+        if ($v !== '' && ($v[0] === '"' && substr($v, -1) === '"' || $v[0] === "'" && substr($v, -1) === "'")) {
+            $v = substr($v, 1, -1);
+        }
+        if ($k === '') continue;
+        // set only if not already set in environment
+        if (getenv($k) === false) {
+            putenv($k . '=' . $v);
+            $_ENV[$k] = $v;
+            if (!isset($_SERVER[$k])) $_SERVER[$k] = $v;
+        }
+    }
+}
+
 // Task 2: Placeholder validation & quota check
 function isValidAndHasQuota(string $userApiKey): bool {
     // Allow a known test key deterministically
@@ -61,6 +89,9 @@ if (!isValidAndHasQuota($userApiKey)) {
     ]);
 }
 
+// Ensure env is available (if project uses ../env/.env)
+bootstrap_env();
+
 // At this point, proceed with the actual operation.
 // Load provider keys from environment WITHOUT exposing them.
 $openaiKey = getenv('OPENAI_API_KEY') ?: '';
@@ -72,4 +103,3 @@ json_response(200, [
     'ok' => true,
     'message' => 'Authorized. Backend reached. Implement provider call here.',
 ]);
-
