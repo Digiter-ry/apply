@@ -124,5 +124,41 @@
     "long": "Pikk",
     "tip": "Lisa üks konkreetne näide: \"Kuidas see tulemustes väljendus?\"",
     "tipButton": "Kuva nipp"
+  },
+    "legal": {
+    "about": {
+      "title": "Tööriista teave",
+      "body": [
+        "See on tehisintellekti abil toetatud kirjutamisvahend tööavalduste koostamiseks.",
+        "Saad kirjutada oma keeles ja tõlkida teksti sihtkeelde.",
+        "Sa vastutad selle eest, et kontrollida ja toimetada tekst enne kasutamist."
+      ]
+    },
+    "ai": {
+      "title": "Tehisintellekti kasutamise märkus",
+      "body": [
+        "Genereeritud sisu võib sisaldada vigu, aegunud teavet või tahtmatut kallutatust.",
+        "Kontrolli, paranda ja kohanda alati väljundit vastavalt oma olukorrale.",
+        "Ära esita tehisintellekti loodud teksti faktina ilma kontrollimata."
+      ]
+    },
+    "privacy": {
+      "title": "Privaatsus",
+      "body": [
+        "Midagi ei saadeta serverisse. Andmed jäävad sinu brauserisse, kui sa faili alla ei laadi.",
+        "Väldi isiku- või tundlike andmete sisestamist (nt isikukood, täielik aadress, tervise- või finantsandmed).",
+        "Ajutine kohalik seanss (võti ‘jobs-ui’) võib salvestuda, kui privaatsusrežiim pole sisse lülitatud."
+      ]
+    },
+    "terms": {
+      "title": "Kasutustingimused",
+      "body": [
+        "Seda tööriista kasutades nõustud seda kasutama vastutustundlikult ja kooskõlas kehtivate seadustega.",
+        "Sa vastutad täielikult sisu eest, mida kirjutad ja mujal kasutad.",
+        "Me ei anna mingeid garantiisid; tööriist on saadaval „nagu on“, ilma täpsuse või sobivuse tagatiseta."
+      ],
+      "accept": "Seda tööriista kasutades nõustud",
+      "checkboxPrefix": "Nõustun"
+    }
   }
 }

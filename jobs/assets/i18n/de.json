@@ -92,7 +92,8 @@
     "movedTo2": "Zu Schritt 2 gewechselt.",
     "draftCreated": "Entwurf erstellt.",
     "draftDownloaded": "Entwurf als .txt heruntergeladen.",
-    "cleared": "Formular und lokaler Cache geleert."
+    "cleared": "Formular und lokaler Cache geleert.",
+    "termsRequired": "Bitte akzeptiere zuerst die Nutzungsbedingungen."
   },
   "confirm": {
     "clearAll": "Formular und lokalen Cache leeren?"
@@ -124,5 +125,41 @@
     "long": "Lang",
     "tip": "Füge ein konkretes Beispiel hinzu: „Wie zeigte sich das in den Ergebnissen?“",
     "tipButton": "Tipp anzeigen"
+  },
+  "legal": {
+    "about": {
+      "title": "Über dieses Tool",
+      "body": [
+        "Dies ist ein KI-gestütztes Schreibwerkzeug für Bewerbungen.",
+        "Sie können in Ihrer eigenen Sprache schreiben und den Text in die Zielsprache übersetzen.",
+        "Sie sind selbst dafür verantwortlich, den Text vor der Verwendung zu prüfen und zu bearbeiten."
+      ]
+    },
+    "ai": {
+      "title": "Hinweis zur KI-Nutzung",
+      "body": [
+        "Der automatisch erzeugte Inhalt kann Fehler, veraltete Informationen oder unbeabsichtigte Verzerrungen enthalten.",
+        "Überprüfen, korrigieren und passen Sie den Text stets an Ihre Situation an.",
+        "Geben Sie KI-generierte Texte nicht als geprüfte Fakten aus, ohne sie zu verifizieren."
+      ]
+    },
+    "privacy": {
+      "title": "Datenschutz",
+      "body": [
+        "Es werden keine Daten an den Server gesendet. Alle Informationen bleiben in Ihrem Browser, sofern Sie keine Datei herunterladen.",
+        "Vermeiden Sie die Eingabe persönlicher oder sensibler Daten (z. B. Personalausweisnummer, vollständige Adresse, Gesundheits- oder Finanzdaten).",
+        "Eine temporäre lokale Sitzung (Schlüssel ‚jobs-ui‘) kann gespeichert werden, sofern der Datenschutzmodus nicht aktiviert ist."
+      ]
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "body": [
+        "Durch die Nutzung dieses Tools erklären Sie sich einverstanden, es verantwortungsbewusst und gemäß den geltenden Gesetzen zu verwenden.",
+        "Sie tragen die volle Verantwortung für die Inhalte, die Sie verfassen und anderweitig verwenden.",
+        "Wir übernehmen keine Gewähr; das Tool wird „wie besehen“ ohne Garantie auf Richtigkeit oder Eignung für einen bestimmten Zweck bereitgestellt."
+      ],
+      "accept": "Durch die Nutzung dieses Tools akzeptieren Sie die",
+      "checkboxPrefix": "Ich akzeptiere"
+    }
   }
 }

@@ -124,5 +124,41 @@
     "long": "Largo",
     "tip": "Añade un ejemplo concreto: «¿Cómo se reflejó en los resultados?»",
     "tipButton": "Mostrar consejo"
+  },
+  "legal": {
+    "about": {
+      "title": "Acerca de esta herramienta",
+      "body": [
+        "Esta es una herramienta de redacción asistida por inteligencia artificial para solicitudes de empleo.",
+        "Puedes escribir en tu propio idioma y traducir el texto al idioma del país de destino.",
+        "Eres responsable de revisar y editar el texto antes de utilizarlo."
+      ]
+    },
+    "ai": {
+      "title": "Aviso sobre el uso de IA",
+      "body": [
+        "El contenido generado puede contener errores, información desactualizada o sesgos involuntarios.",
+        "Revisa, corrige y adapta siempre el texto según tu situación.",
+        "No presentes el texto generado por IA como un hecho comprobado sin verificación previa."
+      ]
+    },
+    "privacy": {
+      "title": "Privacidad",
+      "body": [
+        "Nada se envía al servidor. Los datos permanecen en tu navegador a menos que descargues un archivo.",
+        "Evita ingresar información personal o sensible (por ejemplo, número de identificación, dirección completa, datos de salud o financieros).",
+        "Se puede almacenar una sesión local temporal (clave ‘jobs-ui’) a menos que el modo de privacidad esté activado."
+      ]
+    },
+    "terms": {
+      "title": "Términos de uso",
+      "body": [
+        "Al utilizar esta herramienta, aceptas hacerlo de manera responsable y conforme a las leyes aplicables.",
+        "Eres completamente responsable del contenido que escribas y compartas en otros lugares.",
+        "No ofrecemos ninguna garantía; la herramienta se proporciona «tal cual», sin garantía de exactitud ni idoneidad para un propósito específico."
+      ],
+      "accept": "Al utilizar esta herramienta aceptas los",
+      "checkboxPrefix": "Acepto"
+    }
   }
 }

@@ -158,9 +158,9 @@
         "Olet itse vastuussa tuottamastasi sisällöstä ja sen lähettämisestä muihin palveluihin.",
         "Palvelu tarjotaan \"sellaisenaan\" ilman takuita tarkkuudesta tai soveltuvuudesta tiettyyn tarkoitukseen."
       ],
-      "accept": "Käyttämällä tätä työkalua hyväksyt"
+      "accept": "Käyttämällä tätä työkalua hyväksyt",
+      "checkboxPrefix": "Hyväksyn"
     }
   }
 }
-
 

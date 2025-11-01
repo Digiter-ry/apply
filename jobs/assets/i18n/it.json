@@ -124,5 +124,41 @@
     "long": "Lungo",
     "tip": "Aggiungi un esempio concreto: \"Come si è visto nei risultati?\"",
     "tipButton": "Mostra suggerimento"
+  },
+    "legal": {
+    "about": {
+      "title": "Informazioni su questo strumento",
+      "body": [
+        "Questo è uno strumento di scrittura assistito dall’intelligenza artificiale per la redazione di domande di lavoro.",
+        "Puoi scrivere nella tua lingua e tradurre il testo nella lingua del paese di destinazione.",
+        "Sei responsabile della verifica e della revisione del testo prima dell’utilizzo."
+      ]
+    },
+    "ai": {
+      "title": "Avvertenza sull’uso dell’IA",
+      "body": [
+        "Il contenuto generato può contenere errori, informazioni obsolete o pregiudizi involontari.",
+        "Rivedi, correggi e adatta sempre il testo alla tua situazione.",
+        "Non presentare un testo generato dall’IA come fatto verificato senza conferma."
+      ]
+    },
+    "privacy": {
+      "title": "Informativa sulla privacy",
+      "body": [
+        "Nessun dato viene inviato al server. Tutte le informazioni rimangono nel tuo browser, a meno che tu non scarichi un file.",
+        "Evita di inserire informazioni personali o sensibili (ad esempio numero di identificazione, indirizzo completo, dati sanitari o finanziari).",
+        "Una sessione locale temporanea (chiave ‘jobs-ui’) può essere salvata, a meno che la modalità privacy non sia attiva."
+      ]
+    },
+    "terms": {
+      "title": "Condizioni d’uso",
+      "body": [
+        "Utilizzando questo strumento, accetti di farne un uso responsabile e conforme alle leggi vigenti.",
+        "Sei pienamente responsabile del contenuto che scrivi e condividi altrove.",
+        "Non forniamo alcuna garanzia; lo strumento è offerto «così com’è», senza garanzia di accuratezza o idoneità per uno scopo specifico."
+      ],
+      "accept": "Utilizzando questo strumento accetti le",
+      "checkboxPrefix": "Accetto"
+    }
   }
 }

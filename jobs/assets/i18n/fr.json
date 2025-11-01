@@ -124,5 +124,41 @@
     "long": "Long",
     "tip": "Ajoutez un exemple concret : « Comment cela s’est‑il vu dans les résultats ? »",
     "tipButton": "Afficher le conseil"
+  },
+  "legal": {
+    "about": {
+      "title": "À propos de cet outil",
+      "body": [
+        "Cet outil d’écriture assisté par l’intelligence artificielle aide à rédiger des candidatures professionnelles.",
+        "Vous pouvez écrire dans votre propre langue et traduire le texte vers la langue du pays cible.",
+        "Vous êtes responsable de la vérification et de la révision du texte avant de l’utiliser."
+      ]
+    },
+    "ai": {
+      "title": "Avertissement concernant l’IA",
+      "body": [
+        "Le contenu généré peut contenir des erreurs, des informations obsolètes ou des biais involontaires.",
+        "Relisez, corrigez et adaptez toujours le texte à votre situation.",
+        "Ne présentez pas un texte généré par l’IA comme un fait établi sans vérification."
+      ]
+    },
+    "privacy": {
+      "title": "Confidentialité",
+      "body": [
+        "Aucune donnée n’est envoyée au serveur. Les informations restent dans votre navigateur, sauf si vous téléchargez un fichier.",
+        "Évitez de saisir des informations personnelles ou sensibles (par exemple : numéro d’identification, adresse complète, données de santé ou financières).",
+        "Une session locale temporaire (clé ‘jobs-ui’) peut être enregistrée, sauf si le mode de confidentialité est activé."
+      ]
+    },
+    "terms": {
+      "title": "Conditions d’utilisation",
+      "body": [
+        "En utilisant cet outil, vous acceptez de l’utiliser de manière responsable et conformément aux lois en vigueur.",
+        "Vous êtes entièrement responsable du contenu que vous rédigez et partagez ailleurs.",
+        "Aucune garantie n’est fournie ; l’outil est proposé « tel quel », sans garantie d’exactitude ni d’adéquation à un usage particulier."
+      ],
+      "accept": "En utilisant cet outil, vous acceptez les",
+      "checkboxPrefix": "J’accepte"
+    }
   }
 }

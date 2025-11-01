@@ -84,6 +84,7 @@
     "loadError": "Nepodařilo se načíst pokyny."
   },
   "status": {
+    "termsRequired": "Nejprve prosim prijmete Podminky pouzivani.",
     "title": "Akce",
     "ready": "Připraveno.",
     "restored": "Vaše poslední relace byla obnovena.",
@@ -124,5 +125,41 @@
     "long": "Dlouhé",
     "tip": "Přidejte konkrétní příklad: „Jak se to projevilo ve výsledcích?“",
     "tipButton": "Zobrazit tip"
+  },
+  "legal": {
+    "about": {
+      "title": "O tomto nástroji",
+      "body": [
+        "Tento nástroj využívá umělou inteligenci k pomoci při psaní žádostí o zaměstnání.",
+        "Můžete psát ve svém jazyce a překládat text do cílového jazyka.",
+        "Za kontrolu a úpravu textu před použitím nesete plnou odpovědnost."
+      ]
+    },
+    "ai": {
+      "title": "Upozornění k umělé inteligenci",
+      "body": [
+        "Vygenerovaný obsah může obsahovat chyby, zastaralé informace nebo neúmyslné zkreslení.",
+        "Výsledný text vždy zkontrolujte, opravte a přizpůsobte své situaci.",
+        "Nevydávejte text vytvořený umělou inteligencí za ověřený fakt bez potvrzení."
+      ]
+    },
+    "privacy": {
+      "title": "Ochrana soukromí",
+      "body": [
+        "Na server se nic neodesílá. Data zůstávají ve vašem prohlížeči, pokud nestáhnete soubor.",
+        "Nevkládejte osobní ani citlivé údaje (např. rodné číslo, úplnou adresu, zdravotní nebo finanční informace).",
+        "Dočasná místní relace (klíč ‘jobs-ui’) může být uložena, pokud není aktivován režim ochrany soukromí."
+      ]
+    },
+    "terms": {
+      "title": "Podmínky použití",
+      "body": [
+        "Používáním tohoto nástroje souhlasíte s jeho zodpovědným používáním v souladu s platnými zákony.",
+        "Za obsah, který napíšete a použijete jinde, nesete plnou odpovědnost.",
+        "Neposkytujeme žádné záruky; nástroj je poskytován „tak, jak je“, bez záruky přesnosti nebo vhodnosti pro konkrétní účel."
+      ],
+      "accept": "Používáním tohoto nástroje souhlasíte s tímto",
+      "checkboxPrefix": "Souhlasím"
+    }
   }
 }

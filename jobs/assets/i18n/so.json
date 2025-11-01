@@ -124,5 +124,41 @@
     "long": "Dheer",
     "tip": "Ku dar tusaale muuqda: \"Sidee ayey tani natiijooyinka uga muuqatay?\"",
     "tipButton": "Muuji talo"
+  },
+  "legal": {
+    "about": {
+      "title": "Ku saabsan aaladdan",
+      "body": [
+        "Tani waa qalab qorid oo ay taageerto sirdoonka macmalka ah si uu kaaga caawiyo qorista codsiyada shaqada.",
+        "Waxaad ku qori kartaa luqaddaada oo waxaad tarjumi kartaa qoraalka luqadda dalka aad codsanayso.",
+        "Adigaa mas’uul ka ah hubinta iyo tafatirka qoraalka ka hor intaadan isticmaalin."
+      ]
+    },
+    "ai": {
+      "title": "Ogeysiis ku saabsan sirdoonka macmalka ah",
+      "body": [
+        "Qoraalka ay soo saarto AI-ga wuxuu yeelan karaa khaladaad, xog duugoobay ama eex aan ula kac ahayn.",
+        "Had iyo jeer dib u eeg, sax oo u habeey qoraalka si uu ugu habboonaado xaaladdaada.",
+        "Ha soo bandhigin qoraal ay abuurtay AI-ga sidii xaqiiqo aan la hubin."
+      ]
+    },
+    "privacy": {
+      "title": "Asturnaanta",
+      "body": [
+        "Xog kasta lama diro server-ka. Xogtaadu waxay ku sii jiraysaa biraawsarkaaga ilaa aad fayl soo dejiso.",
+        "Iska ilaali inaad geliso macluumaad shakhsi ama xasaasi ah (tusaale ahaan, lambarka aqoonsiga, ciwaanka oo dhan, ama xogta caafimaadka iyo maaliyadda).",
+        "Kalfadhi ku meel gaar ah oo maxalli ah (furaha ‘jobs-ui’) waa la kaydin karaa haddii aan la hawlgelin habka asturnaanta."
+      ]
+    },
+    "terms": {
+      "title": "Shuruudaha Isticmaalka",
+      "body": [
+        "Markaad isticmaasho aaladdan, waxaad oggolaanaysaa inaad si masuuliyad leh u isticmaasho iyadoo la raacayo sharciyada khuseeya.",
+        "Adigaa mas’uul ka ah dhammaan nuxurka aad qorto oo aad meel kale ku isticmaasho.",
+        "Kuma bixinno dammaanad; aaladdu waa la bixiyay \"sidii ay tahay\" iyadoo aan wax dammaanad ah laga siin saxnaanta ama ku habboonaanta ujeeddo gaar ah."
+      ],
+      "accept": "Markaad isticmaasho aaladdan, waxaad aqbashaa",
+      "checkboxPrefix": "Waan aqbalay"
+    }
   }
 }

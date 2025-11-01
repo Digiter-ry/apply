@@ -159,7 +159,8 @@
         "You retain full responsibility for the content you write and submit elsewhere.",
         "We provide no warranty; the tool is offered \"as is\" without guarantees of accuracy or fitness for a particular purpose."
       ],
-      "accept": "By using this tool you accept the"
+      "accept": "By using this tool you accept the",
+      "checkboxPrefix": "I accept"
     }
   }
 }
