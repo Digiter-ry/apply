@@ -211,10 +211,13 @@
               "Lähetä" avaa sähköpostiohjelmasi esitäytetyllä viestillä. Mitään ei
               lähetetä palvelimelle.
             </p>
-            <p class="muted" id="termsNotice">
-              <span data-i18n="legal.terms.accept">Käyttämällä tätä työkalua hyväksyt</span>
-              <a href="#" id="termsLinkSmall" data-i18n="legal.terms.title">Käyttöehdot</a>.
-            </p>
+            <div class="terms-accept">
+              <input id="acceptTerms" type="checkbox" />
+              <label for="acceptTerms">
+                <span data-i18n="legal.terms.checkboxPrefix">Hyväksyn</span>
+                <a href="#" id="termsLinkInline" data-i18n="legal.terms.title">Käyttöehdot</a>
+              </label>
+            </div>
           </section>
 
 

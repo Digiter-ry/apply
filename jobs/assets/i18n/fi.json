@@ -92,7 +92,8 @@
     "movedTo2": "Siirryttiin vaiheeseen 2.",
     "draftCreated": "Luonnos luotu.",
     "draftDownloaded": "Luonnos ladattu .txt-muodossa.",
-    "cleared": "Lomake ja välimuisti tyhjennetty."
+    "cleared": "Lomake ja välimuisti tyhjennetty.",
+    "termsRequired": "Hyväksy käyttöehdot ennen jatkamista."
   },
   "confirm": {
     "clearAll": "Tyhjennetäänkö lomake ja paikallinen välimuisti?"
@@ -111,7 +112,6 @@
     "subjectFallback": "Hakemus",
     "footer": "- Luotu Digiter Apply -sovelluksessa"
   },
-  
   "privacy": {
     "label": "Yksityisyystila",
     "on": "Yksityisyystila päällä",
@@ -125,8 +125,7 @@
     "long": "Pitkä",
     "tip": "Lisää yksi konkreettinen esimerkki: \"Miten tämä näkyi tuloksissa?\"",
     "tipButton": "Lisää vinkki"
-  }
-  ,
+  },
   "legal": {
     "about": {
       "title": "Tietoa työkalusta",
@@ -163,3 +162,5 @@
     }
   }
 }
+
+

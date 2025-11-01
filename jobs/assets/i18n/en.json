@@ -92,7 +92,8 @@
     "movedTo2": "Moved to step 2.",
     "draftCreated": "Draft created.",
     "draftDownloaded": "Draft downloaded as .txt.",
-    "cleared": "Form and local cache cleared."
+    "cleared": "Form and local cache cleared.",
+    "termsRequired": "Please accept the Terms of Use first."
   },
   "confirm": {
     "clearAll": "Clear the form and local cache?"

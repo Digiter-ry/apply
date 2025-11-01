@@ -406,6 +406,12 @@
   /* ---------- Vienti ---------- */
 
   $('#exportDocx')?.addEventListener('click', () => {
+    // Guard: require terms acceptance if present
+    const tchk = document.getElementById('acceptTerms');
+    if (tchk && !tchk.checked) {
+      setStatus(window.i18n?.t('status.termsRequired') || 'Hyväksy käyttöehdot ennen jatkamista.');
+      return;
+    }
     const t = (k, vars={}) => window.i18n?.t(k, vars) || '';
     const content = [
       `${t('export.title') || 'Työpaikan nimi:'} ${state.form.jobTitle || '-'}`,
@@ -430,6 +436,12 @@
   });
 
   $('#sendEmail')?.addEventListener('click', () => {
+    // Guard: require terms acceptance if present
+    const tchk = document.getElementById('acceptTerms');
+    if (tchk && !tchk.checked) {
+      setStatus(window.i18n?.t('status.termsRequired') || 'Hyväksy käyttöehdot ennen jatkamista.');
+      return;
+    }
     const subject = encodeURIComponent(`${(window.i18n?.t('mail.subjectPrefix') || 'Työhakemus:')} ${state.form.role || (window.i18n?.t('mail.subjectFallback') || 'Hakemus')}`);
     const body = encodeURIComponent(
       `${state.form.draftTarget || state.form.draftNative || ''}\n\n` +
@@ -559,9 +571,23 @@ window.addEventListener('jobsContentLoaded', (e) => {
   document.getElementById('legalAiLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('ai'); });
   document.getElementById('legalPrivacyLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('privacy'); });
   document.getElementById('legalTermsLink')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('terms'); });
-  document.getElementById('termsLinkSmall')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('terms'); });
+  document.getElementById('termsLinkInline')?.addEventListener('click', (e)=>{ e.preventDefault(); openLegal('terms'); });
   legalClose?.addEventListener('click', closeLegal);
   legalBackdrop?.addEventListener('click', closeLegal);
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !legalModal?.hidden) closeLegal(); });
+
+  // Terms acceptance: disable actions until accepted
+  const termsChk = document.getElementById('acceptTerms');
+  const btnExport = document.getElementById('exportDocx');
+  const btnSend = document.getElementById('sendEmail');
+  function syncTerms(){
+    const ok = termsChk ? !!termsChk.checked : true;
+    if (btnExport) btnExport.disabled = !ok;
+    if (btnSend) btnSend.disabled = !ok;
+  }
+  if (termsChk) {
+    termsChk.addEventListener('change', syncTerms);
+    syncTerms();
+  }
 
 })();
