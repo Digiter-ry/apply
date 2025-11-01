@@ -170,6 +170,7 @@ label { font-weight: 600; }
 
 /* Terms accept row */
 .terms-accept { display: flex; align-items: center; gap: 8px; margin-top: 8px; font-size: .95rem; }
+.terms-accept #acceptTerms { width: 22px; height: 22px; }
 .terms-accept a { color: #145b63; font-weight: 700; }
 .noscript {
   background: #fff3cd; border: 1px solid #ffeeba; color: #856404;
@@ -178,6 +179,7 @@ label { font-weight: 600; }
 
 /* Footer */
 .footer { background: #0f1f23; color: #fff; padding: 28px 20px; text-align: center; }
+.footer .copyrights { text-align: left; margin-top: 12px; }
 .footer .legal-links { max-width: 1140px; margin: 12px auto 0; }
 .footer .legal-nav { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .footer .legal-nav a { color: #fff; text-decoration: underline; font-weight: 600; }
@@ -223,7 +225,14 @@ label { font-weight: 600; }
 @media (max-width: 768px) {
   .content-secondary.sticky { display: none; }
 
-  .main-wrapper { padding-bottom: 64px; }
+  /* Add space for fixed guide bar + iOS safe area */
+  .main-wrapper { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+
+  /* Stack legal links vertically on mobile and hide separators */
+  .footer { margin-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); }
+  .footer .legal-nav { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer .legal-nav a { display: block; text-align: left; }
+  .footer .legal-nav .sep { display: none; }
 
   #guideBar {
     display: block;
