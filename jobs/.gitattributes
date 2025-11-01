@@ -1,0 +1,17 @@
+* text=auto
+
+# Prefer LF for text files in this module
+*.js   text eol=lf
+*.ts   text eol=lf
+*.css  text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
+
+# Keep images/binaries untouched
+*.ico -text
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+
