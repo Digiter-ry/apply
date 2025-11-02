@@ -1,5 +1,5 @@
 {
-  "brand": "Brand",
+  "brand": "Marchio",
   "hero": {
     "title": "Crea candidatura",
     "lead": "Questo strumento ti aiuta a scrivere una candidatura nella tua lingua e a tradurla nella lingua del Paese di destinazione. Tutto resta nel tuo browser — nulla viene salvato o condiviso. Scrivi con fiducia, evitando però dati personali come codice identificativo o indirizzo.",
@@ -93,7 +93,12 @@
     "draftCreated": "Bozza creata.",
     "draftDownloaded": "Bozza scaricata come .txt.",
     "cleared": "Modulo e cache locale puliti.",
-    "termsRequired": "Accetta prima i Termini di utilizzo."
+    "termsRequired": "Accetta prima i Termini di utilizzo.",
+    "scouting": "Recupero delle informazioni...",
+    "scoutReady": "Informazioni recuperate.",
+    "scoutFailed": "Recupero delle informazioni non riuscito:",
+    "generating": "Generazione della bozza...",
+    "generateFailed": "Generazione della bozza non riuscita:"
   },
   "confirm": {
     "clearAll": "Pulire il modulo e la cache locale?"
@@ -161,5 +166,12 @@
       "accept": "Utilizzando questo strumento accetti le",
       "checkboxPrefix": "Accetto"
     }
+  },
+  "apikey": {
+    "label": "Chiave API",
+    "save": "Salva",
+    "saved": "Salvata",
+    "savedMsg": "Chiave API salvata nel browser.",
+    "saveFailed": "Salvataggio non riuscito."
   }
 }

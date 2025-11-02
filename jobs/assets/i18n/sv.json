@@ -93,7 +93,12 @@
     "draftCreated": "Utkast skapat.",
     "draftDownloaded": "Utkast nedladdat som .txt.",
     "cleared": "Formulär och lokal cache rensade.",
-    "termsRequired": "Godkänn först användarvillkoren."
+    "termsRequired": "Godkänn först användarvillkoren.",
+    "scouting": "Hämtar bakgrundsinformation...",
+    "scoutReady": "Bakgrundsinformation hämtad.",
+    "scoutFailed": "Misslyckades att hämta bakgrundsinformation:",
+    "generating": "Skapar utkast...",
+    "generateFailed": "Misslyckades att skapa utkast:"
   },
   "confirm": {
     "clearAll": "Rensa formuläret och lokal cache?"
@@ -121,7 +126,7 @@
   "assist": {
     "chars": "tecken",
     "short": "Kort",
-    "ok": "Optimal",
+    "ok": "Optimalt",
     "long": "Lång",
     "tip": "Lägg till ett konkret exempel: \"Hur syntes detta i resultaten?\"",
     "tipButton": "Visa tips"
@@ -161,5 +166,12 @@
       "accept": "Genom att använda detta verktyg accepterar du",
       "checkboxPrefix": "Jag accepterar"
     }
+  },
+  "apikey": {
+    "label": "API-nyckel",
+    "save": "Spara",
+    "saved": "Sparad",
+    "savedMsg": "API-nyckel sparad i webbläsaren.",
+    "saveFailed": "Sparandet misslyckades."
   }
 }

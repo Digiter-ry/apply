@@ -93,7 +93,12 @@
     "draftCreated": "Черновик создан.",
     "draftDownloaded": "Черновик скачан как .txt.",
     "cleared": "Форма и локальный кэш очищены.",
-    "termsRequired": "Пожалуйста, сначала примите Условия использования."
+    "termsRequired": "Пожалуйста, сначала примите Условия использования.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Очистить форму и локальный кэш?"
@@ -161,5 +166,12 @@
       "accept": "Используя этот инструмент, вы принимаете",
       "checkboxPrefix": "Я принимаю"
     }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

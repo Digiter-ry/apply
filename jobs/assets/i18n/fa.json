@@ -93,7 +93,12 @@
     "draftCreated": "پیش‌نویس ایجاد شد.",
     "draftDownloaded": "پیش‌نویس به صورت .txt دانلود شد.",
     "cleared": "فرم و حافظه نهان محلی پاک شد.",
-    "termsRequired": "لطفاً ابتدا شرایط استفاده را بپذیرید."
+    "termsRequired": "لطفاً ابتدا شرایط استفاده را بپذیرید.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "فرم و حافظه نهان محلی پاک شود؟"
@@ -161,5 +166,12 @@
       "accept": "با استفاده از این ابزار شما می‌پذیرید",
       "checkboxPrefix": "می‌پذیرم"
     }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

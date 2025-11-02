@@ -93,7 +93,12 @@
     "draftCreated": "Qoraal-qaab la abuurtay.",
     "draftDownloaded": "Qoraal-qaab la soo dejiyay sida .txt.",
     "cleared": "Foomka iyo kaydka maxalliga ah waa la nadiifiyay.",
-    "termsRequired": "Fadlan marka hore aqbal Shuruudaha Isticmaalka."
+    "termsRequired": "Fadlan marka hore aqbal Shuruudaha Isticmaalka.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Ma nadiifiyaa foomka iyo kaydka maxalliga ah?"
@@ -161,5 +166,12 @@
       "accept": "Markaad isticmaasho aaladdan, waxaad aqbashaa",
       "checkboxPrefix": "Waan aqbalay"
     }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

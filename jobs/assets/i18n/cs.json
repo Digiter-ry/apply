@@ -93,7 +93,12 @@
     "movedTo2": "Přesunuto ke kroku 2.",
     "draftCreated": "Návrh vytvořen.",
     "draftDownloaded": "Návrh stažen jako .txt.",
-    "cleared": "Formulář a místní cache vymazány."
+    "cleared": "Formulář a místní cache vymazány.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Vymazat formulář a místní cache?"
@@ -161,5 +166,12 @@
       "accept": "Používáním tohoto nástroje souhlasíte s tímto",
       "checkboxPrefix": "Souhlasím"
     }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

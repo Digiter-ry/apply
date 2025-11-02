@@ -56,7 +56,7 @@
     "successBody": "Ces informations aident à créer le brouillon."
   },
   "guide": {
-    "title": "Instructions",
+    "title": "Guide",
     "more": "Afficher plus",
     "close": "Fermer",
     "step1": {
@@ -84,7 +84,7 @@
     "loadError": "Échec du chargement des instructions."
   },
   "status": {
-    "title": "Actions",
+    "title": "Opérations",
     "ready": "Prêt.",
     "restored": "Votre dernière session a été restaurée.",
     "langSet": "Langue de l’interface : {name}",
@@ -93,7 +93,12 @@
     "draftCreated": "Brouillon créé.",
     "draftDownloaded": "Brouillon téléchargé en .txt.",
     "cleared": "Formulaire et cache local effacés.",
-    "termsRequired": "Veuillez d'abord accepter les conditions d'utilisation."
+    "termsRequired": "Veuillez d'abord accepter les conditions d'utilisation.",
+    "scouting": "Récupération des informations...",
+    "scoutReady": "Informations récupérées.",
+    "scoutFailed": "Échec de la récupération des informations :",
+    "generating": "Génération du brouillon...",
+    "generateFailed": "Échec de la génération du brouillon :"
   },
   "confirm": {
     "clearAll": "Effacer le formulaire et le cache local ?"
@@ -121,8 +126,8 @@
   "assist": {
     "chars": "caractères",
     "short": "Court",
-    "ok": "Optimal",
-    "long": "Long",
+    "ok": "Optimale",
+    "long": "Longue",
     "tip": "Ajoutez un exemple concret : « Comment cela s’est‑il vu dans les résultats ? »",
     "tipButton": "Afficher le conseil"
   },
@@ -161,5 +166,12 @@
       "accept": "En utilisant cet outil, vous acceptez les",
       "checkboxPrefix": "J’accepte"
     }
+  },
+  "apikey": {
+    "label": "Clé API",
+    "save": "Enregistrer",
+    "saved": "Enregistrée",
+    "savedMsg": "Clé API enregistrée dans le navigateur.",
+    "saveFailed": "Échec de l'enregistrement."
   }
 }

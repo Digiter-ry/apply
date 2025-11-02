@@ -22,7 +22,7 @@
     "jobTitle": "Stellenbezeichnung",
     "jobUrl": "Unternehmenswebsite",
     "adUrl": "URL der Stellenausschreibung",
-    "role": "Position",
+    "role": "Stelle",
     "about": "Kurze Vorstellung",
     "why": "Warum bewirbst du dich?",
     "proof": "Bester Nachweis deiner Fähigkeiten",
@@ -93,7 +93,12 @@
     "draftCreated": "Entwurf erstellt.",
     "draftDownloaded": "Entwurf als .txt heruntergeladen.",
     "cleared": "Formular und lokaler Cache geleert.",
-    "termsRequired": "Bitte akzeptiere zuerst die Nutzungsbedingungen."
+    "termsRequired": "Bitte akzeptiere zuerst die Nutzungsbedingungen.",
+    "scouting": "Hintergrundinformationen werden abgerufen...",
+    "scoutReady": "Hintergrundinformationen abgerufen.",
+    "scoutFailed": "Abruf der Hintergrundinformationen fehlgeschlagen:",
+    "generating": "Entwurf wird erstellt...",
+    "generateFailed": "Entwurfserstellung fehlgeschlagen:"
   },
   "confirm": {
     "clearAll": "Formular und lokalen Cache leeren?"
@@ -102,7 +107,7 @@
     "title": "Stellenbezeichnung:",
     "website": "Unternehmenswebsite:",
     "adUrl": "Ausschreibungs‑URL:",
-    "role": "Position:",
+    "role": "Stelle:",
     "nativeHeader": "--- Entwurf (Ausgangssprache) ---",
     "targetHeader": "--- Entwurf (Zielsprache) ---",
     "filename": "bewerbung-entwurf.txt"
@@ -121,7 +126,7 @@
   "assist": {
     "chars": "Zeichen",
     "short": "Kurz",
-    "ok": "Optimal",
+    "ok": "Ideal",
     "long": "Lang",
     "tip": "Füge ein konkretes Beispiel hinzu: „Wie zeigte sich das in den Ergebnissen?“",
     "tipButton": "Tipp anzeigen"
@@ -161,5 +166,12 @@
       "accept": "Durch die Nutzung dieses Tools akzeptieren Sie die",
       "checkboxPrefix": "Ich akzeptiere"
     }
+  },
+  "apikey": {
+    "label": "API-Schlüssel",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "savedMsg": "API-Schlüssel im Browser gespeichert.",
+    "saveFailed": "Speichern fehlgeschlagen."
   }
 }

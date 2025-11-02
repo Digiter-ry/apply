@@ -93,7 +93,12 @@
     "draftCreated": "Návrh vytvorený.",
     "draftDownloaded": "Návrh stiahnutý ako .txt.",
     "cleared": "Formulár a lokálna vyrovnávacia pamäť vyčistené.",
-    "termsRequired": "Najprv prosím prijmite podmienky používania."
+    "termsRequired": "Najprv prosím prijmite podmienky používania.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Vyčistiť formulár a lokálnu vyrovnávaciu pamäť?"
@@ -161,5 +166,12 @@
       "accept": "Používaním tohto nástroja prijímate",
       "checkboxPrefix": "Súhlasím"
     }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

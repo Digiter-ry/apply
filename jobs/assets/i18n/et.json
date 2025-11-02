@@ -85,7 +85,7 @@
   },
   "status": {
     "title": "Toimingud",
-    "ready": "Valmis.",
+    "ready": "Valmis",
     "restored": "Eelmine seanss taastati.",
     "langSet": "Kasutajaliidese keel: {name}",
     "fillOne": "Täida vähemalt üks väli 1. sammus.",

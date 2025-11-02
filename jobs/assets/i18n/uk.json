@@ -93,7 +93,12 @@
     "draftCreated": "Чернетку створено.",
     "draftDownloaded": "Чернетку завантажено як .txt.",
     "cleared": "Форму та локальний кеш очищено.",
-    "termsRequired": "Будь ласка, спочатку прийміть Умови користування."
+    "termsRequired": "Будь ласка, спочатку прийміть Умови користування.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Очистити форму та локальний кеш?"
@@ -161,5 +166,12 @@
       "accept": "Використовуючи цей інструмент, ви приймаєте",
       "checkboxPrefix": "Я приймаю"
     }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

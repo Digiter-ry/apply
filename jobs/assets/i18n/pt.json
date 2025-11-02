@@ -93,7 +93,12 @@
     "draftCreated": "Rascunho criado.",
     "draftDownloaded": "Rascunho transferido como .txt.",
     "cleared": "Formulário e cache local limpos.",
-    "termsRequired": "Por favor, aceite primeiro os Termos de uso."
+    "termsRequired": "Por favor, aceite primeiro os Termos de uso.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Limpar o formulário e a cache local?"
@@ -161,5 +166,12 @@
       "accept": "Ao utilizar esta ferramenta, você aceita os",
       "checkboxPrefix": "Aceito"
     }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }
