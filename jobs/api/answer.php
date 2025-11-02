@@ -29,6 +29,16 @@ function header_value(string $name): ?string {
     return $_SERVER[$key] ?? null;
 }
 
+// Utility: read boolean-ish env flags ("1", "true", "yes" => true; "0", "false", "no" => false)
+function env_flag(string $name, bool $default = false): bool {
+    $v = getenv($name);
+    if ($v === false || $v === null) return $default;
+    $s = strtolower(trim((string)$v));
+    if ($s === '1' || $s === 'true' || $s === 'yes' || $s === 'on') return true;
+    if ($s === '0' || $s === 'false' || $s === 'no' || $s === 'off') return false;
+    return $default;
+}
+
 // Load optional .env from ../env/.env (keeps keys out of web)
 function bootstrap_env(?string $dir = null): void {
     static $booted = false;
@@ -79,6 +89,72 @@ function bootstrap_env(?string $dir = null): void {
     }
 }
 
+// Minimal client IP detection (trust proxy only if explicitly enabled)
+function client_ip(): string {
+    $trust = getenv('TRUST_PROXY') === '1';
+    if ($trust) {
+        $xff = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
+        if ($xff) {
+            $parts = array_map('trim', explode(',', $xff));
+            if (isset($parts[0]) && filter_var($parts[0], FILTER_VALIDATE_IP)) return $parts[0];
+        }
+    }
+    $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+    return is_string($ip) ? $ip : '0.0.0.0';
+}
+
+// Rate limiting with APCu or filesystem fallback; stores only hashed identifiers
+function rate_limit_check(string $bucketKey, int $limit, int $windowSec, ?int &$remaining = null, ?int &$resetTs = null): bool {
+    $now = time();
+    $resetTs = $now + $windowSec;
+    $remaining = $limit;
+
+    // Prefer APCu if available
+    if (function_exists('apcu_fetch')) {
+        $k = 'rl_' . $bucketKey;
+        $data = apcu_fetch($k, $ok);
+        if (!$ok || !is_array($data) || ($data['reset'] ?? 0) <= $now) {
+            $data = ['count' => 0, 'reset' => $now + $windowSec];
+        }
+        $data['count'] = (int)$data['count'] + 1;
+        $remaining = max(0, $limit - $data['count']);
+        $resetTs = (int)$data['reset'];
+        // store with TTL until reset
+        apcu_store($k, $data, max(1, $resetTs - $now));
+        return $data['count'] <= $limit;
+    }
+
+    // Filesystem fallback
+    $dir = rtrim(sys_get_temp_dir(), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'apply_rl';
+    if (!is_dir($dir)) { @mkdir($dir, 0700, true); }
+    $path = $dir . DIRECTORY_SEPARATOR . $bucketKey . '.json';
+    $count = 0; $reset = $now + $windowSec;
+    $fh = @fopen($path, 'c+');
+    if ($fh) {
+        @flock($fh, LOCK_EX);
+        $raw = stream_get_contents($fh);
+        if (is_string($raw) && $raw !== '') {
+            $decoded = json_decode($raw, true);
+            if (is_array($decoded)) {
+                $count = (int)($decoded['count'] ?? 0);
+                $reset = (int)($decoded['reset'] ?? ($now + $windowSec));
+            }
+        }
+        if ($reset <= $now) { $count = 0; $reset = $now + $windowSec; }
+        $count++;
+        $remaining = max(0, $limit - $count);
+        $resetTs = $reset;
+        ftruncate($fh, 0); rewind($fh);
+        fwrite($fh, json_encode(['count' => $count, 'reset' => $reset]));
+        @flock($fh, LOCK_UN);
+        fclose($fh);
+    } else {
+        // If we cannot open, be permissive but avoid fatal
+        $remaining = $limit - 1; $resetTs = $now + $windowSec; return true;
+    }
+    return $count <= $limit;
+}
+
 // Task 2: Placeholder validation & quota check
 function isValidAndHasQuota(string $userApiKey): bool {
     // Allow a known test key deterministically
@@ -90,25 +166,6 @@ function isValidAndHasQuota(string $userApiKey): bool {
     } catch (Throwable $e) {
         return true; // if randomness fails, be permissive in dev
     }
-}
-
-// Enforce presence of user API key in header
-$userApiKey = trim((string)(header_value('X-App-API-Key') ?? ''));
-if ($userApiKey === '') {
-    json_response(401, [
-        'ok' => false,
-        'error' => 'missing_api_key',
-        'message' => 'Provide your API key in the X-App-API-Key header.'
-    ]);
-}
-
-// Validate and ensure quota
-if (!isValidAndHasQuota($userApiKey)) {
-    json_response(403, [
-        'ok' => false,
-        'error' => 'forbidden_or_no_quota',
-        'message' => 'API key is invalid or out of quota.'
-    ]);
 }
 
 // Ensure env is available (if project uses ../env/.env)
@@ -165,6 +222,66 @@ $action = trim((string)($data['action'] ?? ''));
 
 if ($action === '') {
     json_response(400, [ 'ok' => false, 'error' => 'missing_action', 'message' => 'Provide action: perplexity_scout or generate_application' ]);
+}
+
+// Lightweight rate limiting per IP and per IP+action (hashed identifiers)
+// Configure via env: RATE_LIMIT_WINDOW (seconds, default 60), RATE_LIMIT_IP_MAX (default 60), RATE_LIMIT_IP_ACTION_MAX (default 30), RATE_HASH_PEPPER
+$window = (int)(getenv('RATE_LIMIT_WINDOW') ?: 60);
+$maxIp = (int)(getenv('RATE_LIMIT_IP_MAX') ?: 60);
+$maxIpAct = (int)(getenv('RATE_LIMIT_IP_ACTION_MAX') ?: 30);
+$pepper = (string)(getenv('RATE_HASH_PEPPER') ?: 'set-a-strong-pepper');
+$ip = client_ip();
+$ipKey = hash('sha256', $ip . '|' . $pepper);
+$ipActKey = hash('sha256', $ip . '|' . $action . '|' . $pepper);
+
+// Apply limits (only if positive limits configured)
+if ($maxIp > 0) {
+    $rem = 0; $reset = 0;
+    $ok = rate_limit_check($ipKey, $maxIp, $window, $rem, $reset);
+    header('X-RateLimit-Limit: ' . $maxIp);
+    header('X-RateLimit-Remaining: ' . max(0, $rem));
+    header('X-RateLimit-Reset: ' . $reset);
+    if (!$ok) {
+        header('Retry-After: ' . max(1, $reset - time()));
+        json_response(429, [ 'ok' => false, 'error' => 'rate_limited', 'message' => 'Too many requests from this IP. Please retry later.' ]);
+    }
+}
+if ($maxIpAct > 0) {
+    $rem2 = 0; $reset2 = 0;
+    $ok2 = rate_limit_check($ipActKey, $maxIpAct, $window, $rem2, $reset2);
+    header('X-RateLimit-Action-Limit: ' . $maxIpAct);
+    header('X-RateLimit-Action-Remaining: ' . max(0, $rem2));
+    header('X-RateLimit-Action-Reset: ' . $reset2);
+    if (!$ok2) {
+        header('Retry-After: ' . max(1, $reset2 - time()));
+        json_response(429, [ 'ok' => false, 'error' => 'rate_limited_action', 'message' => 'Too many requests for this action from this IP. Please retry later.' ]);
+    }
+}
+
+// Lightweight config endpoint for frontend to adapt UI (no secrets)
+if ($action === 'config') {
+    $requireUserKey = env_flag('REQUIRE_USER_API_KEY', true);
+    json_response(200, [ 'ok' => true, 'requireUserKey' => $requireUserKey ]);
+}
+
+// Enforce per-user API key if required (after env + config handling)
+$requireUserKey = env_flag('REQUIRE_USER_API_KEY', true);
+if ($requireUserKey) {
+    $userApiKey = trim((string)(header_value('X-App-API-Key') ?? ''));
+    if ($userApiKey === '') {
+        json_response(401, [
+            'ok' => false,
+            'error' => 'missing_api_key',
+            'message' => 'Provide your API key in the X-App-API-Key header.'
+        ]);
+    }
+    if (!isValidAndHasQuota($userApiKey)) {
+        json_response(403, [
+            'ok' => false,
+            'error' => 'forbidden_or_no_quota',
+            'message' => 'API key is invalid or out of quota.'
+        ]);
+    }
 }
 
 // Action: step 1 scout via Perplexity
@@ -262,6 +379,17 @@ if ($action === 'generate_application') {
         json_response(500, [ 'ok' => false, 'error' => 'missing_provider_key', 'provider' => 'openai' ]);
     }
 
+    // Helper: map ISO code to readable language name to avoid LLM confusion (fallback to code)
+    $langName = static function(string $code): string {
+        $c = strtolower($code);
+        $map = [
+            'fi'=>'Finnish','sv'=>'Swedish','en'=>'English','de'=>'German','fr'=>'French','it'=>'Italian',
+            'es'=>'Spanish','pt'=>'Portuguese','et'=>'Estonian','ru'=>'Russian','sk'=>'Slovak',
+            'so'=>'Somali','ar'=>'Arabic','cs'=>'Czech','uk'=>'Ukrainian'
+        ];
+        return $map[$c] ?? $code;
+    };
+
     $sys = 'You are a careful assistant that writes short, tailored job applications. '
          . 'You MUST incorporate key facts from the provided job/company summary and connect them to the applicant\'s reasons and proofs. '
          . 'Do NOT invent facts not present in the summary or user inputs. No personal data beyond what the user wrote.';
@@ -269,15 +397,17 @@ if ($action === 'generate_application') {
     $instr = [
         'company_or_job_summary' => $summary,
         'user_inputs' => [ 'about' => $about, 'why' => $why, 'proof' => $proof ],
-        'native_language' => $nativeLang,
-        'target_language' => $targetLang,
+        'native_language_code' => $nativeLang,
+        'native_language_name' => $langName($nativeLang),
+        'target_language_code' => $targetLang,
+        'target_language_name' => $langName($targetLang),
         'guidelines' => [
             'Use at least 3 concrete facts from the summary when available; weave them naturally into the text (no bullet points, no citations).',
             'If the summary is empty but a job title exists, write a general application based on typical requirements for that role.',
             'Tone: professional, concise, confident, helpful; no flattery or filler.',
             'Length target: 200–300 words per draft (native and target).',
             'Structure (implicit): brief opening aligned to role/company; 1–2 sentences linking the applicant\'s strengths to the summary; 1–2 sentences showcasing proof; concise closing.',
-            'Output strictly a JSON object with keys "native" and "target" only.',
+            'Output strictly a JSON object with keys "native" and "target" only. Ensure native is in the native_language_name and target is in the target_language_name.',
         ],
         'hard_requirements' => [
             'Do not add headers, salutations, or lists.',
@@ -325,7 +455,17 @@ if ($action === 'generate_application') {
     }
     // Fallback: if JSON parsing failed, put entire content as native
     if ($native === '' && $content !== '') $native = $content;
-    if ($target === '' && $native !== '' && $targetLang === $nativeLang) $target = $native;
+    // If target language equals native language, enforce identical text
+    if ($targetLang === $nativeLang) {
+        if ($native !== '') {
+            $target = $native;
+        } else if ($target !== '') {
+            $native = $target;
+        }
+    } else if ($target === '' && $native !== '') {
+        // If different languages but model omitted target, keep best-effort fallback only when empty
+        // (previous behavior): no-op unless same language
+    }
 
     if ($native === '' && $target === '') {
         json_response(502, [ 'ok' => false, 'error' => 'empty_draft' ]);

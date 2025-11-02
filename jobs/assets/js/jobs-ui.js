@@ -9,7 +9,7 @@
   const state = {
     lang: 'fi',
     targetLang: 'fi',
-    privacyMode: false,
+    privacyMode: true,
     step: 1,
     form: {
       jobTitle: '',
@@ -43,6 +43,7 @@
   };
 
   const restore = () => {
+    if (state.privacyMode) return;
     try {
       const raw = localStorage.getItem('jobs-ui');
       if (!raw) return;
@@ -83,6 +84,16 @@
     const s = $('#status');
     if (s) s.textContent = msg;
   };
+
+  // Näytä/piilota kohdekielen kenttä, jos kielet samat
+  function syncTargetVisibility(){
+    try {
+      const same = String(state.targetLang||'').toLowerCase() === String(state.lang||'').toLowerCase();
+      const tEl = document.getElementById('draftTarget');
+      const tField = tEl ? tEl.closest('.field') : null;
+      if (tField) tField.hidden = !!same;
+    } catch {}
+  }
 
   // i18n helper: return default if translation missing
   function tr(key, defValue) {
@@ -237,6 +248,19 @@
     });
   });
 
+  // Jos vaihe 1:n kenttiä muutetaan, nollaa aiempi taustayhteenveto
+  ;(['jobTitle','jobUrl','adUrl','role']).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', () => {
+      if (state.summary) {
+        state.summary = '';
+        try { localStorage.removeItem('jobs-summary'); } catch {}
+        setStatus(tr('status.scouting','Haetaan taustatietoja...'));
+      }
+    });
+  });
+
   /* ---------- Kielen hallinta ---------- */
 
   const langSel = $('#langSel');
@@ -346,6 +370,7 @@
       state.targetLang = tgtSel.value;
       persist();
       setStatus(`Kohdekieli: ${tgtSel.options[tgtSel.selectedIndex].text}`);
+      syncTargetVisibility();
     });
   }
 
@@ -449,12 +474,12 @@
     const ctrl = new AbortController();
     const t = setTimeout(() => ctrl.abort(), timeoutMs);
     try {
+      const headers = { 'Content-Type': 'application/json' };
+      const ukey = getUserApiKey();
+      if (ukey) headers['X-App-API-Key'] = ukey;
       const res = await fetch(path, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-App-API-Key': getUserApiKey()
-        },
+        headers,
         body: JSON.stringify(body),
         signal: ctrl.signal
       });
@@ -590,7 +615,9 @@ window.addEventListener('jobsContentLoaded', (e) => {
   // Siirretty CSS:ään (CSP-ystävällinen)
 
   restore();
-  renderGuide(state.step || 1);
+  try { localStorage.removeItem('jobs-summary'); } catch {}
+  // Alkuasetus kohdekentän näkyvyydelle
+  setTimeout(syncTargetVisibility, 0);
 
   // Automaattinen textarea-korkeus
   $$('.textarea').forEach(ta => {
@@ -605,6 +632,22 @@ window.addEventListener('jobsContentLoaded', (e) => {
   // Vuosiluku
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Hae backendin UI-kokoonpano (esim. vaaditaanko käyttäjäavainta)
+  (async () => {
+    try {
+      const res = await fetch('api/answer.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'config' })
+      });
+      const j = await res.json().catch(() => ({}));
+      if (res.ok && j && j.ok && j.requireUserKey === false) {
+        const group = document.querySelector('.apikey-group');
+        if (group) group.hidden = true;
+      }
+    } catch {}
+  })();
 
   /* ---------- Ohjepaneelin ohjaus (mobiili) ---------- */
   const guideToggle = $('#guideBarToggle');
@@ -641,11 +684,13 @@ window.addEventListener('jobsContentLoaded', (e) => {
 
   /* ---------- Backend-kytkennät vaiheisiin 1 ja 3 ---------- */
 
-  // Taustahaku Step 1 -> 2 (Perplexity)
+      // Taustahaku Step 1 -> 2 (Perplexity)
+  let scoutInFlight = false;
   document.getElementById('toStep2')?.addEventListener('click', () => {
-    const anyFilled = ['jobTitle', 'jobUrl', 'adUrl', 'role']
-      .some(id => !!state.form[id]?.trim());
-    if (!anyFilled) return; // alkuperäinen handler näyttää viestin
+    const anyFilled = ['jobTitle','jobUrl','adUrl','role'].some(id => !!state.form[id]?.trim());
+    if (!anyFilled) return;
+    if (scoutInFlight) return;
+    if ((state.summary || '').trim()) return;
 
     const payload = {
       action: 'perplexity_scout',
@@ -657,6 +702,7 @@ window.addEventListener('jobsContentLoaded', (e) => {
     };
     setStatus(tr('status.scouting','Haetaan taustatietoja...'));
     showProgress();
+    scoutInFlight = true;
     apiPost('api/answer.php', payload, 30000).then((res) => {
       if (res.ok && res.body?.summary) {
         state.summary = String(res.body.summary);
@@ -669,11 +715,16 @@ window.addEventListener('jobsContentLoaded', (e) => {
         setStatus(tr('status.scoutFailed','Taustatietojen haku epäonnistui:') + ' ' + msg);
       }
       hideProgress();
+      scoutInFlight = false;
     });
   });
 
+
   // Generointi Step 2 -> 3 (OpenAI)
+  let generateInFlight = false;
   document.getElementById('toStep3')?.addEventListener('click', async () => {
+    if (generateInFlight) return;
+    generateInFlight = true;
     const about = state.form.about || '';
     const why = state.form.why || '';
     const proof = state.form.proof || '';
@@ -683,14 +734,17 @@ window.addEventListener('jobsContentLoaded', (e) => {
     setStatus(genMsg);
     showBusy(genMsg);
     showProgress();
+    // Natiivi- ja kohdekieli haetaan DOM:ista varmuuden vuoksi
+    const nativeLangNow = (document.getElementById('langSel')?.value || state.lang || 'fi');
+    const targetLangNow = (document.getElementById('targetLang')?.value || state.targetLang || nativeLangNow);
     const res = await apiPost('api/answer.php', {
       action: 'generate_application',
       summary,
       about,
       why,
       proof,
-      nativeLang: state.lang,
-      targetLang: state.targetLang
+      nativeLang: nativeLangNow,
+      targetLang: targetLangNow
     }, 45000);
 
     if (res.ok && res.body) {
@@ -710,6 +764,7 @@ window.addEventListener('jobsContentLoaded', (e) => {
     }
     hideBusy();
     hideProgress();
+    generateInFlight = false;
   });
 
   /* ---------- Footer: Legal modal ---------- */
@@ -750,16 +805,56 @@ window.addEventListener('jobsContentLoaded', (e) => {
 
   // Terms acceptance: disable actions until accepted
   const termsChk = document.getElementById('acceptTerms');
-  const btnExport = document.getElementById('exportDocx');
-  const btnSend = document.getElementById('sendEmail');
+  const termsWrap = document.querySelector('.terms-accept');
+  const gatedSelectors = '#toStep2,#toStep3,#exportDocx,#sendEmail,#clearAll';
+  const gatedButtons = Array.from(document.querySelectorAll(gatedSelectors));
+
+  function markGatedState(ok){
+    gatedButtons.forEach(b => {
+      if (!b) return;
+      b.setAttribute('aria-disabled', ok ? 'false' : 'true');
+      b.classList.toggle('is-disabled', !ok);
+    });
+  }
+  function nudgeTerms(){
+    setStatus(tr('status.termsRequired','Hyväksy käyttöehdot ennen jatkamista.'));
+    if (termsWrap) {
+      termsWrap.classList.add('attn');
+      setTimeout(() => termsWrap.classList.remove('attn'), 1200);
+    }
+    try { termsChk?.focus(); } catch {}
+  }
   function syncTerms(){
     const ok = termsChk ? !!termsChk.checked : true;
-    if (btnExport) btnExport.disabled = !ok;
-    if (btnSend) btnSend.disabled = !ok;
+    markGatedState(ok);
+    if (ok && termsWrap) termsWrap.classList.remove('attn');
   }
+  document.addEventListener('click', (e) => {
+    const el = e.target && (e.target.closest ? e.target.closest(gatedSelectors) : null);
+    if (!el) return;
+    const ok = termsChk ? !!termsChk.checked : true;
+    if (!ok) {
+      e.preventDefault(); e.stopPropagation();
+      nudgeTerms();
+    }
+  }, true); // capture to run before other handlers
   if (termsChk) {
     termsChk.addEventListener('change', syncTerms);
     syncTerms();
+  } else {
+    markGatedState(true);
   }
 
 })();
+
+
+
+
+
+
+
+
+
+
+
+

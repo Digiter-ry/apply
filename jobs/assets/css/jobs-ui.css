@@ -337,3 +337,11 @@ label { font-weight: 600; }
   50%  { transform: translateX(50%); }
   100% { transform: translateX(120%); }
 }
+
+/* Terms attention highlight */
+.terms-accept.attn { outline: 2px solid #ff9800; outline-offset: 3px; animation: pulse-outline .8s ease-in-out 2; border-radius: 6px; }
+@keyframes pulse-outline { from { box-shadow: 0 0 0 0 rgba(255,152,0,.55); } to { box-shadow: 0 0 0 10px rgba(255,152,0,0); } }
+
+/* Disabled-like state for gated buttons (without using HTML disabled) */
+.btn.is-disabled { opacity: .55; cursor: not-allowed; }
+.btn.is-disabled:focus { outline-color: #ff9800; }
