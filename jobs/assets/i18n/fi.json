@@ -2,7 +2,7 @@
   "brand": "Brand",
   "hero": {
     "title": "Työhakemuksen luonti",
-    "lead": "Tämä työkalu auttaa sinua kirjoittamaan työhakemuksen omalla kielelläsi ja kääntämään sen kohdemaan kielelle. Kaikki pysyy selaimessasi — mitään ei tallenneta tai jaeta. Kirjoita rohkeasti, mutta vältä henkilökohtaisia tietoja kuten henkilötunnusta tai osoitetta.",
+    "lead": "Tämä työkalu auttaa sinua kirjoittamaan työhakemuksen omalla kielelläsi ja kääntämään sen kohdemaan kielelle. Kaikki pysyy selaimessasi – mitään ei tallenneta tai jaeta. Kirjoita rohkeasti, mutta vältä henkilökohtaisia tietoja kuten henkilötunnusta tai osoitetta.",
     "step1": "Työpaikan tiedot",
     "step2": "Kerro itsestäsi",
     "step3": "Luonnos ja vienti"
@@ -13,7 +13,7 @@
   },
   "step2": {
     "title": "Vaihe 2 - Kerro itsestäsi",
-    "muted": "Vinkki: 2-3 virkettä per laatikko on usein sopiva pituus. Näet merkkimäärän ja ruudunlukijalle ilmoitetaan muutoksista."
+    "muted": "Vinkki: 2–3 virkettä per laatikko on usein sopiva pituus. Näet merkkimäärän ja ruudunlukijalle ilmoitetaan muutoksista."
   },
   "step3": {
     "title": "Vaihe 3 - Luonnos ja vienti"
@@ -70,7 +70,7 @@
     },
     "step2": {
       "tips": [
-        "Pidä vastaukset 2-3 virkkeessä. Merkkilaskuri näyttää pituuden.",
+        "Pidä vastaukset 2–3 virkkeessä. Merkkilaskuri näyttää pituuden.",
         "Perustele sopivuus ja lisää konkreettinen näyttö (saavutus + vaikutus).",
         "Valitse kohdekieli ennen \"Luo luonnos\"."
       ]
@@ -79,7 +79,7 @@
       "tips": [
         "Muokkaa luonnosta. Vasemmalla oma kieli, oikealla kohdekieli (50/50).",
         "\"Lataa .docx\" (nyt .txt) tallentaa paikallisen kopion.",
-        "\"Lähetä\" avaa sähköpostin - mitään ei lähetetä palvelimelle."
+        "\"Lähetä\" avaa sähköpostin – mitään ei lähetetä palvelimelle."
       ]
     }
   },
@@ -93,7 +93,12 @@
     "draftCreated": "Luonnos luotu.",
     "draftDownloaded": "Luonnos ladattu .txt-muodossa.",
     "cleared": "Lomake ja välimuisti tyhjennetty.",
-    "termsRequired": "Hyväksy käyttöehdot ennen jatkamista."
+    "termsRequired": "Hyväksy käyttöehdot ennen jatkamista.",
+    "scouting": "Haetaan taustatietoja...",
+    "scoutReady": "Taustatiedot haettu.",
+    "scoutFailed": "Taustatietojen haku epäonnistui:",
+    "generating": "Luodaan luonnosta...",
+    "generateFailed": "Luonnoksen luonti epäonnistui:"
   },
   "confirm": {
     "clearAll": "Tyhjennetäänkö lomake ja paikallinen välimuisti?"
@@ -140,7 +145,7 @@
       "body": [
         "Generoitu sisältö voi sisältää virheitä, vanhentunutta tietoa tai tahatonta vinoumaa.",
         "Tarkista, korjaa ja sovita teksti aina omaan tilanteeseesi.",
-        "Älä esitä AI‑tekstiä tosiasiana ilman varmistusta."
+        "Älä esitä AI-tekstiä tosiasiana ilman varmistusta."
       ]
     },
     "privacy": {
@@ -148,7 +153,7 @@
       "body": [
         "Mitään ei lähetetä palvelimelle. Tiedot pysyvät selaimessasi, ellei tiedostoa ladata.",
         "Vältä henkilö- tai arkaluonteisten tietojen lisäämistä (esim. henkilötunnus, koko osoite, terveystiedot, taloustiedot).",
-        "Voi tallentua väliaikainen paikallinen istunto (avain ‘jobs-ui’), ellei yksityisyystila ole päällä."
+        "Voi tallentua väliaikainen paikallinen istunto (avain `jobs-ui'), ellei yksityisyystila ole päällä."
       ]
     },
     "terms": {
@@ -161,6 +166,12 @@
       "accept": "Käyttämällä tätä työkalua hyväksyt",
       "checkboxPrefix": "Hyväksyn"
     }
+  },
+  "apikey": {
+    "label": "API-avain",
+    "save": "Tallenna",
+    "saved": "Tallennettu",
+    "savedMsg": "API-avain tallennettu selaimeen.",
+    "saveFailed": "Tallennus epäonnistui."
   }
 }
-

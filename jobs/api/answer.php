@@ -33,9 +33,31 @@ function header_value(string $name): ?string {
 function bootstrap_env(?string $dir = null): void {
     static $booted = false;
     if ($booted) return; $booted = true;
-    $dir = $dir ?? dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env';
-    $file = $dir . DIRECTORY_SEPARATOR . '.env';
-    if (!is_file($file) || !is_readable($file)) return;
+    // Prefer explicit ENV_FILE path when provided (e.g., C:\xampp\secure\env\apply.env or /home/infra/env/apply.env)
+    $envFile = getenv('ENV_FILE');
+    $candidates = [];
+    if (is_string($envFile) && $envFile !== '') {
+        if (is_dir($envFile)) {
+            $candidates[] = rtrim($envFile, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . '.env';
+        } else {
+            $candidates[] = $envFile;
+        }
+    }
+    // Fallbacks: project-local env locations
+    $candidates[] = ($dir ?? (dirname(__DIR__) . DIRECTORY_SEPARATOR . 'env')) . DIRECTORY_SEPARATOR . '.env'; // jobs/env/.env
+    $candidates[] = dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . 'env' . DIRECTORY_SEPARATOR . '.env'; // apply/env/.env
+    // Optional conventional locations (do not fail if missing)
+    if (strncasecmp(PHP_OS, 'WIN', 3) === 0) {
+        $candidates[] = 'C:\\xampp\\secure\\env\\apply.env';
+    } else {
+        $candidates[] = '/home/infra/env/apply.env';
+    }
+
+    $file = null;
+    foreach ($candidates as $cand) {
+        if (is_string($cand) && is_file($cand) && is_readable($cand)) { $file = $cand; break; }
+    }
+    if ($file === null) return;
     $lines = @file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) ?: [];
     foreach ($lines as $line) {
         $line = trim($line);
@@ -92,14 +114,224 @@ if (!isValidAndHasQuota($userApiKey)) {
 // Ensure env is available (if project uses ../env/.env)
 bootstrap_env();
 
-// At this point, proceed with the actual operation.
+// Helper: read JSON body or form data
+function read_request_body(): array {
+    $ct = header_value('Content-Type') ?? ($_SERVER['CONTENT_TYPE'] ?? '');
+    $raw = file_get_contents('php://input');
+    if (is_string($ct) && stripos($ct, 'application/json') !== false) {
+        $data = json_decode($raw ?: 'null', true);
+        return is_array($data) ? $data : [];
+    }
+    return $_POST ?: [];
+}
+
+// Helper: minimal HTTP JSON POST with cURL
+function http_json_post(string $url, array $headers, array $payload, int $timeout = 30): array {
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_POST => true,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTPHEADER => array_merge(['Content-Type: application/json'], $headers),
+        CURLOPT_POSTFIELDS => json_encode($payload),
+        CURLOPT_TIMEOUT => $timeout,
+    ]);
+    $resp = curl_exec($ch);
+    $err = curl_error($ch);
+    $code = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+    if ($resp === false) {
+        return ['ok' => false, 'status' => 0, 'error' => 'network_error', 'message' => $err ?: 'Request failed'];
+    }
+    $json = json_decode($resp, true);
+    if (!is_array($json)) {
+        return ['ok' => false, 'status' => $code, 'error' => 'invalid_json', 'body' => $resp];
+    }
+    return ['ok' => $code >= 200 && $code < 300, 'status' => $code, 'body' => $json];
+}
+
 // Load provider keys from environment WITHOUT exposing them.
 $openaiKey = getenv('OPENAI_API_KEY') ?: '';
 $perplexityKey = getenv('PERPLEXITY_API_KEY') ?: '';
+$openaiModel = getenv('OPENAI_MODEL') ?: 'gpt-4o-mini';
+$perplexityModel = getenv('PERPLEXITY_MODEL') ?: 'sonar-small';
 
-// TODO: integrate with providers using the above keys server-side only.
-// For now, return a safe placeholder payload.
-json_response(200, [
-    'ok' => true,
-    'message' => 'Authorized. Backend reached. Implement provider call here.',
-]);
+// Router: two actions
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {
+    json_response(405, [ 'ok' => false, 'error' => 'method_not_allowed', 'message' => 'Use POST' ]);
+}
+
+$data = read_request_body();
+$action = trim((string)($data['action'] ?? ''));
+
+if ($action === '') {
+    json_response(400, [ 'ok' => false, 'error' => 'missing_action', 'message' => 'Provide action: perplexity_scout or generate_application' ]);
+}
+
+// Action: step 1 scout via Perplexity
+if ($action === 'perplexity_scout') {
+    $jobTitle = trim((string)($data['jobTitle'] ?? ''));
+    $jobUrl   = trim((string)($data['jobUrl'] ?? ''));
+    $adUrl    = trim((string)($data['adUrl'] ?? ''));
+    $role     = trim((string)($data['role'] ?? ''));
+    $lang     = trim((string)($data['lang'] ?? ''));
+
+    if ($jobTitle === '' && $jobUrl === '' && $adUrl === '' && $role === '') {
+        json_response(400, [ 'ok' => false, 'error' => 'missing_inputs', 'message' => 'Fill at least one of: jobTitle, jobUrl, adUrl, role' ]);
+    }
+    if ($perplexityKey === '') {
+        json_response(500, [ 'ok' => false, 'error' => 'missing_provider_key', 'provider' => 'perplexity' ]);
+    }
+
+    $instruction = 'Find a concise and clear summary about the company and job based on the provided fields. '
+        . 'At least one of the following is provided: Company name, Company website, Job post URL, or Job title. '
+        . 'Do not include personal data. Keep it short. If only a job title is provided, describe typical requirements and tasks for that profession in general.';
+
+    $userFields = [
+        'company_name' => $jobTitle,
+        'company_website' => $jobUrl,
+        'job_post_url' => $adUrl,
+        'job_title' => $role,
+    ];
+    $userText = json_encode(array_filter($userFields, fn($v) => $v !== ''), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+    $messages = [
+        [ 'role' => 'system', 'content' => $instruction . ($lang ? (" Respond in language: " . $lang . '.') : '') ],
+        [ 'role' => 'user', 'content' => 'Inputs: ' . $userText ],
+    ];
+
+    $payload = [
+        'model' => $perplexityModel,
+        'messages' => $messages,
+        'temperature' => 0.2,
+        'max_tokens' => 400,
+    ];
+
+    $resp = http_json_post(
+        'https://api.perplexity.ai/chat/completions',
+        [ 'Authorization: Bearer ' . $perplexityKey ],
+        $payload,
+        30
+    );
+    // Retry with fallback models if invalid_model
+    if (!$resp['ok'] && (int)($resp['status'] ?? 0) === 400) {
+        $etype = $resp['body']['error']['type'] ?? null;
+        if ($etype === 'invalid_model') {
+            $fallbacks = [];
+            // If user configured an invalid model, fall back gracefully
+            if ($perplexityModel !== 'sonar-small') $fallbacks[] = 'sonar-small';
+            if (!in_array('sonar', $fallbacks, true)) $fallbacks[] = 'sonar';
+            if (!in_array('sonar-medium', $fallbacks, true)) $fallbacks[] = 'sonar-medium';
+            foreach ($fallbacks as $fm) {
+                $payload['model'] = $fm;
+                $retry = http_json_post(
+                    'https://api.perplexity.ai/chat/completions',
+                    [ 'Authorization: Bearer ' . $perplexityKey ],
+                    $payload,
+                    30
+                );
+                if ($retry['ok']) { $resp = $retry; break; }
+            }
+        }
+    }
+    if (!$resp['ok']) {
+        json_response(502, [ 'ok' => false, 'error' => 'perplexity_error', 'details' => $resp ]);
+    }
+    $body = $resp['body'];
+    $summary = '';
+    if (isset($body['choices'][0]['message']['content'])) {
+        $summary = trim((string)$body['choices'][0]['message']['content']);
+    } elseif (isset($body['choices'][0]['text'])) {
+        $summary = trim((string)$body['choices'][0]['text']);
+    }
+    if ($summary === '') {
+        json_response(502, [ 'ok' => false, 'error' => 'empty_summary' ]);
+    }
+    json_response(200, [ 'ok' => true, 'summary' => $summary ]);
+}
+
+// Action: step 3 draft generation via OpenAI
+if ($action === 'generate_application') {
+    $summary    = trim((string)($data['summary'] ?? ''));
+    $about      = trim((string)($data['about'] ?? ''));
+    $why        = trim((string)($data['why'] ?? ''));
+    $proof      = trim((string)($data['proof'] ?? ''));
+    $nativeLang = trim((string)($data['nativeLang'] ?? 'fi'));
+    $targetLang = trim((string)($data['targetLang'] ?? 'fi'));
+
+    if ($openaiKey === '') {
+        json_response(500, [ 'ok' => false, 'error' => 'missing_provider_key', 'provider' => 'openai' ]);
+    }
+
+    $sys = 'You are a careful assistant that writes short, tailored job applications. '
+         . 'You MUST incorporate key facts from the provided job/company summary and connect them to the applicant\'s reasons and proofs. '
+         . 'Do NOT invent facts not present in the summary or user inputs. No personal data beyond what the user wrote.';
+
+    $instr = [
+        'company_or_job_summary' => $summary,
+        'user_inputs' => [ 'about' => $about, 'why' => $why, 'proof' => $proof ],
+        'native_language' => $nativeLang,
+        'target_language' => $targetLang,
+        'guidelines' => [
+            'Use at least 3 concrete facts from the summary when available; weave them naturally into the text (no bullet points, no citations).',
+            'If the summary is empty but a job title exists, write a general application based on typical requirements for that role.',
+            'Tone: professional, concise, confident, helpful; no flattery or filler.',
+            'Length target: 200–300 words per draft (native and target).',
+            'Structure (implicit): brief opening aligned to role/company; 1–2 sentences linking the applicant\'s strengths to the summary; 1–2 sentences showcasing proof; concise closing.',
+            'Output strictly a JSON object with keys "native" and "target" only.',
+        ],
+        'hard_requirements' => [
+            'Do not add headers, salutations, or lists.',
+            'Do not include any personal data that the user did not provide.',
+            'Do not fabricate client names, metrics, or technologies not present in inputs or typical for the role.',
+        ],
+    ];
+
+    $messages = [
+        [ 'role' => 'system', 'content' => $sys ],
+        [ 'role' => 'user', 'content' => json_encode($instr, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ],
+    ];
+
+    $payload = [
+        'model' => $openaiModel,
+        'messages' => $messages,
+        'temperature' => 0.2,
+        'response_format' => [ 'type' => 'json_object' ],
+        'max_tokens' => 1400,
+    ];
+
+    $resp = http_json_post(
+        'https://api.openai.com/v1/chat/completions',
+        [ 'Authorization: Bearer ' . $openaiKey ],
+        $payload,
+        45
+    );
+
+    if (!$resp['ok']) {
+        json_response(502, [ 'ok' => false, 'error' => 'openai_error', 'details' => $resp ]);
+    }
+    $body = $resp['body'];
+    $content = '';
+    if (isset($body['choices'][0]['message']['content'])) {
+        $content = trim((string)$body['choices'][0]['message']['content']);
+    }
+    $native = '';
+    $target = '';
+    if ($content !== '') {
+        $parsed = json_decode($content, true);
+        if (is_array($parsed)) {
+            $native = trim((string)($parsed['native'] ?? ''));
+            $target = trim((string)($parsed['target'] ?? ''));
+        }
+    }
+    // Fallback: if JSON parsing failed, put entire content as native
+    if ($native === '' && $content !== '') $native = $content;
+    if ($target === '' && $native !== '' && $targetLang === $nativeLang) $target = $native;
+
+    if ($native === '' && $target === '') {
+        json_response(502, [ 'ok' => false, 'error' => 'empty_draft' ]);
+    }
+    json_response(200, [ 'ok' => true, 'draftNative' => $native, 'draftTarget' => $target ]);
+}
+
+// Unknown action
+json_response(400, [ 'ok' => false, 'error' => 'unknown_action', 'action' => $action ]);

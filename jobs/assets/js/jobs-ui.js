@@ -21,7 +21,8 @@
       proof: '',
       draftNative: '',
       draftTarget: ''
-    }
+    },
+    summary: ''
   };
 
   // Timer for debouncing guide render calls
@@ -83,6 +84,36 @@
     if (s) s.textContent = msg;
   };
 
+  // i18n helper: return default if translation missing
+  function tr(key, defValue) {
+    try {
+      const v = window.i18n?.t(key);
+      return (!v || v === key) ? defValue : v;
+    } catch { return defValue; }
+  }
+
+  // Busy overlay helpers
+  function showBusy(message) {
+    const el = document.getElementById('busy');
+    const txt = document.getElementById('busyText');
+    if (txt && typeof message === 'string') txt.textContent = message;
+    if (el) el.hidden = false;
+  }
+  function hideBusy() {
+    const el = document.getElementById('busy');
+    if (el) el.hidden = true;
+  }
+
+  // Progress bar helpers (indeterminate)
+  function showProgress() {
+    const p = document.getElementById('progress');
+    if (p) p.hidden = false;
+  }
+  function hideProgress() {
+    const p = document.getElementById('progress');
+    if (p) p.hidden = true;
+  }
+
   const updateCounts = () => {
     $$('[data-for]').forEach(span => {
       const forId = span.getAttribute('data-for');
@@ -123,8 +154,8 @@
     // Peruuta mahdollinen aiempi renderöinti
     if (guideRenderTimer) clearTimeout(guideRenderTimer);
 
-    // Lisää fade-out (vain jos varsinainen kontti löytyy)
-    if (cont) cont.style.opacity = '0';
+    // Lisää fade-out luokalla (CSP-ystävällinen)
+    if (cont) { cont.classList.remove('fade-in'); cont.classList.add('fade-out'); }
 
     guideRenderTimer = setTimeout(() => {
       try {
@@ -177,8 +208,8 @@
           }
         }
         
-        // Fade in
-        if (cont) cont.style.opacity = '1';
+        // Fade in luokalla (CSP-ystävällinen)
+        if (cont) { cont.classList.remove('fade-out'); cont.classList.add('fade-in'); }
         
         // Päivitä tila
         state.step = step;
@@ -261,6 +292,47 @@
       }
     });
   }
+
+  /* ---------- API-avaimen hallinta ---------- */
+  const userKeyEl = document.getElementById('userKey');
+  const saveKeyBtn = document.getElementById('saveKey');
+  const toggleKeyBtn = document.getElementById('toggleKey');
+  const keyStatus = document.getElementById('keyStatus');
+
+  function renderKeyStatus(){
+    try {
+      const has = !!localStorage.getItem('userApiKey');
+      if (keyStatus) keyStatus.textContent = has ? tr('apikey.saved','Tallennettu') : '';
+    } catch {}
+  }
+
+  if (userKeyEl) {
+    try {
+      const stored = localStorage.getItem('userApiKey');
+      if (stored) {
+        userKeyEl.value = stored;
+      }
+    } catch {}
+    renderKeyStatus();
+  }
+
+  saveKeyBtn?.addEventListener('click', () => {
+    if (!userKeyEl) return;
+    const v = userKeyEl.value.trim();
+    try {
+      if (v) localStorage.setItem('userApiKey', v); else localStorage.removeItem('userApiKey');
+      renderKeyStatus();
+      setStatus(tr('apikey.savedMsg','API-avain tallennettu selaimeen.'));
+    } catch (e) {
+      setStatus(tr('apikey.saveFailed','Tallennus ep�onnistui.'));
+    }
+  });
+
+  toggleKeyBtn?.addEventListener('click', () => {
+    if (!userKeyEl) return;
+    const type = userKeyEl.getAttribute('type') === 'password' ? 'text' : 'password';
+    userKeyEl.setAttribute('type', type);
+  });
 
   const tgtSel = $('#targetLang');
   if (tgtSel) {
@@ -367,6 +439,34 @@
     }
   };
 
+  /* ---------- Backend API helperit ---------- */
+
+  const getUserApiKey = () => {
+    try { return localStorage.getItem('userApiKey') || ''; } catch { return ''; }
+  };
+
+  async function apiPost(path, body, timeoutMs = 45000) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), timeoutMs);
+    try {
+      const res = await fetch(path, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-App-API-Key': getUserApiKey()
+        },
+        body: JSON.stringify(body),
+        signal: ctrl.signal
+      });
+      const json = await res.json().catch(() => ({}));
+      return { ok: res.ok && json?.ok !== false, status: res.status, body: json };
+    } catch (e) {
+      return { ok: false, status: 0, body: { ok: false, error: 'network', message: String(e && e.name === 'AbortError' ? 'timeout' : e) } };
+    } finally {
+      clearTimeout(t);
+    }
+  }
+
   // Vaihe 1 -> 2
   $('#toStep2')?.addEventListener('click', () => {
     const anyFilled = ['jobTitle', 'jobUrl', 'adUrl', 'role']
@@ -400,7 +500,7 @@
     }
 
     scrollToSection('step3-title');
-    setStatus(window.i18n?.t('status.draftCreated') || 'Luonnos luotu.');
+      setStatus(tr('status.draftCreated','Luonnos luotu.'));
   });
 
   /* ---------- Vienti ---------- */
@@ -478,12 +578,11 @@
 // assets/js/jobs-ui.js
 window.addEventListener('jobsContentLoaded', (e) => {
   console.log('[jobs-ui] content loaded', e.detail);
-  // esim. pieni korostusanimaatio otsikolle:
+  // CSP-ystävällinen korostus: käytä luokkaa
   const h1 = document.getElementById('hero-title');
   if (h1) {
-    h1.style.transition = 'outline 0.6s';
-    h1.style.outline = '3px solid rgba(255,255,255,0.25)';
-    setTimeout(() => h1.style.outline = 'none', 600);
+    h1.classList.add('hero-flash');
+    setTimeout(() => h1.classList.remove('hero-flash'), 600);
   }
 });
 
@@ -539,6 +638,79 @@ window.addEventListener('jobsContentLoaded', (e) => {
   setTimeout(() => {
     if (window.i18n?.t) updateCountLabels();
   }, 300);
+
+  /* ---------- Backend-kytkennät vaiheisiin 1 ja 3 ---------- */
+
+  // Taustahaku Step 1 -> 2 (Perplexity)
+  document.getElementById('toStep2')?.addEventListener('click', () => {
+    const anyFilled = ['jobTitle', 'jobUrl', 'adUrl', 'role']
+      .some(id => !!state.form[id]?.trim());
+    if (!anyFilled) return; // alkuperäinen handler näyttää viestin
+
+    const payload = {
+      action: 'perplexity_scout',
+      jobTitle: state.form.jobTitle,
+      jobUrl: state.form.jobUrl,
+      adUrl: state.form.adUrl,
+      role: state.form.role,
+      lang: state.lang
+    };
+    setStatus(tr('status.scouting','Haetaan taustatietoja...'));
+    showProgress();
+    apiPost('api/answer.php', payload, 30000).then((res) => {
+      if (res.ok && res.body?.summary) {
+        state.summary = String(res.body.summary);
+        try { if (!state.privacyMode) localStorage.setItem('jobs-summary', state.summary); } catch {}
+        persist();
+        setStatus(tr('status.scoutReady','Taustatiedot haettu.'));
+      } else {
+        const msg = res.body?.message || res.body?.error || 'Scout-virhe';
+        console.warn('perplexity_scout failed', res);
+        setStatus(tr('status.scoutFailed','Taustatietojen haku epäonnistui:') + ' ' + msg);
+      }
+      hideProgress();
+    });
+  });
+
+  // Generointi Step 2 -> 3 (OpenAI)
+  document.getElementById('toStep3')?.addEventListener('click', async () => {
+    const about = state.form.about || '';
+    const why = state.form.why || '';
+    const proof = state.form.proof || '';
+    const summary = state.summary || (function(){ try { return localStorage.getItem('jobs-summary') || ''; } catch { return ''; } })();
+
+    const genMsg = tr('status.generating','Luodaan luonnosta...');
+    setStatus(genMsg);
+    showBusy(genMsg);
+    showProgress();
+    const res = await apiPost('api/answer.php', {
+      action: 'generate_application',
+      summary,
+      about,
+      why,
+      proof,
+      nativeLang: state.lang,
+      targetLang: state.targetLang
+    }, 45000);
+
+    if (res.ok && res.body) {
+      const dn = String(res.body.draftNative || '');
+      const dt = String(res.body.draftTarget || '') || dn;
+      state.form.draftNative = dn;
+      state.form.draftTarget = dt;
+      const dnEl = document.getElementById('draftNative');
+      const dtEl = document.getElementById('draftTarget');
+      if (dnEl) dnEl.value = dn;
+      if (dtEl) dtEl.value = dt;
+      setStatus(tr('status.draftCreated','Luonnos luotu.'));
+      persist();
+    } else {
+      const msg = res.body?.message || res.body?.error || 'Virhe luonnoksen luonnissa';
+      setStatus(tr('status.generateFailed','Luonnoksen luonti ep�onnistui:') + ' ' + msg);
+    }
+    hideBusy();
+    hideProgress();
+  });
 
   /* ---------- Footer: Legal modal ---------- */
   const legalModal = document.getElementById('legalModal');

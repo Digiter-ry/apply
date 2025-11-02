@@ -8,15 +8,15 @@
     "step3": "Borrador y exportación"
   },
   "step1": {
-    "title": "Paso 1 — Datos del puesto",
+    "title": "Paso 1 - Datos del puesto",
     "muted": "Completa al menos un campo. Cuanta más información, mejor será el borrador."
   },
   "step2": {
-    "title": "Paso 2 — Habla sobre ti",
+    "title": "Paso 2 - Habla sobre ti",
     "muted": "Truco: 2–3 frases por casilla suelen ser suficientes. El contador muestra los caracteres y los lectores de pantalla son notificados de los cambios."
   },
   "step3": {
-    "title": "Paso 3 — Borrador y exportación"
+    "title": "Paso 3 - Borrador y exportación"
   },
   "label": {
     "jobTitle": "Título del puesto",
@@ -59,6 +59,7 @@
     "title": "Instrucciones",
     "more": "Mostrar más",
     "close": "Cerrar",
+    "loadError": "No se pudieron cargar las instrucciones.",
     "step1": {
       "tips": [
         "Completa al menos un campo (nombre, URL o puesto).",
@@ -71,7 +72,7 @@
       "tips": [
         "Limita las respuestas a 2–3 frases. El contador muestra la longitud.",
         "Explica tu adecuación y añade una prueba concreta (logro + impacto).",
-        "Selecciona el idioma de destino antes de «Crear borrador»."
+        "Selecciona el idioma de destino antes de \"Crear borrador\"."
       ]
     },
     "step3": {
@@ -80,8 +81,7 @@
         "\"Descargar .docx\" (ahora .txt) guarda una copia local.",
         "\"Enviar\" abre el correo — no se envía nada al servidor."
       ]
-    },
-    "loadError": "No se pudieron cargar las instrucciones."
+    }
   },
   "status": {
     "title": "Acciones",
@@ -93,7 +93,12 @@
     "draftCreated": "Borrador creado.",
     "draftDownloaded": "Borrador descargado como .txt.",
     "cleared": "Formulario y caché local limpiados.",
-    "termsRequired": "Por favor, acepta primero los Términos de uso."
+    "termsRequired": "Por favor, acepta primero los Términos de uso.",
+    "scouting": "Obteniendo información de fondo...",
+    "scoutReady": "Información de fondo obtenida.",
+    "scoutFailed": "Fallo al obtener la información:",
+    "generating": "Generando borrador...",
+    "generateFailed": "Error al generar el borrador:"
   },
   "confirm": {
     "clearAll": "¿Limpiar el formulario y la caché local?"
@@ -123,14 +128,14 @@
     "short": "Corto",
     "ok": "Óptimo",
     "long": "Largo",
-    "tip": "Añade un ejemplo concreto: «¿Cómo se reflejó en los resultados?»",
+    "tip": "Añade un ejemplo concreto: \"¿Cómo se reflejó en los resultados?\"",
     "tipButton": "Mostrar consejo"
   },
   "legal": {
     "about": {
       "title": "Acerca de esta herramienta",
       "body": [
-        "Esta es una herramienta de redacción asistida por inteligencia artificial para solicitudes de empleo.",
+        "Esta es una herramienta de redacción asistida por IA para solicitudes de empleo.",
         "Puedes escribir en tu propio idioma y traducir el texto al idioma del país de destino.",
         "Eres responsable de revisar y editar el texto antes de utilizarlo."
       ]
@@ -148,7 +153,7 @@
       "body": [
         "Nada se envía al servidor. Los datos permanecen en tu navegador a menos que descargues un archivo.",
         "Evita ingresar información personal o sensible (por ejemplo, número de identificación, dirección completa, datos de salud o financieros).",
-        "Se puede almacenar una sesión local temporal (clave ‘jobs-ui’) a menos que el modo de privacidad esté activado."
+        "Se puede almacenar una sesión local temporal (clave `jobs-ui') a menos que el modo de privacidad esté activado."
       ]
     },
     "terms": {
@@ -156,10 +161,17 @@
       "body": [
         "Al utilizar esta herramienta, aceptas hacerlo de manera responsable y conforme a las leyes aplicables.",
         "Eres completamente responsable del contenido que escribas y compartas en otros lugares.",
-        "No ofrecemos ninguna garantía; la herramienta se proporciona «tal cual», sin garantía de exactitud ni idoneidad para un propósito específico."
+        "No ofrecemos ninguna garantía; la herramienta se proporciona \"tal cual\", sin garantía de exactitud ni idoneidad para un propósito específico."
       ],
       "accept": "Al utilizar esta herramienta aceptas los",
       "checkboxPrefix": "Acepto"
     }
+  },
+  "apikey": {
+    "label": "Clave API",
+    "save": "Guardar",
+    "saved": "Guardada",
+    "savedMsg": "Clave API guardada en el navegador.",
+    "saveFailed": "Error al guardar."
   }
 }

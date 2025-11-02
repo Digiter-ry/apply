@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <base href="/digiter/apps/apply/jobs/">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Työhakemus — Apply</title>
@@ -35,9 +35,29 @@
           <span id="privacyModeText" class="muted" data-i18n="privacy.off">Yksityisyystila pois</span>
           <button id="privacyInfoBtn" type="button" title="" data-i18n-attr="title:privacy.help" aria-label="?">?</button>
         </div>
+        <div class="apikey-group">
+          <label for="userKey" class="visually-hidden" data-i18n="apikey.label">API-avain</label>
+          <input id="userKey" type="password" class="input apikey-input" placeholder="API key" autocomplete="off" />
+          <button id="toggleKey" type="button" class="btn" title="Näytä/piilota">👁</button>
+          <button id="saveKey" type="button" class="btn" data-i18n="apikey.save">Tallenna</button>
+          <span id="keyStatus" class="muted" aria-live="polite"></span>
+        </div>
       </div>
     </div>
   </nav>
+
+  <!-- Busy overlay (shown during long operations) -->
+  <div id="busy" class="busy" hidden>
+    <div class="busy-box" role="status" aria-live="polite" aria-atomic="true">
+      <div class="spinner" aria-hidden="true"></div>
+      <div id="busyText" class="busy-text">Luodaan luonnosta…</div>
+    </div>
+  </div>
+
+  <!-- Top progress bar (indeterminate) -->
+  <div id="progress" class="progress" hidden>
+    <div class="bar" aria-hidden="true"></div>
+  </div>
 
   <!-- Hero (valinnainen) -->
   <header class="hero" role="banner">
