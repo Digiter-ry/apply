@@ -8,15 +8,15 @@
     "step3": "Kavand ja eksport"
   },
   "step1": {
-    "title": "Samm 1 — Töö info",
+    "title": "Samm 1 - Töö info",
     "muted": "Täida vähemalt üks väli. Mida rohkem täidad, seda parem tuleb kavand."
   },
   "step2": {
-    "title": "Samm 2 — Räägi endast",
+    "title": "Samm 2 - Räägi endast",
     "muted": "Nipp: 2–3 lauset kasti kohta on sageli paras. Märgiloendur näitab pikkust ja ekraanilugejad saavad muudatustest teada."
   },
   "step3": {
-    "title": "Samm 3 — Kavand ja eksport"
+    "title": "Samm 3 - Kavand ja eksport"
   },
   "label": {
     "jobTitle": "Ametikoht",
@@ -49,7 +49,7 @@
     "clearAll": "Tühjenda vorm"
   },
   "help": {
-    "send": "\"Saada\" avab sinu e‑posti kliendi eeltäidetud kirjaga. Midagi ei saadeta serverisse."
+    "send": "\"Saada\" avab sinu e-posti kliendi eeltäidetud kirjaga. Midagi ei saadeta serverisse."
   },
   "toast": {
     "successTitle": "Hea algus!",
@@ -59,6 +59,7 @@
     "title": "Juhised",
     "more": "Näita rohkem",
     "close": "Sulge",
+    "loadError": "Juhiste laadimine ebaõnnestus.",
     "step1": {
       "tips": [
         "Täida vähemalt üks väli (nimi, URL või ametikoht).",
@@ -71,7 +72,7 @@
       "tips": [
         "Hoia vastused 2–3 lause pikkused. Märgiloendur näitab pikkust.",
         "Selgita sobivust ja lisa konkreetne tõend (saavutus + mõju).",
-        "Vali sihtkeel enne nupule \"Loo kavand\" vajutamist."
+        "Vali sihtkeel enne \"Loo kavand\" vajutamist."
       ]
     },
     "step3": {
@@ -80,19 +81,24 @@
         "\"Laadi alla .docx\" (praegu .txt) salvestab kohaliku koopia.",
         "\"Saada\" avab e‑posti — midagi ei saadeta serverisse."
       ]
-    },
-    "loadError": "Juhiste laadimine ebaõnnestus."
+    }
   },
   "status": {
     "title": "Toimingud",
-    "ready": "Valmis.",
+    "ready": "Valmis",
     "restored": "Eelmine seanss taastati.",
     "langSet": "Kasutajaliidese keel: {name}",
     "fillOne": "Täida vähemalt üks väli 1. sammus.",
     "movedTo2": "Liigutud 2. sammu.",
     "draftCreated": "Kavand loodud.",
     "draftDownloaded": "Kavand alla laaditud kui .txt.",
-    "cleared": "Vorm ja kohalik vahemälu tühjendati."
+    "cleared": "Vorm ja kohalik vahemälu tühjendati.",
+    "termsRequired": "Palun nõustu esmalt kasutustingimustega.",
+    "scouting": "Hangime taustainfot...",
+    "scoutReady": "Taustainfo hangitud.",
+    "scoutFailed": "Taustainfo hankimine ebaõnnestus:",
+    "generating": "Koostame mustandit...",
+    "generateFailed": "Mustandi loomine ebaõnnestus:"
   },
   "confirm": {
     "clearAll": "Kas tühjendada vorm ja kohalik vahemälu?"
@@ -118,11 +124,54 @@
     "help": "Privaatsusrežiimis ei salvestata brauserisse püsivalt midagi. Kõik andmed kustutatakse lehelt lahkudes."
   },
   "assist": {
-    "chars": "märkki",
+    "chars": "märki",
     "short": "Lühike",
     "ok": "Optimaalne",
     "long": "Pikk",
     "tip": "Lisa üks konkreetne näide: \"Kuidas see tulemustes väljendus?\"",
     "tipButton": "Kuva nipp"
+  },
+  "legal": {
+    "about": {
+      "title": "Tööriista teave",
+      "body": [
+        "See on tehisintellekti abil toetatud kirjutamisvahend tööavalduste koostamiseks.",
+        "Saad kirjutada oma keeles ja tõlkida teksti sihtkeelde.",
+        "Sa vastutad selle eest, et kontrollida ja toimetada tekst enne kasutamist."
+      ]
+    },
+    "ai": {
+      "title": "Tehisintellekti kasutamise märkus",
+      "body": [
+        "Genereeritud sisu võib sisaldada vigu, aegunud teavet või tahtmatut kallutatust.",
+        "Kontrolli, paranda ja kohanda alati väljundit vastavalt oma olukorrale.",
+        "Ära esita tehisintellekti loodud teksti faktina ilma kontrollimata."
+      ]
+    },
+    "privacy": {
+      "title": "Privaatsus",
+      "body": [
+        "Midagi ei saadeta serverisse. Andmed jäävad sinu brauserisse, kui sa faili alla ei laadi.",
+        "Väldi isiku- või tundlike andmete sisestamist (nt isikukood, täielik aadress, tervise- või finantsandmed).",
+        "Ajutine kohalik seanss (võti `jobs-ui') võib salvestuda, kui privaatsusrežiim pole sisse lülitatud."
+      ]
+    },
+    "terms": {
+      "title": "Kasutustingimused",
+      "body": [
+        "Seda tööriista kasutades nõustud seda kasutama vastutustundlikult ja kooskõlas kehtivate seadustega.",
+        "Sa vastutad täielikult sisu eest, mida kirjutad ja mujal kasutad.",
+        "Me ei anna mingeid garantiisid; tööriist on saadaval \"nagu on\", ilma täpsuse või sobivuse tagatiseta."
+      ],
+      "accept": "Seda tööriista kasutades nõustud",
+      "checkboxPrefix": "Nõustun"
+    }
+  },
+  "apikey": {
+    "label": "API‑võti",
+    "save": "Salvesta",
+    "saved": "Salvestatud",
+    "savedMsg": "API‑võti salvestatud brauserisse.",
+    "saveFailed": "Salvestamine ebaõnnestus."
   }
 }

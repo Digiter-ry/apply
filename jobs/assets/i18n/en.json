@@ -2,21 +2,21 @@
   "brand": "Brand",
   "hero": {
     "title": "Create Job Application",
-    "lead": "This tool helps you write a job application in your own language and translate it into the target country’s language. Everything stays in your browser — nothing is stored or shared. Write confidently, but avoid personal information such as your personal identity number or address.",
+    "lead": "This tool helps you write a job application in your own language and translate it into the target country's language. Everything stays in your browser — nothing is stored or shared. Write confidently, but avoid personal information such as your personal identity number or address.",
     "step1": "Job Details",
     "step2": "Tell About Yourself",
     "step3": "Draft and Export"
   },
   "step1": {
-    "title": "Step 1 — Job Details",
-    "muted": "Fill in at least one field. The more you fill in, the better results in the draft."
+    "title": "Step 1 - Job Details",
+    "muted": "Fill in at least one field. The more you fill in, the better the draft will be."
   },
   "step2": {
-    "title": "Step 2 — Tell About Yourself",
-    "muted": "Tip: 2-3 sentences per box is often a good length. You can see the character count and screen readers are notified of changes."
+    "title": "Step 2 - Tell About Yourself",
+    "muted": "Tip: 2–3 sentences per box is often a good length. You can see the character count and screen readers are notified of changes."
   },
   "step3": {
-    "title": "Step 3 — Draft and Export"
+    "title": "Step 3 - Draft and Export"
   },
   "label": {
     "jobTitle": "Job Title",
@@ -59,6 +59,7 @@
     "title": "Instructions",
     "more": "Show more",
     "close": "Close",
+    "loadError": "Failed to load instructions.",
     "step1": {
       "tips": [
         "Fill in at least one field (name, URL or position).",
@@ -69,19 +70,18 @@
     },
     "step2": {
       "tips": [
-        "Keep answers to 2-3 sentences. Character counter shows length.",
+        "Keep answers to 2–3 sentences. Character counter shows length.",
         "Explain suitability and add concrete proof (achievement + impact).",
         "Select target language before \"Create Draft\"."
       ]
     },
     "step3": {
       "tips": [
-        "Edit the draft. Your language on left, target language on right (50/50).",
+        "Edit the draft. Your language on the left, target language on the right (50/50).",
         "\"Download .docx\" (now .txt) saves a local copy.",
-        "\"Send\" opens email — nothing is sent to server."
+        "\"Send\" opens email — nothing is sent to the server."
       ]
-    },
-    "loadError": "Failed to load instructions."
+    }
   },
   "status": {
     "title": "Actions",
@@ -92,7 +92,13 @@
     "movedTo2": "Moved to step 2.",
     "draftCreated": "Draft created.",
     "draftDownloaded": "Draft downloaded as .txt.",
-    "cleared": "Form and local cache cleared."
+    "cleared": "Form and local cache cleared.",
+    "termsRequired": "Please accept the Terms of Use first.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Clear the form and local cache?"
@@ -111,7 +117,6 @@
     "subjectFallback": "Application",
     "footer": "- Created with Digiter Apply"
   },
-  
   "privacy": {
     "label": "Privacy mode",
     "on": "Privacy mode on",
@@ -125,5 +130,48 @@
     "long": "Long",
     "tip": "Add one concrete example: \"How did this show in results?\"",
     "tipButton": "Show tip"
+  },
+  "legal": {
+    "about": {
+      "title": "About this tool",
+      "body": [
+        "This is an AI-assisted writing tool for job applications.",
+        "You write in your language and can translate into a target language.",
+        "You are responsible for checking and editing the text before use."
+      ]
+    },
+    "ai": {
+      "title": "AI disclaimer",
+      "body": [
+        "Generated content may contain errors, outdated information or unintended bias.",
+        "Always review, correct and adapt the output to your situation.",
+        "Do not present AI-generated text as factual without verification."
+      ]
+    },
+    "privacy": {
+      "title": "Privacy",
+      "body": [
+        "Nothing is sent to the server. Data stays in your browser unless you download a file.",
+        "Avoid entering personal or sensitive information (e.g., personal identity numbers, full address, health or financial details).",
+        "A temporary local session (key `jobs-ui') may be stored unless Privacy mode is on."
+      ]
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "body": [
+        "By using this tool, you agree to use it responsibly and in accordance with applicable laws.",
+        "You retain full responsibility for the content you write and submit elsewhere.",
+        "We provide no warranty; the tool is offered \"as is\" without guarantees of accuracy or fitness for a particular purpose."
+      ],
+      "accept": "By using this tool you accept the",
+      "checkboxPrefix": "I accept"
+    }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

@@ -1,0 +1,35 @@
+name: i18n-validate
+
+on:
+  pull_request:
+    branches: [ dev, main, master ]
+    paths:
+      - 'jobs/**'
+  push:
+    branches: [ dev ]
+    paths:
+      - 'jobs/**'
+
+defaults:
+  run:
+    working-directory: jobs
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install deps
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install --no-audit --no-fund; fi
+
+      - name: Validate i18n
+        run: npm run validate:i18n
+

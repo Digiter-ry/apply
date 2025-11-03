@@ -92,7 +92,13 @@
     "movedTo2": "Prechod na krok 2.",
     "draftCreated": "Návrh vytvorený.",
     "draftDownloaded": "Návrh stiahnutý ako .txt.",
-    "cleared": "Formulár a lokálna vyrovnávacia pamäť vyčistené."
+    "cleared": "Formulár a lokálna vyrovnávacia pamäť vyčistené.",
+    "termsRequired": "Najprv prosím prijmite podmienky používania.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Vyčistiť formulár a lokálnu vyrovnávaciu pamäť?"
@@ -124,5 +130,48 @@
     "long": "Dlhé",
     "tip": "Pridajte konkrétny príklad: „Ako sa to prejavilo vo výsledkoch?“",
     "tipButton": "Zobraziť tip"
+  },
+  "legal": {
+    "about": {
+      "title": "O tomto nástroji",
+      "body": [
+        "Tento nástroj využíva umelú inteligenciu na pomoc pri písaní žiadostí o zamestnanie.",
+        "Môžete písať vo svojom jazyku a preložiť text do cieľového jazyka.",
+        "Zodpovedáte za kontrolu a úpravu textu pred jeho použitím."
+      ]
+    },
+    "ai": {
+      "title": "Vyhlásenie o zodpovednosti za umelú inteligenciu",
+      "body": [
+        "Vygenerovaný obsah môže obsahovať chyby, zastarané informácie alebo neúmyselné skreslenia.",
+        "Vždy si text skontrolujte, opravte ho a prispôsobte svojej situácii.",
+        "Neprezentujte text vytvorený umelou inteligenciou ako overený fakt bez potvrdenia."
+      ]
+    },
+    "privacy": {
+      "title": "Ochrana súkromia",
+      "body": [
+        "Na server sa nič neodosiela. Údaje zostávajú vo vašom prehliadači, pokiaľ si nestiahnete súbor.",
+        "Nevkladajte osobné ani citlivé údaje (napr. rodné číslo, úplnú adresu, zdravotné alebo finančné informácie).",
+        "Dočasná lokálna relácia (kľúč ‘jobs-ui’) sa môže uložiť, ak nie je zapnutý režim ochrany súkromia."
+      ]
+    },
+    "terms": {
+      "title": "Podmienky používania",
+      "body": [
+        "Používaním tohto nástroja súhlasíte s jeho zodpovedným používaním v súlade s platnými zákonmi.",
+        "Ste plne zodpovední za obsah, ktorý napíšete a použijete inde.",
+        "Neposkytujeme žiadne záruky; nástroj je poskytovaný „tak, ako je“, bez záruky presnosti alebo vhodnosti na konkrétny účel."
+      ],
+      "accept": "Používaním tohto nástroja prijímate",
+      "checkboxPrefix": "Súhlasím"
+    }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

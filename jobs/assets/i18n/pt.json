@@ -92,7 +92,13 @@
     "movedTo2": "Avançou para a etapa 2.",
     "draftCreated": "Rascunho criado.",
     "draftDownloaded": "Rascunho transferido como .txt.",
-    "cleared": "Formulário e cache local limpos."
+    "cleared": "Formulário e cache local limpos.",
+    "termsRequired": "Por favor, aceite primeiro os Termos de uso.",
+    "scouting": "Fetching background info...",
+    "scoutReady": "Background info fetched.",
+    "scoutFailed": "Background fetch failed:",
+    "generating": "Generating draft...",
+    "generateFailed": "Draft generation failed:"
   },
   "confirm": {
     "clearAll": "Limpar o formulário e a cache local?"
@@ -124,5 +130,48 @@
     "long": "Longo",
     "tip": "Adicione um exemplo concreto: \"Como isto apareceu nos resultados?\"",
     "tipButton": "Mostrar dica"
+  },
+  "legal": {
+    "about": {
+      "title": "Sobre esta ferramenta",
+      "body": [
+        "Esta é uma ferramenta de escrita assistida por inteligência artificial para candidaturas de emprego.",
+        "Você pode escrever no seu idioma e traduzir o texto para o idioma do país de destino.",
+        "Você é responsável por revisar e editar o texto antes de utilizá-lo."
+      ]
+    },
+    "ai": {
+      "title": "Aviso sobre o uso de IA",
+      "body": [
+        "O conteúdo gerado pode conter erros, informações desatualizadas ou vieses não intencionais.",
+        "Revise, corrija e adapte sempre o texto de acordo com a sua situação.",
+        "Não apresente textos gerados por IA como fatos verificados sem confirmação."
+      ]
+    },
+    "privacy": {
+      "title": "Privacidade",
+      "body": [
+        "Nada é enviado ao servidor. Os dados permanecem no seu navegador, a menos que você baixe um arquivo.",
+        "Evite inserir informações pessoais ou sensíveis (por exemplo, número de identificação, endereço completo, dados de saúde ou financeiros).",
+        "Uma sessão local temporária (chave ‘jobs-ui’) pode ser armazenada, a menos que o modo de privacidade esteja ativado."
+      ]
+    },
+    "terms": {
+      "title": "Termos de uso",
+      "body": [
+        "Ao utilizar esta ferramenta, você concorda em usá-la de forma responsável e de acordo com as leis aplicáveis.",
+        "Você é totalmente responsável pelo conteúdo que escreve e compartilha em outros locais.",
+        "Não oferecemos garantias; a ferramenta é fornecida «como está», sem garantia de precisão ou adequação a um propósito específico."
+      ],
+      "accept": "Ao utilizar esta ferramenta, você aceita os",
+      "checkboxPrefix": "Aceito"
+    }
+  },
+  "apikey": {
+    "label": "API key",
+    "save": "Save",
+    "saved": "Saved",
+    "savedMsg": "API key saved to your browser.",
+    "saveFailed": "Saving failed."
   }
 }

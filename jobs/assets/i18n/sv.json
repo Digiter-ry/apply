@@ -92,7 +92,13 @@
     "movedTo2": "Gick vidare till steg 2.",
     "draftCreated": "Utkast skapat.",
     "draftDownloaded": "Utkast nedladdat som .txt.",
-    "cleared": "Formulär och lokal cache rensade."
+    "cleared": "Formulär och lokal cache rensade.",
+    "termsRequired": "Godkänn först användarvillkoren.",
+    "scouting": "Hämtar bakgrundsinformation...",
+    "scoutReady": "Bakgrundsinformation hämtad.",
+    "scoutFailed": "Misslyckades att hämta bakgrundsinformation:",
+    "generating": "Skapar utkast...",
+    "generateFailed": "Misslyckades att skapa utkast:"
   },
   "confirm": {
     "clearAll": "Rensa formuläret och lokal cache?"
@@ -120,9 +126,52 @@
   "assist": {
     "chars": "tecken",
     "short": "Kort",
-    "ok": "Optimal",
+    "ok": "Optimalt",
     "long": "Lång",
     "tip": "Lägg till ett konkret exempel: \"Hur syntes detta i resultaten?\"",
     "tipButton": "Visa tips"
+  },
+  "legal": {
+    "about": {
+      "title": "Om verktyget",
+      "body": [
+        "Detta är ett AI-assisterat skrivverktyg för jobbansökningar.",
+        "Du kan skriva på ditt eget språk och översätta texten till målspråket.",
+        "Du ansvarar själv för att granska och redigera texten innan du använder den."
+      ]
+    },
+    "ai": {
+      "title": "Ansvarsfriskrivning för AI",
+      "body": [
+        "Genererat innehåll kan innehålla fel, inaktuell information eller oavsiktlig partiskhet.",
+        "Granska, rätta och anpassa alltid texten till din situation.",
+        "Presentera inte AI-genererad text som fakta utan att verifiera den."
+      ]
+    },
+    "privacy": {
+      "title": "Integritetspolicy",
+      "body": [
+        "Ingen information skickas till servern. All data stannar i din webbläsare om du inte laddar ner en fil.",
+        "Undvik att ange personliga eller känsliga uppgifter (t.ex. personnummer, fullständig adress, hälsodata eller ekonomisk information).",
+        "En tillfällig lokal session (nyckel ‘jobs-ui’) kan sparas om inte integritetsläget är aktiverat."
+      ]
+    },
+    "terms": {
+      "title": "Användarvillkor",
+      "body": [
+        "Genom att använda detta verktyg samtycker du till att använda det ansvarsfullt och i enlighet med gällande lagar.",
+        "Du har fullt ansvar för det innehåll du skriver och delar på andra platser.",
+        "Vi lämnar inga garantier; verktyget tillhandahålls \"i befintligt skick\" utan garanti för noggrannhet eller ändamålsenlighet."
+      ],
+      "accept": "Genom att använda detta verktyg accepterar du",
+      "checkboxPrefix": "Jag accepterar"
+    }
+  },
+  "apikey": {
+    "label": "API-nyckel",
+    "save": "Spara",
+    "saved": "Sparad",
+    "savedMsg": "API-nyckel sparad i webbläsaren.",
+    "saveFailed": "Sparandet misslyckades."
   }
 }

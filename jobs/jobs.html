@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <base href="/digiter/apps/apply/jobs/">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Työhakemus — Apply</title>
@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="assets/css/jobs-ui.css" />
   <link rel="stylesheet" href="assets/css/reward.css" />
   <link rel="stylesheet" href="assets/css/lenght-meter.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
   <a class="skip-link" href="#main">Siirry pääsisältöön</a>
@@ -34,9 +35,23 @@
           <span id="privacyModeText" class="muted" data-i18n="privacy.off">Yksityisyystila pois</span>
           <button id="privacyInfoBtn" type="button" title="" data-i18n-attr="title:privacy.help" aria-label="?">?</button>
         </div>
+        
       </div>
     </div>
   </nav>
+
+  <!-- Busy overlay (shown during long operations) -->
+  <div id="busy" class="busy" hidden>
+    <div class="busy-box" role="status" aria-live="polite" aria-atomic="true">
+      <div class="spinner" aria-hidden="true"></div>
+      <div id="busyText" class="busy-text">Luodaan luonnosta…</div>
+    </div>
+  </div>
+
+  <!-- Top progress bar (indeterminate) -->
+  <div id="progress" class="progress" hidden>
+    <div class="bar" aria-hidden="true"></div>
+  </div>
 
   <!-- Hero (valinnainen) -->
   <header class="hero" role="banner">
@@ -211,6 +226,13 @@
               "Lähetä" avaa sähköpostiohjelmasi esitäytetyllä viestillä. Mitään ei
               lähetetä palvelimelle.
             </p>
+            <div class="terms-accept">
+              <input id="acceptTerms" type="checkbox" />
+              <label for="acceptTerms">
+                <span data-i18n="legal.terms.checkboxPrefix">Hyväksyn</span>
+                <a href="#" id="termsLinkInline" data-i18n="legal.terms.title">Käyttöehdot</a>
+              </label>
+            </div>
           </section>
 
 
@@ -221,7 +243,11 @@
 
     <noscript>
       <div class="noscript">
-        Tämä sivu tarvitsee JavaScriptin toimiakseen. Ota JavaScript käyttöön selaimesi asetuksista.
+        This page requires JavaScript to function. Please enable JavaScript in your browser settings.<br/>
+        Tämä sivu tarvitsee JavaScriptin toimiakseen. Ota JavaScript käyttöön selaimesi asetuksista.<br/>
+        Diese Seite benötigt JavaScript, um zu funktionieren. Bitte aktivieren Sie JavaScript in den Einstellungen Ihres Browsers.<br/>
+        Cette page nécessite JavaScript pour fonctionner. Veuillez activer JavaScript dans les paramètres de votre navigateur.
+
       </div>
     </noscript>
   </main>
@@ -261,8 +287,31 @@
 
   <!-- Footer -->
   <footer class="footer" role="contentinfo">
-    <p>&copy; <span id="year"></span> Kanavana/Digiter ry — Apply</p>
+    <div class="legal-links" role="region" aria-label="Legal">
+      <nav class="legal-nav" aria-label="Legal links">
+        <a href="#" id="legalAboutLink" data-i18n="legal.about.title">Tietoa työkalusta</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalAiLink" data-i18n="legal.ai.title">Tekoälyä koskeva vastuuvapaus</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalPrivacyLink" data-i18n="legal.privacy.title">Tietosuoja</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalTermsLink" data-i18n="legal.terms.title">Käyttöehdot</a>
+      </nav>
+    </div>
+    <p class="copyrights">&copy; <span id="year"></span> Kanavana/Digiter ry - Apply</p>
   </footer>
+
+  <!-- Legal modal (opens from footer links) -->
+  <div id="legalModal" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle" hidden>
+    <div class="legal-modal-backdrop" tabindex="-1"></div>
+    <div class="legal-modal-sheet" role="document">
+      <div class="legal-modal-header">
+        <h3 id="legalModalTitle"></h3>
+        <button id="legalModalClose" class="legal-modal-close" aria-label="Close">x</button>
+      </div>
+      <div id="legalModalContent" class="legal-modal-content"></div>
+    </div>
+  </div>
 
   <script src="assets/js/i18n.js" defer></script>
   <!-- <script src="assets/js/jobs-content.js" defer></script> -->

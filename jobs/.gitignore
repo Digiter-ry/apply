@@ -1,0 +1,7 @@
+# Ignore local env directory and dotenv files
+env/*
+!env/.htaccess
+.env
+*.env
+*.env.local
+*.env.*
