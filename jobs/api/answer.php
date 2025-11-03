@@ -1,9 +1,38 @@
 <?php
 declare(strict_types=1);
 
-// Backend endpoint scaffold that enforces per-user API keys via header.
+// Backend endpoint that enforces per-user API keys via HttpOnly session
+// (preferred) or, for backward compatibility, via an explicit header.
 // External provider keys (e.g., OpenAI, Perplexity) are read from getenv()
 // and MUST NEVER be exposed to the client in responses.
+
+// Harden PHP session and start it early (before any output)
+// These settings prefer secure cookies and reduce exposure to XSS/CSRF.
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    ini_set('session.use_cookies', '1');
+    ini_set('session.use_only_cookies', '1');
+    ini_set('session.cookie_httponly', '1');
+    // If served over HTTPS in Docker/prod, this should be on. Keep auto if behind terminator.
+    // You may override via php.ini/env if needed.
+    if (!headers_sent()) {
+        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+        if ($isHttps) ini_set('session.cookie_secure', '1');
+    }
+    // Default to Strict to avoid cross-site sends; relax to Lax if necessary.
+    if (function_exists('session_set_cookie_params')) {
+        $params = session_get_cookie_params();
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => $params['path'] ?? '/',
+            'domain' => $params['domain'] ?? '',
+            'secure' => ($params['secure'] ?? false) || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https'),
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]);
+    }
+    session_start();
+}
 
 // Utility: send JSON response
 function json_response(int $status, array $body): void {
@@ -155,18 +184,7 @@ function rate_limit_check(string $bucketKey, int $limit, int $windowSec, ?int &$
     return $count <= $limit;
 }
 
-// Task 2: Placeholder validation & quota check
-function isValidAndHasQuota(string $userApiKey): bool {
-    // Allow a known test key deterministically
-    if ($userApiKey === 'test-allow-123') return true;
-    if ($userApiKey === 'test-deny-123') return false;
-    // 90% chance allow to simulate quota/validity during development
-    try {
-        return random_int(1, 10) <= 9;
-    } catch (Throwable $e) {
-        return true; // if randomness fails, be permissive in dev
-    }
-}
+// (Removed) Per-user API key validation/quota — feature no longer used
 
 // Ensure env is available (if project uses ../env/.env)
 bootstrap_env();
@@ -260,29 +278,12 @@ if ($maxIpAct > 0) {
 
 // Lightweight config endpoint for frontend to adapt UI (no secrets)
 if ($action === 'config') {
-    $requireUserKey = env_flag('REQUIRE_USER_API_KEY', true);
-    json_response(200, [ 'ok' => true, 'requireUserKey' => $requireUserKey ]);
+    json_response(200, [ 'ok' => true, 'requireUserKey' => false, 'hasUserKey' => false ]);
 }
 
-// Enforce per-user API key if required (after env + config handling)
-$requireUserKey = env_flag('REQUIRE_USER_API_KEY', true);
-if ($requireUserKey) {
-    $userApiKey = trim((string)(header_value('X-App-API-Key') ?? ''));
-    if ($userApiKey === '') {
-        json_response(401, [
-            'ok' => false,
-            'error' => 'missing_api_key',
-            'message' => 'Provide your API key in the X-App-API-Key header.'
-        ]);
-    }
-    if (!isValidAndHasQuota($userApiKey)) {
-        json_response(403, [
-            'ok' => false,
-            'error' => 'forbidden_or_no_quota',
-            'message' => 'API key is invalid or out of quota.'
-        ]);
-    }
-}
+// (Removed) set_user_key / clear_user_key actions — feature no longer used
+
+// (Removed) Per-user API key enforcement — all routes accessible without user key
 
 // Action: step 1 scout via Perplexity
 if ($action === 'perplexity_scout') {

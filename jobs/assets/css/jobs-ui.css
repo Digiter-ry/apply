@@ -338,6 +338,11 @@ label { font-weight: 600; }
   100% { transform: translateX(120%); }
 }
 
+/* Lock/blur overlay for steps */
+section.locked { position: relative; }
+section.locked > :not(.lock-scrim) { filter: blur(3px); }
+.lock-scrim { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.35); backdrop-filter: blur(2px); pointer-events: all; z-index: 5; color: #333; font-size: .95rem; text-align: center; padding: 8px; }
+
 /* Terms attention highlight */
 .terms-accept.attn { outline: 2px solid #ff9800; outline-offset: 3px; animation: pulse-outline .8s ease-in-out 2; border-radius: 6px; }
 @keyframes pulse-outline { from { box-shadow: 0 0 0 0 rgba(255,152,0,.55); } to { box-shadow: 0 0 0 10px rgba(255,152,0,0); } }
