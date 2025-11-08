@@ -1,0 +1,13 @@
+# PHP-endpointit vain /jobs/api/ suoraan PHP-FPM:lle
+@jobs_api path /jobs/api/*.php
+handle @jobs_api {
+  root * /srv/apps/dev-apply
+  php_fastcgi dev-apply-php:9000
+}
+
+# kaikki /api/* reititet‰‰n nginxin kautta
+@api_proxy path /api*
+handle @api_proxy {
+  rewrite * /jobs{http.request.uri.path}
+  reverse_proxy dev-apply-web:80
+}
