@@ -1,0 +1,5 @@
+@apply_api path /api*
+handle @apply_api {
+    rewrite * /jobs{http.request.uri.path}
+    reverse_proxy dev-apply-web:80
+}
