@@ -1,25 +1,79 @@
+# =========================================================
+# DIGITER APPLY .GITIGNORE
+# ---------------------------------------------------------
+# This file excludes environment secrets, temporary configs,
+# diagnostics, and system-specific noise from version control.
+# =========================================================
+
+# --- Local diagnostics (dev-only) ---
 index.php
 style.css
 
-index.php
-style.css
-
-# Env & secrets
+# --- Environment and secrets ---
 .env
 *.env
-env/
+.env.local
+.env.*
 secrets/
 **/secrets/*
+**/.htaccess
+*.htaccess
 
-# Caddy scratch/merge files (do not version)
+# --- Cache, logs, and system files ---
+*.log
+*.cache
+*.tmp
+*.bak
+*.swp
+*.swo
+*.pid
+*.seed
+.cache/
+logs/
+tmp/
+temp/
+
+# --- Node / JS ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.iml
+
+# --- Docker / Compose ---
+*.pid
+*.sock
+*.tar
+docker-compose.override.yml
+
+# --- Build artifacts ---
+dist/
+build/
+coverage/
+out/
+*.min.js
+*.map
+
+# --- Caddy scratch / merged configs ---
 conf/Caddyfile.current
 conf/Caddyfile.merged
 conf/Caddyfile.new
 conf/Caddyfile.topfirst
 conf/Caddyfile.apply
 
-# OS/editor noise
-.DS_Store
-Thumbs.db
-.vscode/*
-!.vscode/extensions.json
+# --- Backup ---
+backup/
+backups/
