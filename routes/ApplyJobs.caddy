@@ -1,0 +1,20 @@
+# Apply Jobs moduuli /jobs/ -prefiksissä
+# /jobs/ -moduuli
+handle_path /jobs/* {
+    root * /srv/apps/dev-apply/jobs
+    encode zstd gzip
+
+    header {
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "no-referrer"
+        X-Frame-Options "DENY"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https://api.openai.com https://api.perplexity.ai; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    }
+
+    # PHP-tuki tarvittaessa
+    php_fastcgi unix//run/php/php8.2-fpm.sock
+
+    # Staattiset tiedostot oikeilla Content-Typeilla
+    file_server
+}

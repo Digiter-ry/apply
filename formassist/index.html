@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Työhakemus — Apply</title>
+
+  <!-- Security & privacy metas -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()">
+
+  <!-- Ei ulkoisia fontteja/CDN:iä -->
+  <link rel="stylesheet" href="assets/css/formassist-ui.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Siirry pääsisältöön</a>
+
+  <!-- Päänavigaatio -->
+  <nav class="navbar" role="navigation" aria-label="Päänavigaatio">
+    <div class="nav-inner">
+      <a class="brand" href="/" data-i18n="brand">Brand</a>
+
+      <div class="nav-actions">
+        <label for="langSel" class="visually-hidden">Valitse käyttöliittymän kieli</label>
+        <!-- manifest.json täyttää tämän selectin dynaamisesti -->
+        <select id="langSel" class="select" aria-label="Käyttöliittymän kieli"></select>
+        <div class="privacy-group">
+          <label for="privacyMode" class="visually-hidden" data-i18n="privacy.label">Yksityisyystila</label>
+          <input id="privacyMode" type="checkbox" aria-label="Yksityisyystila" data-i18n-attr="aria-label:privacy.label" />
+          <span id="privacyModeText" class="muted" data-i18n="privacy.off">Yksityisyystila pois</span>
+          <button id="privacyInfoBtn" type="button" title="" data-i18n-attr="title:privacy.help" aria-label="?">?</button>
+        </div>
+        
+      </div>
+    </div>
+  </nav>
+
+  <!-- Busy overlay (shown during long operations) -->
+  <div id="busy" class="busy" hidden>
+    <div class="busy-box" role="status" aria-live="polite" aria-atomic="true">
+      <div class="spinner" aria-hidden="true"></div>
+      <div id="busyText" class="busy-text">Luodaan luonnosta…</div>
+    </div>
+  </div>
+
+  <!-- Top progress bar (indeterminate) -->
+  <div id="progress" class="progress" hidden>
+    <div class="bar" aria-hidden="true"></div>
+  </div>
+
+  <!-- Hero (valinnainen) -->
+  <header class="hero" role="banner">
+    <div class="hero-inner">
+      <h1 class="hero-title" data-i18n="hero.title">Lomaketulkki</h1>
+      <p class="hero-lead" data-i18n="hero.lead">
+        Lataa viranomaisen PDF-lomake (esim. Kela). Klikkaa sinisiä kenttiä ja saat heti selkokielisen tulkinnan: mitä kysytään, miksi, esimerkkivastaus ja vinkit. <br/>
+        <strong>Älä koskaan lataa lomaketta jossa on henkilötietoja!</strong>
+      </p>
+    </div>
+  </header>
+
+  <!-- Pääsisältö -->
+  <main id="main" class="main-wrapper" role="main">
+    <div class="content-container">
+      <!-- Vasen palsta: pääsisältö -->
+      <article class="content-column content-primary">
+        <!-- Lomakealue -->
+      </article>
+
+        <!-- Oikea palsta: sivusisältö -->
+        <aside class="content-column content-secondary sticky" role="complementary" aria-label="Sivupalsta">
+          <section class="card" aria-labelledby="guide-title">
+
+          </section>
+
+
+
+          <section class="card">
+
+          </section>
+
+
+
+        </aside>
+
+    </div>
+
+    <noscript>
+      <div class="noscript">
+        This page requires JavaScript to function. Please enable JavaScript in your browser settings.<br/>
+        Tämä sivu tarvitsee JavaScriptin toimiakseen. Ota JavaScript käyttöön selaimesi asetuksista.<br/>
+        Diese Seite benötigt JavaScript, um zu funktionieren. Bitte aktivieren Sie JavaScript in den Einstellungen Ihres Browsers.<br/>
+        Cette page nécessite JavaScript pour fonctionner. Veuillez activer JavaScript dans les paramètres de votre navigateur.
+
+      </div>
+    </noscript>
+  </main>
+  <!-- Mobiili: kiinteä ohjepalkki -->
+  <div id="guideBar" class="guide-bar" role="region" aria-live="polite" aria-label="Ohjeet">
+    <span class="visually-hidden" data-i18n="guide.title">Ohjeet</span>
+    <div id="guideBarContent" class="guide-bar-content"></div>
+    <button id="guideBarToggle" class="guide-bar-btn" aria-expanded="false" aria-controls="guidePanel" data-i18n="guide.more">Näytä lisää</button>
+  </div>
+
+  <!-- Mobiilin ohjepaneeli -->
+  <div id="guidePanel" class="guide-panel" role="dialog" aria-modal="true" aria-labelledby="guidePanelTitle" hidden>
+    <div class="guide-panel-backdrop" tabindex="-1"></div>
+    <div class="guide-panel-sheet" role="document">
+      <div class="guide-panel-header">
+        <h3 id="guidePanelTitle" data-i18n="guide.title">Ohjeet</h3>
+        <button id="guidePanelClose" class="guide-panel-close" aria-label="Sulje" data-i18n-attr="aria-label:guide.close">×</button>
+      </div>
+      <div id="guidePanelContent" class="guide-panel-content"><!-- täytetään JS:llä --></div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="legal-links" role="region" aria-label="Legal">
+      <nav class="legal-nav" aria-label="Legal links">
+        <a href="#" id="legalAboutLink" data-i18n="legal.about.title">Tietoa työkalusta</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalAiLink" data-i18n="legal.ai.title">Tekoälyä koskeva vastuuvapaus</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalPrivacyLink" data-i18n="legal.privacy.title">Tietosuoja</a>
+        <span class="sep" aria-hidden="true">•</span>
+        <a href="#" id="legalTermsLink" data-i18n="legal.terms.title">Käyttöehdot</a>
+      </nav>
+    </div>
+    <p class="copyrights">&copy; <span id="year"></span> Kanavana/Digiter ry - Apply</p>
+  </footer>
+
+  <!-- Legal modal (opens from footer links) -->
+  <div id="legalModal" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle" hidden>
+    <div class="legal-modal-backdrop" tabindex="-1"></div>
+    <div class="legal-modal-sheet" role="document">
+      <div class="legal-modal-header">
+        <h3 id="legalModalTitle"></h3>
+        <button id="legalModalClose" class="legal-modal-close" aria-label="Close">x</button>
+      </div>
+      <div id="legalModalContent" class="legal-modal-content"></div>
+    </div>
+  </div>
+
+
+</body>
+</html>

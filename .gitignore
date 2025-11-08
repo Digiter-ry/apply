@@ -1,0 +1,25 @@
+index.php
+style.css
+
+index.php
+style.css
+
+# Env & secrets
+.env
+*.env
+env/
+secrets/
+**/secrets/*
+
+# Caddy scratch/merge files (do not version)
+conf/Caddyfile.current
+conf/Caddyfile.merged
+conf/Caddyfile.new
+conf/Caddyfile.topfirst
+conf/Caddyfile.apply
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json

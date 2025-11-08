@@ -1,0 +1,26 @@
+# PHP-ajo /formassist/*.php polulle (KORJATTU JUURET)
+@formassist_php path /formassist/*.php
+handle @formassist_php {
+    # TÄRKEÄÄ: Pakotetaan oikea root ja ENV-muuttujat
+    reverse_proxy dev-apply-php:9000 {
+        transport fastcgi {
+            split .php
+            # KORJAUS 1: Juuri on nyt /srv/app
+            root /srv/app 
+            # KORJAUS 2: Päivitetään kaikki ENV-muuttujat uuteen juureen
+            env DOCUMENT_ROOT /srv/app/
+            env SCRIPT_FILENAME /srv/app{path}
+            env SCRIPT_NAME {path}
+            env REQUEST_URI {uri}
+            env PATH_INFO ""
+        }
+    }
+}
+
+# Staattiset tiedostot ja reititys /formassist/* polulle (Nginx)
+@formassist path /formassist*
+handle @formassist {
+  handle_path /formassist* {
+    reverse_proxy dev-apply-web:80
+  }
+}

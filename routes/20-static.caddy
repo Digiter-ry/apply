@@ -1,0 +1,19 @@
+# Staattinen /jobs/* ja juuren /assets/* ? Nginx (apply-web)
+
+@jobs path /jobs*
+handle @jobs {
+  handle_path /jobs* {
+    reverse_proxy dev-apply-web:80
+  }
+}
+
+@rootassets path /assets*
+handle @rootassets {
+  rewrite * /jobs{http.request.uri.path}
+  reverse_proxy dev-apply-web:80
+}
+
+# Kaikki muu 404 (ei en‰‰ respond "OK" 200)
+handle {
+  respond 404
+}
