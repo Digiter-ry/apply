@@ -103,3 +103,7 @@ Here’s how you can contribute:
    ```bash
    git checkout -b feature/your-feature-name
    ```
+
+
+   ---
+📘 For developers: see [README-DEV.md](README-DEV.md) for setup and contribution instructions.
