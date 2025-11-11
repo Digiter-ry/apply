@@ -1,4 +1,5 @@
-# ... aiempi sisältö ...
+# Dockerfile (PHP, Cloud Run)
+FROM php:8.2-cli
 WORKDIR /app
 COPY . /app
 
