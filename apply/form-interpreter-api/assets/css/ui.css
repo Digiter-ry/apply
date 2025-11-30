@@ -1,0 +1,852 @@
+/* ========== THEME TOKENS ========== */
+
+:root {
+  --bg: #F8F9FA;
+  --panel-bg: #FFFFFF;
+  --border: #E2E4E7;
+  --text: #1A1A1A;
+  --text-secondary: #4B5563;
+
+  --primary: #3C82F6;
+
+  --info-bg: #E8F1FF;
+  --info-border: #B8D1FF;
+
+  --warning-bg: #FFF4E5;
+  --warning-border: #FFCE93;
+
+  --error-bg: #FDECEC;
+  --error-border: #E9A0A0;
+
+  --success-bg: #E7F8EE;
+  --success-border: #AEE4C1;
+
+  --highlight-bg: rgba(60,130,246,0.25);
+  --highlight-border: #3C82F6;
+
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+
+/* Dark theme overrides */
+html.dark {
+  --bg: #1F1F1F;
+  --panel-bg: #2A2A2A;
+  --border: #444444;
+  --text: #FAFAFA;
+  --text-secondary: #C6C6C6;
+
+  --primary: #5C9CFF;
+
+  --info-bg: #2C3A52;
+  --info-border: #3D5273;
+
+  --warning-bg: #5A4220;
+  --warning-border: #805C33;
+
+  --error-bg: #4B1E1E;
+  --error-border: #7A3737;
+
+  --success-bg: #1E3B29;
+  --success-border: #355C45;
+
+  --highlight-bg: rgba(92,156,255,0.35);
+  --highlight-border: #5C9CFF;
+
+  --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* ========== GLOBAL ========== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER – tausta full width, sisältö max 1140px */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-bg);
+}
+
+.app-header-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 10px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Nämä voi pitää ennallaan */
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-center {
+  text-align: center;
+  flex: 1;
+}
+
+
+.app-logo {
+  width: 110px;
+  height: 28px;
+  background-image: url("../img/digiter-logo-light.svg"); /* säädä polku */
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+}
+
+/* Dark-teeman logo */
+html.dark .app-logo {
+  background-image: url("../img/digiter-logo-dark.svg");
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.brand-text {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.lang-switch select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+}
+/* Language selector using Lucide icon */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.lang-switch select {
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.lang-icon {
+  width: 20px;
+  height: 20px;
+  stroke: var(--text);
+  flex-shrink: 0;
+}
+
+/* Improve dark mode visibility */
+html.dark .lang-icon {
+  stroke: var(--text);
+}
+
+/* Theme toggle */
+
+.theme-toggle {
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 4px;
+  cursor: pointer;
+  background: var(--panel-bg);
+  font-size: 13px;
+}
+
+.theme-icon {
+  pointer-events: none;
+}
+.app-header {
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-container {
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-container > .app-header {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+/* ========== MAIN LAYOUT ========== */
+
+/* PAGE MAIN AREA (container Lomaketulkille) */
+
+.app-main {
+  flex: 1;                 /* 👈 venyy täyttämään tilan headerin ja footerin välissä */
+  max-width: 1140px;
+  margin: 24px auto 40px;
+  padding: 0 32px 40px;
+}
+
+
+/* FOOTER */
+
+.app-footer {
+  border-top: 1px solid var(--border);
+  background: var(--panel-bg);
+  padding: 12px 0 16px;
+}
+
+.app-footer-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.footer-right {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.app-footer .link-button {
+  font-size: 12px;
+  padding: 0;
+}
+
+/* RESPONSIVE FOOTER */
+
+@media (max-width: 960px) {
+  .app-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 16px;
+  }
+}
+
+/* TERMS BANNER */
+
+.terms-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
+}
+
+.terms-icon {
+  font-size: 22px;
+  margin-top: 2px;
+}
+
+.terms-content h1 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.terms-content p {
+  margin: 0 0 14px;
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.terms-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terms-checkbox input {
+  width: 16px;
+  height: 16px;
+}
+
+/* Buttons */
+
+/* Perusnapit */
+
+.primary-button,
+.ghost-button,
+.circle-button,
+.pill-button,
+.link-button {
+  font-family: inherit;
+  font-size: 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 6px 14px;
+  cursor: pointer;
+  background: none;
+  color: var(--text);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+/* Pääpainike */
+
+.primary-button {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.primary-button:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.primary-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Linkkinappi */
+
+.link-button {
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  padding-left: 0;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* Ghost / circle / pill -napit */
+
+.ghost-button,
+.circle-button,
+.pill-button {
+  border-color: var(--border);
+  background: var(--panel-bg);
+  color: var(--text);
+}
+
+/* LIGHT hover */
+
+html.light .ghost-button:hover,
+html.light .circle-button:hover,
+html.light .pill-button:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* DARK hover */
+
+html.dark .ghost-button:hover,
+html.dark .circle-button:hover,
+html.dark .pill-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Pyöreät napit (zoom + rotate) */
+
+.circle-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Zoom-tason nappi */
+
+.pill-button {
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+.pdf-controls .icon {
+  width: 16px;
+  height: 16px;
+}
+/* MAIN LAYOUT */
+
+.main-layout {
+  position: relative;
+  border-radius: 12px;
+}
+
+.layout-columns {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+  gap: 20px;
+}
+
+/* Locked overlay */
+
+.main-layout--locked .layout-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(3px);
+  z-index: 20;
+  border-radius: 12px;
+}
+
+html.dark .main-layout--locked .layout-overlay {
+  background: rgba(0,0,0,0.3);
+}
+
+/* PANELS */
+
+.pdf-panel,
+.assistant-panel {
+  background: var(--panel-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+}
+
+/* PDF PANEL */
+
+.panel-header {
+  display: flex;
+  flex-direction: column;      /* 👈 otsikko ja sivuvalinta eri riveille */
+  gap: 8px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.panel-page-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-end;        /* 👈 sivuvalinta oikeaan laitaan */
+}
+
+.panel-header span {
+  color: var(--text-secondary);
+}
+
+.panel-page-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-container {
+  position: relative;
+  padding: 18px;
+}
+
+.pdf-placeholder {
+  background: #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: auto;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.pdf-preview {
+  width: 100%;
+  min-height: 520px;
+  border: none;
+  border-radius: 10px;
+  background: #111827;
+}
+
+html.dark .pdf-preview {
+  background: #0f172a;
+}
+
+/* html.dark -override PDF-alueelle */
+
+html.dark .pdf-placeholder {
+  background: #111827;           /* tumma slate-tyyppinen tausta */
+  color: #e5e7eb;
+}
+
+.pdf-canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: var(--shadow-soft);
+}
+
+.pdf-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: auto;
+  transform-origin: top left;
+}
+
+.textLayer {
+  pointer-events: auto;
+}
+
+.textLayer .pdf-field-box {
+  cursor: pointer !important;
+}
+
+.pdf-render {
+  position: relative;
+  display: inline-block;
+}
+
+.pdf-placeholder.drop-target {
+  border: 2px dashed var(--border);
+  background: #f3f4f6;
+  color: var(--text-secondary);
+}
+
+.pdf-placeholder.drop-target.is-dragover {
+  background: #e0e7ff;
+  border-color: #3c82f6;
+}
+
+.pdf-placeholder-hint {
+  display: block;
+  margin-bottom: 12px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.upload-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.upload-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  border: 1px solid var(--primary);
+  transition: filter 0.15s ease;
+}
+
+.upload-label:hover {
+  filter: brightness(1.05);
+}
+
+.upload-input {
+  display: none;
+}
+
+.upload-hint {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.pdf-field-box {
+  position: absolute;
+  border: 2px solid var(--highlight-border);
+  background: rgba(60, 130, 246, 0.15);
+  border-radius: 6px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pdf-field-box:hover {
+  background: rgba(60, 130, 246, 0.28);
+  border-color: #2f6fd9;
+}
+
+.pdf-field-placeholder {
+  margin-top: 18px;
+  width: 70%;
+  max-width: 420px;
+  height: 46px;
+  border-radius: 8px;
+  border: 2px solid var(--highlight-border);
+  background: var(--highlight-bg);
+}
+
+.pdf-controls {
+  display: none; /* hide unused floating zoom/rotate controls to avoid covering form */
+}
+
+.panel-footer {
+  padding: 10px 18px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+/* PDF top pagination controls */
+
+.pdf-controls-top {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 0 4px 12px;
+}
+
+.pdf-controls-top .pdf-page-indicator {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+/* ASSISTANT PANEL */
+
+.assistant-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.assistant-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.assistant-header-text h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.assistant-header-text p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.assistant-content {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 14px;
+}
+
+.assistant-block {
+  background: transparent;
+  border-radius: 8px;
+}
+
+.assistant-block h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+}
+
+.assistant-block p {
+  margin: 0;
+}
+
+.assistant-block-info {
+  background: var(--info-bg);
+  border: 1px solid var(--info-border);
+  padding: 10px 12px;
+}
+
+.assistant-block-note {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  padding: 10px 12px;
+}
+
+.assistant-block-purpose {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  padding: 10px 12px;
+}
+
+.assistant-block-warning {
+  background: var(--error-bg);
+  border: 1px solid var(--error-border);
+  padding: 10px 12px;
+}
+
+.assistant-block-info ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+.assistant-panel.is-loading {
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+/* Toggle row */
+
+.assistant-block-toggle {
+  padding-top: 4px;
+}
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 42px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--panel-bg);
+  padding: 0;
+  cursor: pointer;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--border);
+  transition: transform 0.2s ease;
+}
+/* LEGAL MODAL */
+
+.legal-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.legal-modal-backdrop.is-open {
+  display: flex;
+}
+
+.legal-modal {
+  width: 100%;
+  max-width: 640px;
+  max-height: 80vh;
+  background: var(--panel-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.legal-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.legal-modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.legal-modal-body {
+  padding: 16px 18px 18px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  overflow-y: auto;
+}
+
+.legal-modal-body p {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 960px) {
+  .app-main {
+    padding: 16px;
+    margin: 16px auto 32px;
+  }
+
+  .layout-columns {
+    grid-template-columns: 1fr;
+  }
+
+}

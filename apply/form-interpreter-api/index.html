@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fi" class="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Lomaketulkki</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/css/ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf_viewer.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <!-- HEADER – geneerinen Digiter-header -->
+  <header class="app-header">
+    <div class="app-header-inner">
+      <div class="header-left">
+        <a href="#" class="brand">
+          <div class="app-logo" aria-hidden="true"></div>
+        </a>
+      </div>
+
+      <div class="header-right">
+        <div class="theme-toggle" id="themeToggle" aria-label="Vaihda teema">
+          <span class="theme-icon theme-icon-sun">☀️</span>
+          <span class="theme-icon theme-icon-moon">🌙</span>
+        </div>
+
+        <div class="lang-switch">
+          <svg class="lang-icon" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 8 6 6"/>
+            <path d="m4 14 6-6 2-3"/>
+            <path d="M2 5h12"/>
+            <path d="M7 2h1"/>
+            <path d="m22 22-5-10-5 10"/>
+            <path d="M14 18h6"/>
+          </svg>
+
+          <select id="langSelect">
+            <option value="fi" selected>FI</option>
+            <option value="en">EN</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE CONTENT – palvelukohtainen title + UI -->
+  <main class="app-main">
+    <header class="page-header">
+      <h1 class="app-title-main" data-i18n="app.title">Lomaketulkki 2.0</h1>
+      <!-- <p class="app-subtitle-main" data-i18n="app.subtitle">Selkokielinen avustaja viranomaislomakkeisiin.</p> -->
+    </header>
+
+    <!-- TERMS BANNER -->
+    <section class="terms-banner" id="termsBanner">
+      <div class="terms-icon">ℹ️</div>
+      <div class="terms-content">
+        <h1 data-i18n="terms.heading">Ennen kuin aloitat</h1>
+        <p data-i18n="terms.description">
+          Lomaketulkki 2.0 toimii täysin anonyymisti eikä tallenna henkilötietoja palvelimelle.
+          Sinun täytyy silti hyväksyä palvelun käyttöehdot ennen palvelun käyttöä.
+        </p>
+
+        <div class="terms-actions">
+          <label class="terms-checkbox">
+            <input type="checkbox" id="termsCheckbox">
+            <span data-i18n="terms.checkboxLabel">Olen lukenut ja hyväksyn palvelun käyttöehdot.</span>
+          </label>
+
+          <button type="button" class="link-button" data-i18n="terms.showLink">
+            Näytä käyttöehdot
+          </button>
+
+          <button type="button" class="primary-button" id="startButton" disabled data-i18n="terms.startButton">
+            Aloita palvelun käyttö
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN LAYOUT -->
+    <section class="main-layout main-layout--locked" id="mainLayout">
+      <div class="layout-overlay"></div>
+
+      <div class="layout-columns">
+        <!-- LEFT: PDF PANEL -->
+        <section class="pdf-panel">
+          <header class="panel-header">
+            <div>
+              <strong data-i18n="pdf.exampleFilename">esimerkki-lomake.pdf</strong><br>
+              <div class="upload-wrapper">
+                <span class="upload-hint" data-i18n="pdf.clickHint">Klikkaa lomakkeen kenttiä vasemmalta. Selkokielinen ohje näkyy oikealla.</span>
+                <div style="height:20px;"></div>
+                <label for="pdfUpload" class="upload-label">Valitse PDF</label>
+                <input type="file" id="pdfUpload" accept="application/pdf" class="upload-input" />
+              </div>
+            </div>
+          </header>
+
+          <div class="pdf-container drop-enabled">
+            <div class="pdf-controls-top" id="pdfControls" style="display:none">
+              <button type="button" class="ghost-button" aria-label="Edellinen sivu" data-i18n="pdf.prevPageAria">&lt;</button>
+              <span class="pdf-page-indicator" data-i18n="pdf.pageIndicator">Sivu 1 / 1</span>
+              <button type="button" class="ghost-button" aria-label="Seuraava sivu" data-i18n="pdf.nextPageAria">&gt;</button>
+            </div>
+
+            <div class="pdf-placeholder drop-target">
+              <span data-i18n="pdf.dropHint">Voit myös pudottaa PDF-tiedoston tähän alueelle.</span>
+              <div class="pdf-field-placeholder"></div>
+            </div>
+
+            <div class="pdf-controls">
+              <!-- Zoom in -->
+                <button
+                type="button"
+                class="circle-button"
+                aria-label="Zoomaa lähemmäs"
+                data-i18n="pdf.zoomInAria"
+                data-i18n-attr="aria-label">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="M12 5v14" />
+                </svg>
+              </button>
+
+              <!-- Zoom out -->
+              <button
+                type="button"
+                class="circle-button"
+                aria-label="Zoomaa kauemmas"
+                data-i18n="pdf.zoomOutAria"
+                data-i18n-attr="aria-label">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14" />
+                </svg>
+              </button>
+
+              <!-- Zoom level -->
+              <button     type="button"
+                class="pill-button"
+                aria-label="Zoom-taso"
+                data-i18n="pdf.zoomLevelLabel">
+                100%
+              </button>
+
+              <!-- Rotate (Lucide: rotate-ccw) -->
+              <button     type="button"
+                class="circle-button"
+                aria-label="Käännä"
+                data-i18n="pdf.rotateAria"
+                data-i18n-attr="aria-label">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 11v5h5" />
+                  <path d="M3.64 7.36A9 9 0 1 1 5 19.09" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <footer class="panel-footer" data-i18n="pdf.footerNote">
+            Tämä on selkokielinen tulkinta, ei virallinen ohje.
+          </footer>
+        </section>
+
+        <!-- RIGHT: ASSISTANT PANEL -->
+        <section class="assistant-panel">
+          <header class="assistant-header">
+            <div class="assistant-icon">Ab</div>
+            <div class="assistant-header-text">
+              <h2 class="js-assistant-title" data-i18n="assistant.heading">
+                Selkokielinen ohje
+              </h2>
+              <p class="js-assistant-subtitle" data-i18n="assistant.subheading">
+                Tämän kentän tarkoitus ja täyttöohje.
+              </p>
+            </div>
+          </header>
+
+
+            <div class="assistant-content">
+
+              <section class="assistant-block">
+                <h3>Selkokielinen ohje</h3>
+                <p class="assistant-text-main">
+                  Valitse kenttä lomakkeesta nähdäksesi ohjeen.
+                </p>
+              </section>
+
+              <section class="assistant-block assistant-block-note">
+                <h3>Miksi tätä kysytään</h3>
+                <p>
+                  Kun klikkaat kenttää, näytämme miksi tieto on tarpeen.
+                </p>
+              </section>
+
+              <section class="assistant-block assistant-block-info">
+                <h3>Esimerkki</h3>
+                <p>
+                  Näytämme tähän esimerkin, kun valitset kentän.
+                </p>
+              </section>
+
+              <section class="assistant-block assistant-block-purpose">
+                <h3>Vinkit</h3>
+                <p class="assistant-purpose-text">
+                  Näytämme kentän täyttämistä helpottavat vinkit, kun valitset kentän.
+                </p>
+              </section>
+
+            </div>
+
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="app-footer-inner">
+      <div class="footer-left">
+        <span data-i18n="footer.copyright">© Digiter ry – Lomaketulkki</span>
+      </div>
+      <div class="footer-right">
+        <button type="button"
+                class="link-button footer-link"
+                data-legal="terms"
+                data-i18n="footer.link.terms">
+          Käyttöehdot
+        </button>
+        <button type="button"
+                class="link-button footer-link"
+                data-legal="privacy"
+                data-i18n="footer.link.privacy">
+          Tietosuojaseloste
+        </button>
+        <button type="button"
+                class="link-button footer-link"
+                data-legal="accessibility"
+                data-i18n="footer.link.accessibility">
+          Saavutettavuus
+        </button>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- LEGAL MODAL -->
+<div class="legal-modal-backdrop" id="legalModal" aria-hidden="true">
+  <div class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle">
+    <header class="legal-modal-header">
+      <h2 id="legalModalTitle"></h2>
+      <button type="button" class="circle-button legal-modal-close" id="legalModalClose" aria-label="Sulje">
+        ✕
+      </button>
+    </header>
+    <div class="legal-modal-body" id="legalModalBody">
+      <!-- sisältö injektoidaan JS:llä -->
+    </div>
+  </div>
+</div>
+<script src="assets/js/ui-shell.js"></script>
+<script src="assets/js/form-interpreter.js"></script>
+<script src="assets/js/pdf-viewer.js"></script>
+</body>
+</html>

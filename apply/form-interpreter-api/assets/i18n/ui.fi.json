@@ -1,0 +1,71 @@
+{
+  "app": {
+    "title": "Lomaketulkki 2.0",
+    "subtitle": "Selkokielinen avustaja viranomaislomakkeisiin."
+  },
+  "terms": {
+    "heading": "Ennen kuin aloitat",
+    "description": "Lomaketulkki 2.0 toimii täysin anonyymisti eikä tallenna henkilötietoja palvelimelle. Sinun täytyy silti hyväksyä palvelun käyttöehdot ennen palvelun käyttöä.",
+    "checkboxLabel": "Olen lukenut ja hyväksyn palvelun käyttöehdot.",
+    "showLink": "Näytä käyttöehdot",
+    "startButton": "Aloita palvelun käyttö"
+  },
+  "pdf": {
+    "exampleFilename": "esimerkki-lomake.pdf",
+    "clickHint": "Klikkaa lomakkeen kenttiä vasemmalta. Selkokielinen ohje näkyy oikealla.",
+    "prevPageAria": "Edellinen sivu",
+    "pageIndicator": "Sivu 1 / 4",
+    "nextPageAria": "Seuraava sivu",
+    "placeholder": "PDF-näkymä (pdf.js)",
+    "dropHint": "Voit myös pudottaa PDF-tiedoston tähän alueelle.",
+    "zoomInAria": "Zoomaa lähemmäs",
+    "zoomOutAria": "Zoomaa kauemmas",
+    "zoomLevelLabel": "100 %",
+    "rotateAria": "Käännä",
+    "footerNote": "Tämä on selkokielinen tulkinta, ei virallinen ohje."
+  },
+  "assistant": {
+    "heading": "Selkokielinen ohje",
+    "subheading": "Tämän kentän tarkoitus ja täyttöohje.",
+    "section": {
+      "instruction": {
+        "title": "Selkokielinen ohje",
+        "body": "Valitse kenttä lomakkeesta nähdäksesi ohjeen."
+      },
+      "why": {
+        "title": "Miksi tätä kysytään",
+        "body": "Kun klikkaat kenttää, näytämme miksi tieto on tarpeen."
+      },
+      "examples": {
+        "title": "Esimerkki",
+        "body": "Näytämme tähän esimerkin, kun valitset kentän."
+      },
+      "tips": {
+        "title": "Vinkit",
+        "body": "Näytämme kentän täyttämistä helpottavat vinkit, kun valitset kentän."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© Digiter ry – Lomaketulkki",
+    "link": {
+      "terms": "Käyttöehdot",
+      "privacy": "Tietosuojaseloste",
+      "accessibility": "Saavutettavuus"
+    }
+  },
+  "legal": {
+    "terms": {
+      "title": "Käyttöehdot",
+      "body": "Tämä on kehitysvaiheessa oleva palvelu. Käytä sitä omalla vastuullasi.\n\nPalvelu ei tallenna henkilötietoja palvelimelle. Älä kuitenkaan kirjoita kenttiin arkaluonteisia tietoja, joita et halua jakaa."
+    },
+    "privacy": {
+      "title": "Tietosuojaseloste",
+      "body": "Lomaketulkki 2.0 ei tallenna henkilötietoja palvelimelle.\n\nLokitietoja voidaan kerätä palvelun tekniseen seurantaan ja käytön tilastointiin siten, että yksittäistä käyttäjää ei voi tunnistaa."
+    },
+    "accessibility": {
+      "title": "Saavutettavuus",
+      "body": "Tavoitteena on WCAG 2.1 AA -tason saavutettavuus.\n\nJos huomaat esteitä palvelun käytössä, ilmoita niistä Digiterille, jotta voimme korjata ne."
+    }
+  }
+}

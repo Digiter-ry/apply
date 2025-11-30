@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+python-multipart
+google-cloud-aiplatform
+google-cloud-translate
+google-cloud-dlp
+google-cloud-documentai
+python-dotenv

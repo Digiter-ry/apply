@@ -1,0 +1,71 @@
+{
+  "app": {
+    "title": "Form Interpreter 2.0",
+    "subtitle": "Plain-language assistant for official forms."
+  },
+  "terms": {
+    "heading": "Before you start",
+    "description": "Form Interpreter 2.0 works fully anonymously and does not store personal data on the server. You still need to accept the terms of use before using the service.",
+    "checkboxLabel": "I have read and accept the terms of use.",
+    "showLink": "Show terms",
+    "startButton": "Start using the service"
+  },
+  "pdf": {
+    "exampleFilename": "example-form.pdf",
+    "clickHint": "Click fields on the form on the left. The plain-language explanation appears on the right.",
+    "prevPageAria": "Previous page",
+    "pageIndicator": "Page 1 / 4",
+    "nextPageAria": "Next page",
+    "placeholder": "PDF view (pdf.js)",
+    "dropHint": "You can also drop a PDF file onto this area.",
+    "zoomInAria": "Zoom in",
+    "zoomOutAria": "Zoom out",
+    "zoomLevelLabel": "100 %",
+    "rotateAria": "Rotate",
+    "footerNote": "This is a plain-language interpretation, not an official instruction."
+  },
+  "assistant": {
+    "heading": "Plain-language guidance",
+    "subheading": "Purpose of this field and how to fill it in.",
+    "section": {
+      "instruction": {
+        "title": "Plain-language instructions",
+        "body": "Select a field on the form to see its instructions."
+      },
+      "why": {
+        "title": "Why this is asked",
+        "body": "When you click a field, we show why this information is needed."
+      },
+      "examples": {
+        "title": "Example",
+        "body": "We show an example once you select a field."
+      },
+      "tips": {
+        "title": "Tips",
+        "body": "We show tips that make filling easier when you select a field."
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© Digiter ry – Form Interpreter",
+    "link": {
+      "terms": "Terms of use",
+      "privacy": "Privacy notice",
+      "accessibility": "Accessibility"
+    }
+  },
+  "legal": {
+    "terms": {
+      "title": "Terms of use",
+      "body": "This service is under active development. Use it at your own discretion.\n\nThe service does not store personal data on the server. However, do not type any highly sensitive information that you would not want to share."
+    },
+    "privacy": {
+      "title": "Privacy notice",
+      "body": "Form Interpreter 2.0 does not store personal data on the server.\n\nTechnical log data may be collected for monitoring and statistics in a way that does not identify individual users."
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "body": "Our goal is WCAG 2.1 AA level accessibility.\n\nIf you notice barriers when using the service, please inform Digiter so we can improve the service."
+    }
+  }
+}
