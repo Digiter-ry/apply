@@ -13,7 +13,7 @@ Apply is currently included in several funding applications:
 - **AID4SME Open Call 1** (Kanavana)
 - **NLnet Foundation** grant (Kanavana)
 - **AMIF (Asylum, Migration and Integration Fund)** consortium proposal (Digiter ry)
-- **Kone Foundation** application (Digiter ry)
+- Fuugi application (Digiter ry)
 
 Both Kanavana and Digiter ry share the same core development path at this stage.  
 Kanavana focuses on the **commercial and productization side**, while Digiter ry leads the **nonprofit and open development track**.  
